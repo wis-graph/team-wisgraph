@@ -560,6 +560,255 @@
   .arch-row { grid-template-columns: 1fr; gap: 1rem; }
   .arch-meta { border-right: 0; border-bottom: 1px solid var(--border); padding: 0 0 0.75rem; flex-direction: row; align-items: baseline; gap: 0.75rem; }
 }
+
+/* ─── 05 Method ─── */
+.method-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  margin-top: 1rem;
+}
+.method-rail::before {
+  content: '';
+  position: absolute;
+  top: 1.625rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border) 0%, var(--accent-primary) 50%, var(--border) 100%);
+  z-index: 0;
+}
+.method-step {
+  position: relative;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 1;
+}
+.method-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border-strong);
+  margin: 1.25rem 0 0 0;
+  position: relative;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.method-step:nth-child(-n+3) .method-node { border-color: var(--accent-primary); }
+.method-step:hover .method-node {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+}
+.method-num {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+}
+.method-verb {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+.method-desc {
+  font-family: var(--font-kr);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+.method-items {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  font-family: var(--font-kr);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+.method-items li::before { content: '· '; color: var(--border-strong); }
+
+@media (max-width: 960px) {
+  .method-rail { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 0; }
+  .method-rail::before { display: none; }
+  .method-step { padding: 1rem; border-left: 2px solid var(--border); }
+  .method-step:nth-child(-n+3) { border-left-color: var(--accent-primary); }
+  .method-node { display: none; }
+}
+@media (max-width: 600px) { .method-rail { grid-template-columns: 1fr; } }
+
+/* ─── 06 Client Work ─── */
+.workstream-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 800px) { .workstream-grid { grid-template-columns: 1fr; } }
+
+.workstream {
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  transition: border-color var(--dur-fast) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.workstream:hover { border-color: var(--accent-primary); }
+.workstream-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-tertiary);
+}
+.workstream-title {
+  font-family: var(--font-en);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin: 0;
+}
+.workstream-desc {
+  font-family: var(--font-kr);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+.workstream-items {
+  list-style: none;
+  padding: 1rem 0 0;
+  margin: auto 0 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 0.5rem;
+}
+.workstream-items li {
+  font-family: var(--font-kr);
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+  padding: 0.25rem 0.625rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+/* ─── 07 Education ─── */
+.edu-section { background: var(--bg-secondary); }
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 3.5rem;
+}
+@media (max-width: 1080px) { .edu-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 720px)  { .edu-grid { grid-template-columns: 1fr; } }
+
+.edu-card {
+  padding: 1.5rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent-primary);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  min-height: 14rem;
+}
+.edu-level {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+}
+.edu-target {
+  font-family: var(--font-kr);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+.edu-target-en {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+.edu-content {
+  font-family: var(--font-kr);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+.programs-head {
+  font-family: var(--font-en);
+  font-size: 0.8125rem;
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 1080px) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .programs-grid { grid-template-columns: 1fr; } }
+
+.program {
+  padding: 1.5rem 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.program-title {
+  font-family: var(--font-kr);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+}
+.program-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.program-items li {
+  font-family: var(--font-kr);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding-left: 0.875rem;
+  position: relative;
+}
+.program-items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 1px;
+  background: var(--accent-primary);
+}
 </style>
 </head>
 <body>
@@ -881,6 +1130,251 @@
             </ul>
             <p class="arch-desc">보고서 작성, 고객 응대, 콘텐츠 발행, 회의록 정리, 알림, 승인 등 실제 업무 실행으로 연결합니다.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 05 Method ═══ -->
+  <section class="section" id="method" aria-labelledby="method-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">05 — Method</span></div>
+        <h2 class="section-title-en" id="method-title">업무를 자동화하기 전에, 먼저 업무 지식을 구조화합니다</h2>
+        <p class="lead">
+          AI 자동화의 핵심은 도구 연결이 아니라 업무 지식의 구조화입니다.
+          복잡한 업무를 개념·관계·규칙·예외·프로세스로 분해하고,
+          이를 AI Agent와 자동화 워크플로우가 활용할 수 있는 실행 구조로 구현합니다.
+        </p>
+      </header>
+
+      <div class="method-rail">
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">01</span>
+          <span class="method-verb">Observe</span>
+          <p class="method-desc">업무를 관찰합니다.</p>
+          <ul class="method-items">
+            <li>고객 인터뷰</li><li>현장 분석</li><li>반복 업무 탐색</li><li>병목 파악</li>
+          </ul>
+        </div>
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">02</span>
+          <span class="method-verb">Decompose</span>
+          <p class="method-desc">업무를 작은 단위로 분해합니다.</p>
+          <ul class="method-items">
+            <li>개념 추출</li><li>작업 단위 분해</li><li>역할 구분</li><li>예외 정리</li>
+          </ul>
+        </div>
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">03</span>
+          <span class="method-verb">Model</span>
+          <p class="method-desc">업무 지식을 모델링합니다.</p>
+          <ul class="method-items">
+            <li>관계 정의</li><li>규칙 구조화</li><li>프로세스 맵</li><li>온톨로지 설계</li>
+          </ul>
+        </div>
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">04</span>
+          <span class="method-verb">Architect</span>
+          <p class="method-desc">Agent와 자동화 구조를 설계합니다.</p>
+          <ul class="method-items">
+            <li>Agent 역할</li><li>아키텍처 설계</li><li>API 연동</li><li>HITL 설계</li>
+          </ul>
+        </div>
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">05</span>
+          <span class="method-verb">Build</span>
+          <p class="method-desc">실제 시스템을 구축합니다.</p>
+          <ul class="method-items">
+            <li>Agent 구현</li><li>워크플로우 구축</li><li>내부 도구 개발</li><li>테스트·개선</li>
+          </ul>
+        </div>
+        <div class="method-step">
+          <div class="method-node" aria-hidden="true"></div>
+          <span class="method-num">06</span>
+          <span class="method-verb">Enable</span>
+          <p class="method-desc">조직 안에 정착시킵니다.</p>
+          <ul class="method-items">
+            <li>수준별 교육</li><li>실습 워크숍</li><li>운영 매뉴얼</li><li>후속 코칭</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 06 Client Work ═══ -->
+  <section class="section" id="client-work" aria-labelledby="cw-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">06 — Client Work</span></div>
+        <h2 class="section-title-en" id="cw-title">조직의 업무 구조에 맞춘 AI 시스템 구축</h2>
+        <p class="lead">
+          업종별 템플릿을 파는 것이 아니라, 각 조직의 업무 구조에 맞는 AI 시스템을 설계합니다.
+        </p>
+      </header>
+
+      <div class="workstream-grid">
+        <article class="workstream">
+          <span class="workstream-num">Workstream 01</span>
+          <h3 class="workstream-title">Public Sector AX</h3>
+          <p class="workstream-desc">공공기관의 문서, 지침, 보고, 회의, 데이터 업무를 AI 기반으로 재설계합니다.</p>
+          <ul class="workstream-items">
+            <li>회의록 요약·보고 자동화</li>
+            <li>규정·지침 검색 Agent</li>
+            <li>데이터 기반 보고서 초안</li>
+            <li>문서 검색·요약 시스템</li>
+            <li>임직원 AI 교육</li>
+            <li>고위직 AX 컨설팅</li>
+          </ul>
+        </article>
+
+        <article class="workstream">
+          <span class="workstream-num">Workstream 02</span>
+          <h3 class="workstream-title">Enterprise Automation</h3>
+          <p class="workstream-desc">대기업·중견기업의 반복 업무와 팀 단위 프로세스를 자동화합니다.</p>
+          <ul class="workstream-items">
+            <li>부서별 자동화 과제 발굴</li>
+            <li>Agent 기반 문서 작성</li>
+            <li>사내 업무도구 구축</li>
+            <li>Dify·n8n·Make 워크플로우</li>
+            <li>리더·관리자 AX 교육</li>
+            <li>내부 확산 프로그램</li>
+          </ul>
+        </article>
+
+        <article class="workstream">
+          <span class="workstream-num">Workstream 03</span>
+          <h3 class="workstream-title">Sales &amp; Marketing Intelligence</h3>
+          <p class="workstream-desc">영업·마케팅 업무를 AI 기반 콘텐츠·제안·고객응대 시스템으로 전환합니다.</p>
+          <ul class="workstream-items">
+            <li>제안서 초안 작성</li>
+            <li>고객 응대 메시지 자동화</li>
+            <li>캠페인 콘텐츠 제작</li>
+            <li>블로그·뉴스레터 자동 발행</li>
+            <li>리뷰 수집·재가공</li>
+            <li>영업 자료 자동 정리</li>
+          </ul>
+        </article>
+
+        <article class="workstream">
+          <span class="workstream-num">Workstream 04</span>
+          <h3 class="workstream-title">Education &amp; Knowledge Systems</h3>
+          <p class="workstream-desc">교육기관, 학원, 커뮤니티의 지식관리와 학습 운영을 시스템화합니다.</p>
+          <ul class="workstream-items">
+            <li>학습 진단도구</li>
+            <li>커리큘럼 추천 Agent</li>
+            <li>학부모 안내 메시지</li>
+            <li>학습 리포트 자동화</li>
+            <li>지식 저장소 구축</li>
+            <li>PKM 시스템 설계</li>
+          </ul>
+        </article>
+
+        <article class="workstream">
+          <span class="workstream-num">Workstream 05</span>
+          <h3 class="workstream-title">Field Operations &amp; CX</h3>
+          <p class="workstream-desc">오프라인 매장과 서비스 현장의 운영 경험을 바탕으로 현장형 AI 도입을 설계합니다.</p>
+          <ul class="workstream-items">
+            <li>매장 운영 체크리스트</li>
+            <li>고객 리뷰 분석</li>
+            <li>직원 교육 매뉴얼</li>
+            <li>지역 상권 데이터 정리</li>
+            <li>서비스 품질 피드백</li>
+            <li>현장 적용성 검증</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 07 Education & Enablement ═══ -->
+  <section class="section edu-section" id="education" aria-labelledby="edu-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">07 — Education &amp; Enablement</span></div>
+        <h2 class="section-title-en" id="edu-title">초보자부터 임원까지, 조직의 수준에 맞게 AI를 정착시킵니다</h2>
+        <p class="lead">
+          시스템을 구축하는 것만으로는 조직이 바뀌지 않습니다.
+          구성원이 실제로 이해하고 사용할 수 있도록 입문 교육, 실무 워크숍, 관리자 교육,
+          임원급 AX 교육까지 설계합니다.
+        </p>
+      </header>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <span class="edu-level">Level 01</span>
+          <span class="edu-target-en">For Beginners</span>
+          <h3 class="edu-target">AI 초보자</h3>
+          <p class="edu-content">ChatGPT 기본 활용, 문서·보고서·콘텐츠 작성</p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-level">Level 02</span>
+          <span class="edu-target-en">For Practitioners</span>
+          <h3 class="edu-target">일반 실무자</h3>
+          <p class="edu-content">업무 자동화, Agent 실습, 데이터 기반 의사결정</p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-level">Level 03</span>
+          <span class="edu-target-en">For Team Leaders</span>
+          <h3 class="edu-target">팀장·관리자</h3>
+          <p class="edu-content">팀 단위 자동화 과제 발굴과 업무 프로세스 개선</p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-level">Level 04</span>
+          <span class="edu-target-en">For Executives</span>
+          <h3 class="edu-target">임원·고위직</h3>
+          <p class="edu-content">AX 전략, AI 도입 방향, 리더 업무 활용, 의사결정 보조</p>
+        </div>
+        <div class="edu-card">
+          <span class="edu-level">Level 05</span>
+          <span class="edu-target-en">For Builders</span>
+          <h3 class="edu-target">기획·개발 실무자</h3>
+          <p class="edu-content">Claude Code, Dify, n8n, 바이브코딩, MVP 개발</p>
+        </div>
+      </div>
+
+      <h3 class="programs-head">Programs · 교육 프로그램 예시</h3>
+      <div class="programs-grid">
+        <div class="program">
+          <h4 class="program-title">AI 업무 활용 입문</h4>
+          <ul class="program-items">
+            <li>생성형 AI 기본 이해</li>
+            <li>문서·보고서 작성</li>
+            <li>이메일·회의록 정리</li>
+            <li>프롬프트 기본</li>
+          </ul>
+        </div>
+        <div class="program">
+          <h4 class="program-title">실무 자동화 워크숍</h4>
+          <ul class="program-items">
+            <li>업무 분해</li>
+            <li>자동화 후보 발굴</li>
+            <li>Make·n8n 실습</li>
+            <li>Dify Agent 설계</li>
+          </ul>
+        </div>
+        <div class="program">
+          <h4 class="program-title">임원급 AX 프로그램</h4>
+          <ul class="program-items">
+            <li>AI 전환 전략</li>
+            <li>도입 로드맵</li>
+            <li>리더의 AI 활용</li>
+            <li>고위직 1:1 컨설팅</li>
+          </ul>
+        </div>
+        <div class="program">
+          <h4 class="program-title">바이브코딩/MVP</h4>
+          <ul class="program-items">
+            <li>아이디어 기능 분해</li>
+            <li>Claude Code 활용</li>
+            <li>웹앱 구축</li>
+            <li>MVP 배포·제품화</li>
+          </ul>
         </div>
       </div>
     </div>
