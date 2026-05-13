@@ -369,16 +369,40 @@
 }
 .logo-cell:hover img { opacity: 1; }
 .logo-cell .text-mark {
-  font-family: var(--font-kr);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
   text-align: center;
-  line-height: 1.3;
-  transition: color var(--dur-fast) var(--ease-out);
+  transition: opacity var(--dur-fast) var(--ease-out);
+  opacity: 0.7;
 }
-.logo-cell:hover .text-mark { color: var(--text-primary); }
+.logo-cell:hover .text-mark { opacity: 1; }
+.text-mark .wm-en {
+  font-family: var(--font-en);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.text-mark .wm-kr {
+  font-family: var(--font-kr);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+  line-height: 1.2;
+}
+.text-mark .wm-symbol {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1;
+  font-style: italic;
+}
 .logo-cell--count {
   background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, var(--bg) 100%);
   flex-direction: column;
@@ -1276,23 +1300,23 @@
 
         <!-- Row 3 — Finance, Public sector -->
         <div class="logo-cell" role="listitem"><img src="assets/logos/kb.svg" alt="KB 국민은행" /></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">SGI<br/>서울보증</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">SGI</span><span class="wm-kr">서울보증</span></span></div>
         <div class="logo-cell" role="listitem"><img src="assets/logos/lh.svg" alt="LH 한국토지주택공사" /></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">국민건강<br/>보험공단</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">NHIS</span><span class="wm-kr">국민건강보험공단</span></span></div>
         <div class="logo-cell" role="listitem"><img src="assets/logos/mma.svg" alt="병무청" /></div>
 
         <!-- Row 4 — Public, R&D, Retail -->
         <div class="logo-cell" role="listitem"><img src="assets/logos/nrc.svg" alt="NRC 경제인문사회연구회" /></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">제주특별자치도<br/>개발공사</span></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">마켓컬리</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">JPDC</span><span class="wm-kr">제주특별자치도개발공사</span></span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">Kurly</span><span class="wm-kr">마켓컬리</span></span></div>
         <div class="logo-cell" role="listitem"><img src="assets/logos/cocacola.svg" alt="Coca-Cola" /></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">스타벅스<br/>커피코리아</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">Starbucks</span><span class="wm-kr">스타벅스 커피코리아</span></span></div>
 
         <!-- Row 5 — Hospitality, Education, Construction, Counter -->
         <div class="logo-cell" role="listitem"><img src="assets/logos/lotte-hotel.svg" alt="롯데호텔 시그니엘" /></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">금호건설</span></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">멀티캠퍼스</span></div>
-        <div class="logo-cell" role="listitem"><span class="text-mark">동그라미재단<br/>AI Academy</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">Kumho</span><span class="wm-kr">금호건설</span></span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">Multicampus</span><span class="wm-kr">멀티캠퍼스</span></span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark"><span class="wm-en">CircleUp</span><span class="wm-kr">동그라미재단 AI Academy</span></span></div>
         <div class="logo-cell logo-cell--count" aria-hidden="true">
           <span class="count-num">+30</span>
           <span class="count-label">기관·기업<br/>경험</span>
