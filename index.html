@@ -311,19 +311,254 @@
 .layer-connector:nth-of-type(3) { animation-delay: 475ms; }
 .layer-connector:nth-of-type(4) { animation-delay: 625ms; }
 
-/* ─── Section placeholder ─── */
-.section-placeholder {
-  border-top: 1px solid var(--border);
-  padding: var(--section-py) var(--gutter);
-  text-align: center;
+/* ─── Generic section ─── */
+.section {
   position: relative;
   z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: var(--section-py) var(--gutter);
 }
-.section-placeholder .label {
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  max-width: var(--container-narrow);
+}
+.section-head .eyebrow-line { margin-bottom: 0; }
+.section-head .section-title-en { margin: 0.25rem 0 0; }
+.section-head .lead {
+  font-family: var(--font-kr);
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 1rem 0 0;
+  max-width: 42em;
+}
+
+/* ─── 02 Clients ─── */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+@media (max-width: 960px) { .logo-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 640px) { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.logo-cell {
+  background: var(--bg);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.logo-cell:hover { background: var(--surface); }
+.logo-cell img {
+  max-width: 100%;
+  max-height: 60%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.logo-cell:hover img { opacity: 1; }
+.logo-cell .text-mark {
+  font-family: var(--font-kr);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.3;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.logo-cell:hover .text-mark { color: var(--text-primary); }
+.logo-cell--count {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, var(--bg) 100%);
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.count-num {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: var(--tracking-tight);
+}
+.count-label {
+  font-family: var(--font-kr);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.client-disclaimer {
+  margin-top: 1.5rem;
+  font-family: var(--font-kr);
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  line-height: var(--lh-relaxed);
+}
+
+/* ─── 03 Capabilities ─── */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+@media (max-width: 960px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .cap-grid { grid-template-columns: 1fr; } }
+
+.cap-card {
+  background: var(--bg);
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 18rem;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.cap-card:hover { background: var(--surface); }
+.cap-card--manifesto {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, var(--bg) 100%);
+}
+.cap-card--manifesto .cap-num {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0;
+  line-height: 1;
+}
+.cap-card--manifesto .cap-title { color: var(--accent-primary); }
+.cap-num {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: var(--tracking-wide);
+  color: var(--accent-primary);
+}
+.cap-title {
+  font-family: var(--font-en);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin: 0;
+}
+.cap-desc {
+  font-family: var(--font-kr);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+  flex: 1;
+}
+.cap-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.tag {
+  font-family: var(--font-kr);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ─── 04 Architecture (expanded) ─── */
+.arch-section {
+  background: var(--bg-secondary);
+}
+.arch-stack {
+  display: grid;
+  gap: 0.75rem;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.arch-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 4px;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.arch-row:hover {
+  border-color: var(--border-strong);
+  background: rgba(23, 27, 38, 0.85);
+}
+.arch-row.emphasis {
+  border-left-color: var(--accent-primary);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.06) 0%, var(--surface) 30%);
+}
+.arch-row.emphasis .arch-name { color: var(--accent-primary); }
+
+.arch-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-right: 1px solid var(--border);
+  padding-right: 1.5rem;
+}
+.arch-num {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-wide);
   color: var(--text-tertiary);
+}
+.arch-name {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+.arch-body { padding-left: 0; }
+.arch-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.625rem;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+}
+.arch-items li { white-space: nowrap; }
+.arch-items li::before { content: '· '; color: var(--text-tertiary); }
+.arch-items li:first-child::before { content: ''; }
+.arch-desc {
+  font-family: var(--font-kr);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .arch-row { grid-template-columns: 1fr; gap: 1rem; }
+  .arch-meta { border-right: 0; border-bottom: 1px solid var(--border); padding: 0 0 0.75rem; flex-direction: row; align-items: baseline; gap: 0.75rem; }
 }
 </style>
 </head>
@@ -439,9 +674,216 @@
     </div>
   </section>
 
-  <!-- ═══ Placeholder for sections 02-10 ═══ -->
-  <section class="section-placeholder" id="clients">
-    <span class="label">02 — Clients & References · 다음 단계에서 빌드</span>
+  <!-- ═══ 02 Clients & References ═══ -->
+  <section class="section" id="clients" aria-labelledby="clients-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">02 — Clients &amp; References</span></div>
+        <h2 class="section-title-en" id="clients-title">주요 고객 및 프로젝트 레퍼런스</h2>
+        <p class="lead">
+          공공기관, 대기업, 금융, 유통, 교육, IT/SaaS, 오프라인 서비스 현장에서
+          AI 교육·AX 컨설팅·자동화 구축·프로젝트 코칭 경험을 쌓아왔습니다.
+        </p>
+      </header>
+
+      <div class="logo-grid" role="list" aria-label="주요 고객사 14개">
+        <div class="logo-cell" role="listitem"><img src="assets/logos/lg-uplus.svg" alt="LG U+" /></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/skt.svg" alt="SK Telecom" /></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/sk.svg" alt="SK On (SK Group)" /></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/hyundai.svg" alt="현대자동차" /></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">국민건강<br/>보험공단</span></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/lh.svg" alt="LH 한국토지주택공사" /></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">SGI<br/>서울보증</span></div>
+
+        <div class="logo-cell" role="listitem"><img src="assets/logos/kb.svg" alt="KB 국민은행" /></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">마켓컬리</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">멀티캠퍼스</span></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/nrc.svg" alt="NRC 경제인문사회연구회" /></div>
+        <div class="logo-cell" role="listitem"><img src="assets/logos/mma.svg" alt="병무청" /></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">제주특별자치도<br/>개발공사</span></div>
+        <div class="logo-cell" role="listitem"><span class="text-mark">동그라미재단<br/>AI Academy</span></div>
+        <div class="logo-cell logo-cell--count" aria-hidden="true">
+          <span class="count-num">+30</span>
+          <span class="count-label">기관·기업<br/>경험</span>
+        </div>
+      </div>
+
+      <p class="client-disclaimer">
+        일부 레퍼런스는 팀 멤버 개인의 강의, 컨설팅, 코칭, 프로젝트 참여, 운영 경험을 포함합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 Capabilities ═══ -->
+  <section class="section" id="capabilities" aria-labelledby="cap-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">03 — Capabilities</span></div>
+        <h2 class="section-title-en" id="cap-title">구축 역량</h2>
+        <p class="lead">
+          우리는 AI 도구를 연결하는 데서 멈추지 않습니다. 업무 지식을 구조화하고,
+          Agent가 판단할 수 있는 구조를 설계하며, 자동화 워크플로우와 내부 업무도구로 구현합니다.
+        </p>
+      </header>
+
+      <div class="cap-grid">
+        <article class="cap-card">
+          <span class="cap-num">01</span>
+          <h3 class="cap-title">Business Ontology</h3>
+          <p class="cap-desc">업무 개념, 관계, 규칙, 예외, 프로세스를 AI가 이해할 수 있는 구조로 모델링합니다.</p>
+          <div class="cap-tags">
+            <span class="tag">개념 사전</span>
+            <span class="tag">관계 모델</span>
+            <span class="tag">규칙 구조화</span>
+            <span class="tag">지식 설계</span>
+          </div>
+        </article>
+
+        <article class="cap-card">
+          <span class="cap-num">02</span>
+          <h3 class="cap-title">Agent Architecture</h3>
+          <p class="cap-desc">업무 온톨로지를 기반으로 역할별 AI Agent와 실행 구조를 설계합니다.</p>
+          <div class="cap-tags">
+            <span class="tag">Agent 역할</span>
+            <span class="tag">RAG 설계</span>
+            <span class="tag">데이터 흐름</span>
+            <span class="tag">Human-in-the-loop</span>
+          </div>
+        </article>
+
+        <article class="cap-card">
+          <span class="cap-num">03</span>
+          <h3 class="cap-title">Workflow Automation</h3>
+          <p class="cap-desc">Make, n8n, Dify, API 등을 활용해 반복 업무 흐름을 자동화합니다.</p>
+          <div class="cap-tags">
+            <span class="tag">Make</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Dify</span>
+            <span class="tag">API 연동</span>
+          </div>
+        </article>
+
+        <article class="cap-card">
+          <span class="cap-num">04</span>
+          <h3 class="cap-title">Internal Tools &amp; MVP</h3>
+          <p class="cap-desc">자동화만으로 부족한 경우, 실제 사용할 수 있는 내부 업무도구와 MVP를 개발합니다.</p>
+          <div class="cap-tags">
+            <span class="tag">내부 웹앱</span>
+            <span class="tag">데스크톱 앱</span>
+            <span class="tag">지식 저장소</span>
+            <span class="tag">MVP</span>
+          </div>
+        </article>
+
+        <article class="cap-card">
+          <span class="cap-num">05</span>
+          <h3 class="cap-title">AI Education &amp; Enablement</h3>
+          <p class="cap-desc">구성원이 실제로 이해하고 사용할 수 있도록 수준별 교육과 정착 프로그램을 설계합니다.</p>
+          <div class="cap-tags">
+            <span class="tag">초보자</span>
+            <span class="tag">실무자</span>
+            <span class="tag">관리자</span>
+            <span class="tag">임원</span>
+          </div>
+        </article>
+
+        <article class="cap-card cap-card--manifesto">
+          <span class="cap-num">∞</span>
+          <h3 class="cap-title">End-to-end</h3>
+          <p class="cap-desc">
+            진단부터 온톨로지 설계, Agent 구축, 자동화 워크플로우, 내부 도구,
+            그리고 조직 정착 교육까지 — 단계가 끊기지 않도록 한 팀이 책임집니다.
+          </p>
+          <div class="cap-tags">
+            <span class="tag">Diagnose</span>
+            <span class="tag">Design</span>
+            <span class="tag">Build</span>
+            <span class="tag">Enable</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 System Architecture (expanded) ═══ -->
+  <section class="section arch-section" id="architecture" aria-labelledby="arch-title">
+    <div class="container">
+      <header class="section-head">
+        <div class="eyebrow-line"><span class="eyebrow">04 — System Architecture</span></div>
+        <h2 class="section-title-en" id="arch-title">업무 지식이 AI 실행 시스템이 되는 구조</h2>
+        <p class="lead">
+          흩어진 문서, 규정, 노하우, 반복 업무를 하나의 업무지식 구조로 정리하고,
+          AI Agent가 이를 검색·판단·작성·실행할 수 있도록 시스템화합니다.
+        </p>
+      </header>
+
+      <div class="arch-stack">
+        <div class="arch-row">
+          <div class="arch-meta">
+            <span class="arch-num">Layer 01</span>
+            <span class="arch-name">Input Layer</span>
+          </div>
+          <div class="arch-body">
+            <ul class="arch-items">
+              <li>문서</li><li>규정</li><li>매뉴얼</li><li>회의록</li><li>상담기록</li><li>업무 노하우</li>
+            </ul>
+            <p class="arch-desc">조직 안에 흩어진 문서, 규정, 매뉴얼, 회의록, 상담기록, 업무 노하우를 수집합니다.</p>
+          </div>
+        </div>
+
+        <div class="arch-row emphasis">
+          <div class="arch-meta">
+            <span class="arch-num">Layer 02</span>
+            <span class="arch-name">Ontology Layer</span>
+          </div>
+          <div class="arch-body">
+            <ul class="arch-items">
+              <li>개념</li><li>관계</li><li>규칙</li><li>예외</li><li>프로세스</li><li>역할</li>
+            </ul>
+            <p class="arch-desc">업무 개념, 관계, 규칙, 예외, 프로세스를 구조화해 AI가 참조할 수 있는 지식 체계를 만듭니다.</p>
+          </div>
+        </div>
+
+        <div class="arch-row emphasis">
+          <div class="arch-meta">
+            <span class="arch-num">Layer 03</span>
+            <span class="arch-name">Agent Layer</span>
+          </div>
+          <div class="arch-body">
+            <ul class="arch-items">
+              <li>검색 Agent</li><li>보고서 Agent</li><li>고객응대 Agent</li><li>콘텐츠 Agent</li><li>분석 Agent</li>
+            </ul>
+            <p class="arch-desc">업무 역할별 Agent를 설계합니다. Agent는 단순 답변을 넘어 검색·판단·작성·실행을 지원합니다.</p>
+          </div>
+        </div>
+
+        <div class="arch-row">
+          <div class="arch-meta">
+            <span class="arch-num">Layer 04</span>
+            <span class="arch-name">Workflow Layer</span>
+          </div>
+          <div class="arch-body">
+            <ul class="arch-items">
+              <li>Make</li><li>n8n</li><li>Dify</li><li>API</li><li>Claude Code</li><li>내부 DB</li>
+            </ul>
+            <p class="arch-desc">Agent 결과를 실제 업무 시스템과 연결합니다. Make, n8n, Dify, API, Claude Code 등을 활용합니다.</p>
+          </div>
+        </div>
+
+        <div class="arch-row">
+          <div class="arch-meta">
+            <span class="arch-num">Layer 05</span>
+            <span class="arch-name">Operation Layer</span>
+          </div>
+          <div class="arch-body">
+            <ul class="arch-items">
+              <li>보고</li><li>응답</li><li>기록</li><li>발행</li><li>알림</li><li>승인</li><li>관리</li>
+            </ul>
+            <p class="arch-desc">보고서 작성, 고객 응대, 콘텐츠 발행, 회의록 정리, 알림, 승인 등 실제 업무 실행으로 연결합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </main>
 
