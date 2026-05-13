@@ -1,0 +1,102 @@
+/* Design Tokens — Team Portfolio
+ * Source: docs/website_development_spec.md §7
+ * Last sync: 2026-05-13
+ */
+
+:root {
+  /* ─── Color ─── */
+  --bg:              #05070a;   /* Near Black */
+  --bg-secondary:    #0b1020;   /* Deep Navy */
+  --surface:         #171b26;   /* Graphite */
+  --text-primary:    #e8edf2;   /* Off White */
+  --text-secondary:  #8b95a1;   /* Cool Gray */
+  --text-tertiary:   #5a6573;   /* Slate */
+  --accent-primary:  #3b82f6;   /* Electric Blue */
+  --accent-secondary:#20c997;   /* Muted Cyan */
+  --border:          #293241;   /* Slate Gray */
+  --border-strong:   #3a4456;
+  --grid-line:       rgba(41, 50, 65, 0.4);
+
+  /* ─── Typography ─── */
+  --font-en: 'Inter', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-kr: 'Pretendard', 'SUIT', 'Noto Sans KR', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(2.5rem, 5vw, 4.5rem);     /* H1 */
+  --fs-section: clamp(1.75rem, 3vw, 2.5rem); /* H2 */
+  --fs-card: 1.25rem;                         /* H3 */
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  --lh-tight: 1.15;
+  --lh-base: 1.6;
+  --lh-relaxed: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-base: 0;
+  --tracking-wide: 0.08em;
+  --tracking-section: 0.12em;  /* eyebrow labels */
+
+  /* ─── Layout ─── */
+  --container: 1280px;
+  --container-narrow: 960px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-py: clamp(5rem, 10vh, 8rem);
+
+  /* ─── Radius ─── */
+  --radius-card: 4px;
+  --radius-button: 4px;
+  --radius-pill: 999px;
+
+  /* ─── Motion ─── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 600ms;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-kr);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  text-wrap: pretty;
+}
+
+/* ─── Utility ─── */
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.eyebrow {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.section-title-en {
+  font-family: var(--font-en);
+  font-size: var(--fs-section);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: var(--text-primary);
+}
+.section-title-kr {
+  font-family: var(--font-kr);
+  font-size: var(--fs-body);
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* ─── Focus ─── */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
