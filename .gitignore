@@ -23,7 +23,12 @@ build/
 # Temp / scratch
 _temp/
 _scratch/
+_publish/
 *.tmp
+
+# Cloudflare / wrangler
+.wrangler/
+.assetsignore
 
 # Playwright
 test-results/
