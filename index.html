@@ -2003,13 +2003,17 @@
           </div>
           <dl class="contact-info">
             <dt>Email</dt>
-            <dd><a href="mailto:contact@wisgraph.kr">contact@wisgraph.kr</a></dd>
+            <dd><a href="mailto:support@wisgraph.com">support@wisgraph.com</a></dd>
             <dt>Response time</dt>
             <dd>영업일 기준 1~2일 이내 회신드립니다.</dd>
           </dl>
         </div>
 
-        <form class="form" id="form" method="post" action="mailto:contact@wisgraph.kr" enctype="text/plain" aria-label="프로젝트 문의 폼">
+        <div id="form-success" role="status" aria-live="polite" style="display:none;margin-bottom:1.25rem;padding:1rem 1.25rem;border:1px solid var(--accent-primary,#888);border-radius:8px;background:rgba(255,255,255,0.04);color:var(--text-primary);font-size:0.9375rem;line-height:1.5;">
+          문의가 정상적으로 접수되었습니다. 영업일 기준 1~2일 이내에 회신드리겠습니다.
+        </div>
+        <form class="form" id="form" method="post" action="/api/contact" aria-label="프로젝트 문의 폼">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
           <div class="form-row">
             <div class="field">
               <label for="f-name">이름</label>
@@ -2067,5 +2071,17 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  if (params.get("sent") === "1") {
+    var el = document.getElementById("form-success");
+    if (el) el.style.display = "block";
+    var form = document.getElementById("form");
+    if (form) form.reset();
+    history.replaceState({}, "", location.pathname + location.hash);
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+name = "team-wisgraph"
+compatibility_date = "2026-05-01"
+pages_build_output_dir = "_publish"
+
+[[kv_namespaces]]
+binding = "LEADS"
+id = "a37d0a8034d041b29cf1379a4f39f8ec"
