@@ -67,7 +67,7 @@ export async function onRequestPost({ request, env }) {
     if (accept.includes("application/json")) {
       return json({ ok: true, id }, 200);
     }
-    return Response.redirect(`${back.origin}/?sent=1#contact`, 303);
+    return Response.redirect(`${back.origin}/?sent=1&id=${encodeURIComponent(id)}#contact`, 303);
   } catch (err) {
     return json({ ok: false, error: String(err && err.message || err) }, 500);
   }
