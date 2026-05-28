@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>수도직업전문학교 실행 로드맵 — Wisgraph 시네마틱 브리핑</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Paperlogy:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent:  #3b82f6;
+      --accent-soft: #e3edff;
+      --ink:     #111111;
+      --ink-2:   #1f2937;
+      --muted:   #6b7280;
+      --light:   #9ca3af;
+      --line:    #e5e7eb;
+      --line-strong: #cbd5e1;
+      --bg:      #ffffff;
+      --bg-dark: #0b1020;
+      --bg-gray: #f6f7f9;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: var(--ink);
+      font-family: 'Paperlogy', -apple-system, 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+      overflow: hidden;
+      letter-spacing: -0.01em;
+    }
+
+    deck-stage > section {
+      background: var(--bg);
+      color: var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 4rem 5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide-gray { background: var(--bg-gray); }
+    .slide-dark { background: var(--bg-dark); color: #fff; }
+
+    /* ====== Cinematic Hero Band ====== */
+    .cinematic {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 4rem 5rem;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(5, 7, 16, 0.55) 0%, rgba(5, 7, 16, 0.35) 40%, rgba(5, 7, 16, 0.85) 100%),
+        linear-gradient(90deg, rgba(5, 7, 16, 0.6) 0%, rgba(5, 7, 16, 0.15) 60%);
+    }
+
+    .cinematic-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cinematic .section-label { color: var(--accent); }
+    .cinematic .slide-tag,
+    .cinematic .slide-num { color: rgba(255,255,255,0.55); }
+    .cinematic .subheadline,
+    .cinematic .body-text { color: rgba(255,255,255,0.82); }
+    .cinematic .line { background: var(--accent); }
+    .cinematic .footer-note { color: rgba(255,255,255,0.5); }
+
+    /* Glass cards for cinematic info slides */
+    .glass-panel {
+      background: rgba(5, 9, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 4px solid var(--accent);
+      padding: 1.1rem 1.3rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      color: #fff;
+    }
+
+    .glass-panel .card-kicker {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .glass-panel .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: #fff;
+    }
+
+    .glass-panel .card-body {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.78);
+      margin: 0;
+    }
+
+    .glass-panel ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .glass-panel ul li + li { margin-top: 0.15rem; }
+
+    /* ====== Typography ====== */
+    .section-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .slide-tag {
+      position: absolute;
+      top: 4rem;
+      right: 5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--light);
+      font-weight: 500;
+      z-index: 5;
+    }
+
+    .slide-num {
+      position: absolute;
+      bottom: 3rem;
+      right: 5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--light);
+      z-index: 5;
+    }
+
+    .headline-xxl { font-size: 5rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
+    .headline-xl  { font-size: 4rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.08; margin: 0; }
+    .headline-lg  { font-size: 3rem; font-weight: 900; letter-spacing: -0.01em; line-height: 1.15; margin: 0; }
+    .subheadline  { font-size: 1.5rem; font-weight: 400; line-height: 1.5; color: var(--muted); margin: 0; }
+    .body-text    { font-size: 1.25rem; font-weight: 400; line-height: 1.55; color: var(--muted); margin: 0; }
+
+    .accent { color: var(--accent); }
+    .accent-bold { color: var(--accent); font-weight: 800; }
+
+    .line {
+      width: 4rem;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 1.5rem 0;
+    }
+
+    /* ====== Static Slide Cards (03·06·07) ====== */
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      padding: 1.4rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card .card-kicker {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card .card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .card .card-body {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--ink-2);
+    }
+
+    .card ul li + li { margin-top: 0.2rem; }
+
+    .card-muted { background: var(--bg-gray); border-left-color: var(--light); }
+    .card-muted .card-kicker { color: var(--light); }
+
+    .card-soft { background: var(--accent-soft); border-left-color: var(--accent); }
+
+    .grid { display: grid; gap: 1.25rem; }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    /* Two-column for cinematic Roles slide */
+    .col-header {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #fff;
+      margin-bottom: 0.9rem;
+      color: #fff;
+    }
+
+    .col-header.accent {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .col-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .col-list li {
+      font-size: 1rem;
+      line-height: 1.55;
+      padding: 0.45rem 0;
+      color: rgba(255,255,255,0.85);
+      border-bottom: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    .cinematic .col-list li.highlight-li {
+      border-bottom: none;
+      padding-top: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Statement block */
+    .statement {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .statement .statement-text {
+      font-size: 1.7rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .statement .statement-foot {
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Quote */
+    .quote-block {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .quote-mark {
+      font-family: Georgia, 'Noto Serif KR', serif;
+      font-size: 7rem;
+      line-height: 0.8;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .quote-text {
+      font-size: 1.85rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .quote-cite {
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--light);
+      margin-top: 1.25rem;
+      font-weight: 500;
+    }
+
+    /* Roadmap Phase */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .phase-glass {
+      background: rgba(5, 9, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 4px solid var(--accent);
+      padding: 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      color: #fff;
+    }
+
+    .phase-glass.phase-2 { border-top-color: rgba(255,255,255,0.4); }
+    .phase-glass.phase-3 { border-top-color: rgba(255,255,255,0.4); }
+
+    .phase-glass .phase-no {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .phase-glass.phase-2 .phase-no,
+    .phase-glass.phase-3 .phase-no {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .phase-glass .phase-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin: 0;
+      color: #fff;
+    }
+
+    .phase-glass ul {
+      margin: 0;
+      padding-left: 1rem;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .phase-glass ul li + li { margin-top: 0.1rem; }
+
+    .phase-glass .phase-foot {
+      margin-top: auto;
+      padding-top: 0.7rem;
+      border-top: 1px dashed rgba(255,255,255,0.18);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+
+    /* CTA */
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .cta-list {
+      background: rgba(5, 9, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 1.6rem 1.8rem;
+      border-radius: 4px;
+      color: #fff;
+    }
+
+    .cta-list .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-list ol {
+      margin: 0;
+      padding-left: 1.5rem;
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .cta-action {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(255,255,255,0.2);
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+    }
+
+    /* Hero layouts */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero .section-label { margin-bottom: 1.5rem; }
+
+    .hero .subheadline {
+      max-width: 56rem;
+      margin-top: 1.75rem;
+    }
+
+    .meta-row {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-pill {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(5, 9, 22, 0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    /* Footer note — flex item으로 변경하여 본문과 겹침 방지 */
+    .footer-note {
+      position: relative;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--light);
+      letter-spacing: 0.02em;
+      z-index: 5;
+      align-self: flex-start;
+      max-width: 56rem;
+      line-height: 1.5;
+    }
+
+    /* Animation */
+    .a-rise {
+      animation: rise 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .d1 { animation-delay: 100ms; }
+    .d2 { animation-delay: 200ms; }
+    .d3 { animation-delay: 300ms; }
+    .d4 { animation-delay: 400ms; }
+    .d5 { animation-delay: 500ms; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .head-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Slide 06 Reason 카드 압축 */
+    .reason-stack { gap: 0.6rem !important; }
+    .reason-stack .card {
+      padding: 0.95rem 1.2rem 1rem;
+      gap: 0.45rem;
+    }
+    .reason-stack .card .card-kicker { font-size: 0.65rem; }
+    .reason-stack .card .card-title { font-size: 1.1rem; line-height: 1.25; }
+    .reason-stack .card .card-body { font-size: 0.9rem; line-height: 1.45; }
+
+    /* Roadmap split: top heading band + bottom phase grid over video */
+    .roadmap-cinematic {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 1.25rem;
+      flex: 1;
+    }
+
+    /* Roles cinematic split */
+    .roles-cinematic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      flex: 1;
+      margin-top: 1.5rem;
+    }
+
+    .roles-panel {
+      background: rgba(5, 9, 22, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.4rem 1.5rem;
+    }
+
+  </style>
+</head>
+<body>
+  <deck-stage width="1280" height="720">
+
+    <!-- 01 Cover · CINEMATIC · cover-network -->
+    <section data-screen-label="01 Cover">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/cover-network.jpg">
+        <source src="./assets/videos/cover-network.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">01 / 09</div>
+          <div class="hero">
+            <div class="section-label a-rise">Wisgraph · Execution Roadmap</div>
+            <h1 class="headline-xxl a-rise d1" style="margin-top: 1.5rem;">
+              수도직업전문학교<br>
+              <span class="accent">실행 로드맵</span>
+            </h1>
+            <div class="line a-rise d2"></div>
+            <p class="subheadline a-rise d2">
+              5월 22일 첫 미팅으로 니즈와 방향은 충분히 확인되었습니다.<br>
+              다음 단계는 <span style="color:#fff;font-weight:600;">실제 운영 시스템과 데이터 구조</span>를 함께 확인하고,<br>
+              보다 현실적인 1차 범위와 실행 순서를 정리하는 2차 미팅입니다.
+            </p>
+            <div class="meta-row a-rise d3">
+              <span class="meta-pill">상담 DB 자동화</span>
+              <span class="meta-pill">문제은행</span>
+              <span class="meta-pill">관리자 승인형</span>
+              <span class="meta-pill">현행 시스템 확인 선행</span>
+            </div>
+          </div>
+          <div class="footer-note">5월 22일 디스커버리 미팅 기반 · Wisgraph 분야별 전문가 팀</div>
+          <div class="slide-num">COVER</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Needs · CINEMATIC · needs-writing -->
+    <section data-screen-label="02 Needs">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/needs-writing.jpg">
+        <source src="./assets/videos/needs-writing.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">02 / 09</div>
+          <div class="section-label a-rise">What We Already Confirmed</div>
+          <div class="head-row" style="margin-top: 1rem;">
+            <h2 class="headline-lg a-rise d1" style="color:#fff;">지난 미팅 이후 정리된 핵심 니즈</h2>
+            <div class="line a-rise d2"></div>
+          </div>
+          <div class="quote-block">
+            <div>
+              <div class="quote-mark a-rise" style="color: var(--accent);">"</div>
+              <div class="quote-text a-rise d1" style="color: #fff;">
+                사람이 바뀌어도<br>
+                상담·학습·운영 품질이<br>
+                흔들리지 않는 학원
+              </div>
+              <div class="quote-cite a-rise d2" style="color: rgba(255,255,255,0.6);">— 5월 22일 미팅 핵심 니즈 요약</div>
+            </div>
+            <div class="grid grid-2">
+              <div class="glass-panel a-rise d2">
+                <div class="card-kicker">Operating Need 01</div>
+                <h3 class="card-title">AI를 실제 업무 효율로</h3>
+                <p class="card-body">단발성 체험이 아니라, 한정된 인력 환경에서도 운영이 돌아가는 자동화가 필요합니다.</p>
+              </div>
+              <div class="glass-panel a-rise d3">
+                <div class="card-kicker">Operating Need 02</div>
+                <h3 class="card-title">개인 노하우의 조직 자산화</h3>
+                <p class="card-body">AI 활용 노하우와 상담 노하우가 퇴사와 함께 사라지지 않고, 조직 안에 구조로 남아야 합니다.</p>
+              </div>
+              <div class="glass-panel a-rise d3">
+                <div class="card-kicker">Adoption Signal 01</div>
+                <h3 class="card-title">크게보다 작게 시작</h3>
+                <p class="card-body">전체 바운더리를 먼저 정하고, 쉽게 시작할 수 있는 것부터 단계적으로 도입합니다.</p>
+              </div>
+              <div class="glass-panel a-rise d4">
+                <div class="card-kicker">Adoption Signal 02</div>
+                <h3 class="card-title">초기에는 관리자 승인형</h3>
+                <p class="card-body">자동 생성·발송은 가능하되, 이 단계에서는 검수 가능한 운영 방식이 필요합니다.</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-note">핵심은 "AI를 잘 쓰는 개인"이 아니라 "AI가 정착된 조직"</div>
+          <div class="slide-num">NEED SUMMARY</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Priorities · STATIC -->
+    <section data-screen-label="03 Priorities">
+      <div class="slide">
+        <div class="slide-tag a-rise">03 / 09</div>
+        <div class="section-label a-rise">Priority Stack</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h2 class="headline-lg a-rise d1">우선순위는 견적 항목보다<br>실행 순서 기준으로 다시 정리합니다</h2>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 60rem; margin-top: 0.3rem;">
+            5월 22일 미팅에서 대표·이사·실무팀장이 직접 언급한 우선순위 신호 — <strong>모집 자동화 + 문제은행을 1차로, 취업·문서를 2차로, 시간표·과정개발을 후순위로</strong> — 에 맞춰 <strong>실행 순서 기준으로 재배열</strong>한 안입니다.
+          </p>
+        </div>
+        <div class="grid grid-3" style="flex:1; align-items: stretch;">
+          <div class="card card-soft a-rise d2">
+            <div class="card-kicker">Phase 1 · First Move</div>
+            <h3 class="card-title">상담 DB 기반 모집 자동화<br>문제은행·모의고사</h3>
+            <ul>
+              <li>전화 문의 후 후속 관리 부재 해결</li>
+              <li>등록 전환과 상담 품질 표준화</li>
+              <li>학생별 오답·취약영역 누적 관리</li>
+              <li>강사 피드백과 반복 학습 구조화</li>
+            </ul>
+          </div>
+          <div class="card a-rise d3">
+            <div class="card-kicker">Phase 2 · Expansion</div>
+            <h3 class="card-title">취업 매칭 보조<br>문서 자동화</h3>
+            <ul>
+              <li>훈련생 조건별 취업 연계 효율화</li>
+              <li>회의록·상담일지·보고서 부담 감소</li>
+              <li>성과 관리와 운영 리포팅 고도화</li>
+              <li>마케팅 자동화와 자연스럽게 연결</li>
+            </ul>
+          </div>
+          <div class="card card-muted a-rise d4">
+            <div class="card-kicker">Phase 3 · Complex Zone</div>
+            <h3 class="card-title">시간표 자동화<br>과정 개발 보조</h3>
+            <ul>
+              <li>강사·강의실·장비 제약이 복합적</li>
+              <li>내부 판단과 기획 비중이 큼</li>
+              <li>1차 범위에서는 제외하는 편이 안전</li>
+              <li>장기 통합 운영 영역</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">핵심은 1차 범위를 작고 선명하게 두는 것</div>
+        <div class="slide-num">PRIORITY VIEW</div>
+      </div>
+    </section>
+
+    <!-- 04 Problems · CINEMATIC · problems-paper -->
+    <section data-screen-label="04 Problems">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/problems-paper.jpg">
+        <source src="./assets/videos/problems-paper.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">04 / 09</div>
+          <div class="section-label a-rise">Problem · Solution Fit</div>
+          <div class="head-row" style="margin-top: 1rem;">
+            <h2 class="headline-lg a-rise d1" style="color:#fff;">주요 과제와 해결 방향은 확인되었습니다<br>다음 단계는 실제 운영 구조와 연결하는 작업입니다</h2>
+            <div class="line a-rise d2"></div>
+          </div>
+          <div class="grid grid-3" style="flex:1; align-items: stretch;">
+            <div class="glass-panel a-rise d2">
+              <div class="card-kicker">Problem</div>
+              <h3 class="card-title">현재 문제</h3>
+              <ul>
+                <li>전화 문의 후 재접촉 구조 부재</li>
+                <li>개인 노하우·상담 감각 의존</li>
+                <li>학생별 오답·취약영역 관리 미흡</li>
+                <li>취업 연계·문서 작성 수작업 부담</li>
+                <li>LMS·엑셀·외부 시스템 분산</li>
+              </ul>
+              <div style="margin-top: 0.5rem; padding-top: 0.6rem; border-top: 1px dashed rgba(255,255,255,0.2); font-size: 0.82rem; color: rgba(255,255,255,0.78); line-height: 1.45;">
+                담당자 1명이 교체될 때마다 상담 흐름·후속 관리가 끊기고, 등록 전환과 운영 노하우가 함께 흩어집니다.
+              </div>
+            </div>
+            <div class="glass-panel a-rise d3" style="border-left-color: var(--accent); background: rgba(59,130,246,0.18);">
+              <div class="card-kicker">Proposed Direction</div>
+              <h3 class="card-title">제안 솔루션 방향</h3>
+              <ul>
+                <li>상담 DB · 자료 발송 · 리마인드</li>
+                <li>템플릿·시나리오 조직 자산화</li>
+                <li>문제은행 · 자동 채점 · 오답 누적</li>
+                <li>취업 매칭 보조 · 문서 초안</li>
+                <li>현행 시스템 확인 후 통합 데이터 구조 설계</li>
+              </ul>
+            </div>
+            <div class="glass-panel a-rise d4">
+              <div class="card-kicker">Priority</div>
+              <h3 class="card-title">실행 우선순위</h3>
+              <ul>
+                <li>1차 · 모집 자동화</li>
+                <li>1차 · 문제은행</li>
+                <li>2차 · 취업 매칭</li>
+                <li>2차 · 문서 자동화</li>
+                <li>선행 · 시스템·데이터 확인</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-note">주요 니즈는 확인되었으며, 다음 단계에서는 실제 구조 확인이 필요합니다</div>
+          <div class="slide-num">FIT MATRIX</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Roadmap · CINEMATIC · roadmap-road -->
+    <section data-screen-label="05 Roadmap">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/roadmap-road.jpg">
+        <source src="./assets/videos/roadmap-road.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">05 / 09</div>
+          <div class="section-label a-rise">Execution Roadmap</div>
+          <div class="head-row" style="margin-top: 1rem;">
+            <h2 class="headline-lg a-rise d1" style="color:#fff;">이번 단계에서는 <span class="accent">Phase 0</span>를 먼저 두는 접근이 적절합니다</h2>
+            <div class="line a-rise d2"></div>
+            <p class="body-text a-rise d2" style="max-width: 60rem; margin-top: 0.3rem;">
+              5월 22일 미팅에서 확인된 1차/2차/3차 우선순위 흐름 위에, <span class="accent-bold">현행 시스템·데이터 확인 단계(Phase 0)</span>를 선행으로 추가합니다.
+            </p>
+          </div>
+          <div class="roadmap-grid">
+            <div class="phase-glass a-rise d2">
+              <div class="phase-no">Phase 0</div>
+              <h3 class="phase-name">현행 시스템·데이터 확인</h3>
+              <ul>
+                <li>실제 사용 시스템 목록 파악</li>
+                <li>상담·수강생·평가 데이터 위치</li>
+                <li>LMS/ERP/엑셀 추출 가능 여부</li>
+                <li>중복 입력 구간과 병목</li>
+                <li>권한·개인정보·외부 제약</li>
+              </ul>
+              <div class="phase-foot"><strong style="color:#fff;">가볍게 시작하는 확인 단계</strong> · 정밀 견적은 이 결과 위에</div>
+            </div>
+            <div class="phase-glass a-rise d3">
+              <div class="phase-no">Phase 1</div>
+              <h3 class="phase-name">작게 시작하는 실행</h3>
+              <ul>
+                <li>상담 DB 기반 모집 자동화</li>
+                <li>문제은행·모의고사 최소 구조</li>
+                <li>관리자 승인형 운영</li>
+                <li>초기 적응 지원·운영 매뉴얼</li>
+              </ul>
+              <div class="phase-foot">빠르게 시작하되 운영 적응이 가능한 구조</div>
+            </div>
+            <div class="phase-glass phase-2 a-rise d3">
+              <div class="phase-no">Phase 2</div>
+              <h3 class="phase-name">확장 자동화</h3>
+              <ul>
+                <li>취업 매칭 보조</li>
+                <li>문서 자동화</li>
+                <li>자격증 현황 대시보드</li>
+                <li>마케팅 자동화 연계</li>
+              </ul>
+              <div class="phase-foot">1차 안정화 이후 확장 영역</div>
+            </div>
+            <div class="phase-glass phase-3 a-rise d4">
+              <div class="phase-no">Phase 3</div>
+              <h3 class="phase-name">통합 운영 고도화</h3>
+              <ul>
+                <li>시간표 등 복합 제약 영역</li>
+                <li>과정 개발 보조</li>
+                <li>통합 운영 체계 고도화</li>
+                <li>장기 데이터 자산화</li>
+              </ul>
+              <div class="phase-foot">장기 검토 영역. 1차 범위에서 제외</div>
+            </div>
+          </div>
+          <div class="footer-note">Phase 0를 포함하는 순간, 1차 범위와 견적의 현실성이 올라갑니다</div>
+          <div class="slide-num">ROADMAP</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 Why Meeting 2 · STATIC -->
+    <section data-screen-label="06 Why Meeting 2">
+      <div class="slide">
+        <div class="slide-tag a-rise">06 / 09</div>
+        <div class="section-label a-rise">Why Meeting 2 Matters</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h2 class="headline-lg a-rise d1">왜 2차 확인 미팅이 먼저 필요한가</h2>
+          <div class="line a-rise d2"></div>
+        </div>
+        <div class="quote-block" style="grid-template-columns: 0.95fr 1.05fr; align-items: stretch;">
+          <div class="grid reason-stack">
+            <div class="card a-rise d2">
+              <div class="card-kicker">Reason 01</div>
+              <h3 class="card-title">범위 산정의 정확도 확보</h3>
+              <p class="card-body">실제 데이터 구조와 운영 방식에 맞춰 기능 범위를 정리해야 과도하거나 불필요한 설계를 줄일 수 있습니다.</p>
+            </div>
+            <div class="card a-rise d3">
+              <div class="card-kicker">Reason 02</div>
+              <h3 class="card-title">필요 작업의 누락 방지</h3>
+              <p class="card-body">연동·이관·정제·권한 처리 등 실제 필요한 작업을 확인해야 현실적인 일정과 비용 기준을 잡을 수 있습니다.</p>
+            </div>
+            <div class="card a-rise d4">
+              <div class="card-kicker">Reason 03</div>
+              <h3 class="card-title">기존 운영과의 정합성</h3>
+              <p class="card-body">현재 사용 중인 LMS·ERP·엑셀 운영 방식과 새 구조가 자연스럽게 연결되도록 사전 확인합니다.</p>
+            </div>
+          </div>
+          <div class="statement a-rise d3">
+            <div class="statement-text">
+              1차 미팅으로 <span class="accent">필요 방향</span>은 충분히 확인했습니다.<br>
+              다음으로는 <span class="accent">실제 운영 시스템과 데이터 구조</span>를 함께 확인하는 작업이 필요합니다.
+            </div>
+            <p class="statement-foot">
+              따라서 다음 단계의 핵심은 견적을 먼저 확정하는 것보다, 현행 시스템·데이터 흐름을 함께 확인하는 2차 미팅을 통해 1차 범위와 실행 순서를 현실적으로 정리하는 데 있습니다.
+            </p>
+            <p class="statement-foot" style="font-weight: 700; color: var(--ink);">
+              학원 입장에선 과도한 범위·비용 부담을 사전에 줄이고, 현장 운영에 맞는 우선순위로 1차 도입 가치를 명확하게 확보할 수 있습니다.
+            </p>
+          </div>
+        </div>
+        <div class="footer-note">정확한 제안과 범위 산정을 위해 현행 구조 확인이 필요한 단계입니다</div>
+        <div class="slide-num">MEETING RATIONALE</div>
+      </div>
+    </section>
+
+    <!-- 07 Checklist · STATIC (gray) -->
+    <section data-screen-label="07 Checklist">
+      <div class="slide slide-gray">
+        <div class="slide-tag a-rise">07 / 09</div>
+        <div class="section-label a-rise">What To Inspect In Meeting 2</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h2 class="headline-lg a-rise d1">2차 미팅에서 직접 확인해야 할 항목</h2>
+          <div class="line a-rise d2"></div>
+        </div>
+        <div class="grid grid-4" style="flex:1; align-items: stretch;">
+          <div class="card a-rise d2">
+            <div class="card-kicker">System</div>
+            <h3 class="card-title">현재 시스템</h3>
+            <ul>
+              <li>LMS·학원 관리 시스템 종류</li>
+              <li>상담 기록 관리 방식</li>
+              <li>취업 관리 방식</li>
+              <li>문서 작성·승인 흐름</li>
+            </ul>
+          </div>
+          <div class="card a-rise d2">
+            <div class="card-kicker">Data</div>
+            <h3 class="card-title">실제 데이터</h3>
+            <ul>
+              <li>수강생 데이터 위치·항목</li>
+              <li>상담 DB 필드 구조</li>
+              <li>문제 데이터 보관 형태</li>
+              <li>엑셀·CSV 추출 가능 여부</li>
+            </ul>
+          </div>
+          <div class="card a-rise d3">
+            <div class="card-kicker">Operation</div>
+            <h3 class="card-title">운영 흐름</h3>
+            <ul>
+              <li>누가 어떤 데이터를 입력하는지</li>
+              <li>중복 입력이 발생하는 지점</li>
+              <li>반복되는 보고·문서 작업</li>
+              <li>관리자 승인·검수 필요 구간</li>
+            </ul>
+          </div>
+          <div class="card a-rise d4">
+            <div class="card-kicker">Constraint</div>
+            <h3 class="card-title">제약 조건</h3>
+            <ul>
+              <li>외부 시스템 접근 제약</li>
+              <li>개인정보·권한 이슈</li>
+              <li>기존 솔루션 유지 필요성</li>
+              <li>데이터 정리 상태·품질</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">설명 중심을 넘어 실제 화면과 데이터를 함께 확인하는 단계 · 사전 자료 준비는 별도로 필요하지 않으며, 미팅 자리에서 함께 확인합니다</div>
+        <div class="slide-num">INSPECTION SCOPE</div>
+      </div>
+    </section>
+
+    <!-- 08 Roles · CINEMATIC · roles-meeting -->
+    <section data-screen-label="08 Roles">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/roles-meeting.jpg">
+        <source src="./assets/videos/roles-meeting.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">08 / 09</div>
+          <div class="section-label a-rise">Who Should Be In The Room</div>
+          <div class="head-row" style="margin-top: 1rem;">
+            <h2 class="headline-lg a-rise d1" style="color:#fff;">2차 미팅에는 실제 운영 구조와 데이터를<br>함께 확인할 수 있는 담당자의 참여가 필요합니다</h2>
+            <div class="line a-rise d2"></div>
+          </div>
+          <div class="roles-cinematic">
+            <div class="roles-panel a-rise d2">
+              <div class="col-header accent">Wisgraph Side</div>
+              <ul class="col-list">
+                <li><strong style="color:#fff;">권용석</strong> · 고객 문제·사업 방향</li>
+                <li><strong style="color:#fff;">문찬원</strong> · 시스템·자동화·온톨로지</li>
+                <li><strong style="color:#fff;">김모세</strong> · 교육·자격증·국비지원</li>
+                <li class="highlight-li">데이터·아키텍처 관점에서 확인 가능한 담당자의 현장 참여를 우선합니다</li>
+              </ul>
+              <div style="margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                박은경 교수님 동석
+              </div>
+            </div>
+            <div class="roles-panel a-rise d3">
+              <div class="col-header">Client Side</div>
+              <ul class="col-list">
+                <li>실제 시스템을 사용하시는 행정·교무 실무 담당자</li>
+                <li>상담·모집 DB를 운영하시는 담당자</li>
+                <li>문제 데이터·평가 운영을 파악하고 계신 담당자</li>
+                <li class="highlight-li">가능하면 범위 판단이 가능한 의사결정권자</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-note">이번 미팅은 방향 설명보다 실제 운영 구조 확인의 성격 · 결재권자 참석 시 1차 범위·예산 방향까지 같은 자리에서 합의 가능</div>
+          <div class="slide-num">MEETING ROLES</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 Close · CINEMATIC · close-sunrise -->
+    <section data-screen-label="09 Close">
+      <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
+             poster="./assets/videos/close-sunrise.jpg">
+        <source src="./assets/videos/close-sunrise.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+      <div class="cinematic">
+        <div class="cinematic-inner">
+          <div class="slide-tag a-rise">09 / 09</div>
+          <div class="section-label a-rise">Closing Ask</div>
+          <div class="cta-grid">
+            <div>
+              <h1 class="headline-xl a-rise d1" style="margin-top: 1.5rem;">
+                2차 미팅의 목표는<br>
+                <span class="accent">실제 운영 구조 확인</span>과<br>
+                현실적인 1차 범위 확정입니다
+              </h1>
+              <div class="line a-rise d2"></div>
+              <p class="subheadline a-rise d2" style="max-width: 38rem;">
+                5월 22일 미팅으로 니즈와 방향은 충분히 확인되었습니다.<br>
+                이제는 실제 운영 시스템과 데이터 구조를 함께 확인하는 2차 미팅을 통해, 양측이 합의 가능한 1차 범위와 실행 순서를 협의하는 단계가 필요합니다.
+              </p>
+            </div>
+            <div class="cta-list a-rise d3">
+              <div class="label">Meeting 2 Should Deliver</div>
+              <ol>
+                <li>실제 운영 구조·데이터 현황 확인</li>
+                <li>1차 실행 범위의 현실적 경계 설정</li>
+                <li>작게 시작할 수 있는 우선 구현 대상 확정</li>
+                <li>다음 제안 및 견적 기준 정리</li>
+              </ol>
+              <div class="cta-action">
+                <strong style="color: var(--accent);">다음 액션</strong> · 박은경 교수님을 통해 2차 미팅 가능 일정 후보 3안을 별도로 전달드리며, 미팅 결과를 받아 <strong style="color:#fff;">1주 이내 단일 견적</strong>으로 회신드립니다.
+              </div>
+            </div>
+          </div>
+          <div class="footer-note">Wisgraph · 수도직업전문학교 · Execution Roadmap</div>
+          <div class="slide-num">END</div>
+        </div>
+      </div>
+    </section>
+
+  </deck-stage>
+
+  <script src="./deck_stage.js"></script>
+  <script>
+    /* Cinematic autoplay 보조 — 시네마틱 스펙 §자동재생 */
+    (function() {
+      const videos = document.querySelectorAll('video[data-autoplay-video]');
+
+      const forcePlay = (v) => {
+        try {
+          v.muted = true;
+          v.defaultMuted = true;
+          v.autoplay = true;
+          v.playsInline = true;
+          v.setAttribute('muted', '');
+          v.setAttribute('playsinline', '');
+          v.setAttribute('webkit-playsinline', '');
+          const p = v.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        } catch (e) {}
+      };
+
+      videos.forEach((v) => {
+        forcePlay(v);
+        v.addEventListener('loadedmetadata', () => forcePlay(v));
+        v.addEventListener('canplay', () => forcePlay(v));
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) videos.forEach(forcePlay);
+      });
+
+      const firstPointer = () => {
+        videos.forEach(forcePlay);
+        window.removeEventListener('pointerdown', firstPointer);
+      };
+      window.addEventListener('pointerdown', firstPointer, { once: true });
+
+      /* 활성 슬라이드 영상만 재생, 나머지는 정지 — 부하 절감 */
+      const updateActiveVideo = () => {
+        document.querySelectorAll('deck-stage > section').forEach((sec) => {
+          const v = sec.querySelector('video[data-autoplay-video]');
+          if (!v) return;
+          if (sec.classList.contains('active')) {
+            forcePlay(v);
+          } else {
+            try { v.pause(); } catch (e) {}
+          }
+        });
+      };
+
+      /* deck-stage가 active 클래스 토글할 때마다 갱신 */
+      const observer = new MutationObserver(updateActiveVideo);
+      document.querySelectorAll('deck-stage > section').forEach((sec) => {
+        observer.observe(sec, { attributes: true, attributeFilter: ['class'] });
+      });
+
+      setTimeout(updateActiveVideo, 100);
+    })();
+  </script>
+</body>
+</html>
