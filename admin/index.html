@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Wisgraph · Admin Console</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="/assets/css/tokens.css" />
+
+<style>
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 0%, transparent 80%);
+}
+
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1.25rem var(--gutter);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(5, 7, 10, 0.65);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.brand-dot { color: var(--accent-primary); }
+.brand-tag {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-left: 0.75rem;
+}
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.btn-ghost {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-button);
+  font-family: var(--font-en);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+.btn-ghost:hover { color: var(--text-primary); border-color: var(--border-strong); }
+
+main.dash {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 4rem var(--gutter) 6rem;
+  max-width: var(--container);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dash-head {
+  margin-bottom: 3rem;
+}
+.dash-head h1 {
+  font-family: var(--font-en);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  margin: 0.75rem 0 0.5rem;
+}
+.dash-head p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.section-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-h h2 {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+.section-h .count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--text-tertiary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.card:hover { border-color: var(--accent-primary); transform: translateY(-2px); }
+.card .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.card .tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+.card .meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--text-tertiary);
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.35;
+}
+.card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.card .arrow {
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+/* ─── Login dialog ─── */
+.gate-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 7, 10, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+dialog.gate {
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  max-width: 420px;
+  width: calc(100vw - 2rem);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+}
+dialog.gate::backdrop { background: rgba(5,7,10,0.85); }
+.gate-inner { padding: 1.75rem 1.75rem 1.5rem; }
+.gate-eyebrow {
+  font-family: var(--font-en);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 0.5rem;
+}
+.gate-title {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 0.5rem;
+}
+.gate-sub {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+}
+.gate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+.gate-field label {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-section);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.gate-field input {
+  appearance: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  padding: 0.75rem 0.9rem;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+.gate-field input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+.gate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.gate-error {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: #ff6b6b;
+  min-height: 1.2em;
+}
+.btn-primary {
+  appearance: none;
+  background: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-button);
+  padding: 0.7rem 1.2rem;
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: filter var(--dur-fast) var(--ease-out);
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+
+<div class="gate-screen" id="gateScreen" aria-hidden="false">
+  <dialog class="gate" id="gateDialog" aria-labelledby="gateTitle">
+    <form method="dialog" class="gate-inner" id="gateForm">
+      <div class="gate-eyebrow">Restricted Access</div>
+      <h2 class="gate-title" id="gateTitle">Admin Console</h2>
+      <p class="gate-sub">관리자 비밀번호를 입력하세요.</p>
+
+      <div class="gate-field">
+        <label for="gatePassword">Password</label>
+        <input
+          id="gatePassword"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="gate-row">
+        <span class="gate-error" id="gateError" role="alert" aria-live="polite"></span>
+        <button class="btn-primary" id="gateSubmit" type="submit">Unlock</button>
+      </div>
+    </form>
+  </dialog>
+</div>
+
+<div id="dashWrap" class="hidden">
+  <header class="site">
+    <div>
+      <a class="brand" href="/">Wisgraph<span class="brand-dot">.</span></a>
+      <span class="brand-tag">Admin Console</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-ghost" id="logoutBtn" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="dash">
+    <div class="dash-head">
+      <div class="eyebrow">Index</div>
+      <h1>All Pages</h1>
+      <p>Wisgraph 도메인에 배포된 모든 페이지에 여기서 접근할 수 있습니다.</p>
+    </div>
+
+    <div class="section-h">
+      <h2>Public</h2>
+      <span class="count" id="publicCount">— 1 page</span>
+    </div>
+    <div class="grid" id="publicGrid">
+      <a class="card" href="/" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="tag">team</span>
+          <span class="meta">/</span>
+        </div>
+        <h3>Wisgraph 메인 페이지</h3>
+        <p>업무 지식을 AI가 실행할 수 있는 시스템으로 — 팀 소개·역량·문의.</p>
+        <span class="arrow">→ Open</span>
+      </a>
+    </div>
+
+    <div class="section-h">
+      <h2>Briefings · Slides</h2>
+      <span class="count" id="slidesCount">— 1 deck</span>
+    </div>
+    <div class="grid" id="slidesGrid">
+      <a class="card" href="/slides/sudo-roadmap-0529/" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="tag">deck</span>
+          <span class="meta">2026-05-29</span>
+        </div>
+        <h3>수도직업전문학교 실행 로드맵</h3>
+        <p>Wisgraph 시네마틱 브리핑 — 9 슬라이드 (2차 미팅 사전 정리본).</p>
+        <span class="arrow">→ Open</span>
+      </a>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const gateScreen = document.getElementById("gateScreen");
+  const gateDialog = document.getElementById("gateDialog");
+  const gateForm   = document.getElementById("gateForm");
+  const gateInput  = document.getElementById("gatePassword");
+  const gateError  = document.getElementById("gateError");
+  const gateBtn    = document.getElementById("gateSubmit");
+  const dashWrap   = document.getElementById("dashWrap");
+  const logoutBtn  = document.getElementById("logoutBtn");
+
+  function getNextTarget() {
+    const params = new URLSearchParams(window.location.search);
+    const next = params.get("next");
+    if (!next) return null;
+    if (!next.startsWith("/") || next.startsWith("//")) return null;
+    return next;
+  }
+  function showDashboard() {
+    gateScreen.classList.add("hidden");
+    if (gateDialog.open) gateDialog.close();
+    dashWrap.classList.remove("hidden");
+    const next = getNextTarget();
+    if (next) {
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState(null, "", cleanUrl);
+      window.location.assign(next);
+    }
+  }
+  function showGate() {
+    dashWrap.classList.add("hidden");
+    gateScreen.classList.remove("hidden");
+    if (!gateDialog.open) {
+      try { gateDialog.show(); } catch (_) {}
+    }
+    setTimeout(() => gateInput.focus(), 30);
+  }
+
+  async function checkAuth() {
+    try {
+      const r = await fetch("/api/admin/check", { credentials: "same-origin", cache: "no-store" });
+      if (r.ok) {
+        showDashboard();
+        return true;
+      }
+    } catch (_) {}
+    showGate();
+    return false;
+  }
+
+  gateForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    gateError.textContent = "";
+    gateBtn.disabled = true;
+    const password = gateInput.value;
+    try {
+      const r = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "content-type": "application/json", "accept": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify({ password }),
+      });
+      if (r.ok) {
+        gateInput.value = "";
+        showDashboard();
+      } else if (r.status === 401) {
+        gateError.textContent = "비밀번호가 올바르지 않습니다.";
+        gateInput.select();
+      } else if (r.status === 500) {
+        gateError.textContent = "서버 설정 누락 — 관리자에게 문의하세요.";
+      } else {
+        gateError.textContent = `로그인 실패 (HTTP ${r.status}).`;
+      }
+    } catch (err) {
+      gateError.textContent = "네트워크 오류. 다시 시도하세요.";
+    } finally {
+      gateBtn.disabled = false;
+    }
+  });
+
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST", credentials: "same-origin" });
+    } catch (_) {}
+    showGate();
+  });
+
+  checkAuth();
+})();
+</script>
+
+</body>
+</html>
