@@ -1,0 +1,1555 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>수도직업전문학교 실행 로드맵 — Wisgraph 브리핑</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Paperlogy:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+:root{
+  --accent:#3b82f6;
+  --accent-soft:rgba(59,130,246,0.14);
+  --teal:#20c997;
+  --bg-0:#05070a;
+  --bg-1:#0a0d16;
+  --bg-2:#0d1322;
+  --bg-3:#11182b;
+  --ink:#ffffff;
+  --muted:rgba(255,255,255,0.66);
+  --light:rgba(255,255,255,0.42);
+  --line:rgba(255,255,255,0.1);
+  --line-2:rgba(255,255,255,0.18);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:auto}
+body{
+  background:var(--bg-0);
+  color:var(--ink);
+  font-family:'Paperlogy',-apple-system,'Apple SD Gothic Neo','Pretendard',sans-serif;
+  letter-spacing:-0.01em;
+  overflow-x:hidden;
+  word-break:keep-all;
+  line-height:1.55;
+}
+::selection{background:var(--accent);color:#fff}
+img,video{display:block;max-width:100%}
+
+/* ===== Top nav ===== */
+.top-nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:60;
+  padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(180deg,rgba(5,7,10,0.7) 0%,rgba(5,7,10,0) 100%);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  pointer-events:none;
+}
+.top-nav .brand{
+  font-size:0.78rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.78);
+}
+.top-nav .brand .dot{color:var(--accent)}
+.top-nav .meta{
+  font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--light);
+}
+.scroll-progress{
+  position:fixed;top:0;left:0;height:2px;
+  background:var(--accent);
+  z-index:70;
+  width:0%;
+  transition:width 60ms linear;
+}
+
+/* ===== Reveal ===== */
+.r{opacity:0;transform:translateY(28px);transition:opacity 800ms cubic-bezier(0.2,0.7,0.2,1),transform 800ms cubic-bezier(0.2,0.7,0.2,1)}
+.in .r{opacity:1;transform:none}
+.in .d1{transition-delay:80ms}
+.in .d2{transition-delay:180ms}
+.in .d3{transition-delay:280ms}
+.in .d4{transition-delay:380ms}
+.in .d5{transition-delay:480ms}
+
+/* ===== Sections common ===== */
+section{position:relative}
+.bg-video{position:absolute;inset:0;z-index:0;overflow:hidden}
+.bg-video video{position:absolute;inset:0;width:100%;height:115%;object-fit:cover;transform:translate3d(0,0,0);will-change:transform}
+.in .bg-video video{transform:translate3d(0,-8%,0);transition:transform 1.8s cubic-bezier(0.2,0.7,0.2,1)}
+.bg-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,16,0.5),rgba(5,7,16,0.85))}
+
+/* =====================
+   01 · Hero
+===================== */
+.s-hero{height:100vh;min-height:720px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.s-hero .inner{position:relative;z-index:2;width:100%;padding:0 5vw 6vw}
+.s-hero .kicker{font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.s-hero h1{font-size:clamp(3rem,7.5vw,7.5rem);font-weight:900;line-height:1.02;letter-spacing:-0.03em;margin:0;max-width:18ch}
+.s-hero h1 .accent{color:var(--accent)}
+.s-hero .lead{font-size:clamp(1rem,1.3vw,1.4rem);color:var(--muted);margin-top:2rem;max-width:42rem;line-height:1.6}
+.s-hero .lead strong{color:#fff;font-weight:600}
+.hero-side{position:absolute;right:5vw;top:50%;transform:translateY(-50%);z-index:2;text-align:right;display:flex;flex-direction:column;gap:1rem;align-items:flex-end}
+.hero-side .strip{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-size:0.7rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--light);
+  border-left:1px solid var(--line);padding-left:0.8rem;
+}
+.scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:2;
+  font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--light);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+}
+.scroll-cue::after{content:"";width:1px;height:24px;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
+
+/* =====================
+   02 · Promise (magazine pull-quote)
+===================== */
+.s-promise{padding:14rem 0 12rem;background:var(--bg-1);position:relative;overflow:hidden}
+.s-promise .grid{
+  display:grid;grid-template-columns:1.2fr 1fr;
+  max-width:1400px;margin:0 auto;padding:0 5vw;gap:6vw;align-items:center;
+}
+.s-promise .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem}
+.s-promise blockquote{
+  margin:0;font-size:clamp(2rem,4vw,4rem);font-weight:800;line-height:1.2;letter-spacing:-0.025em;color:#fff;
+  border-left:3px solid var(--accent);padding-left:2rem;
+}
+.s-promise blockquote .accent{color:var(--accent)}
+.s-promise .source{margin-top:2rem;font-size:0.85rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--light);padding-left:2rem}
+.s-promise .videobox{position:relative;aspect-ratio:4/5;border:1px solid var(--line);overflow:hidden}
+.s-promise .videobox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s-promise .videobox::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,16,0.1),rgba(5,7,16,0.6))}
+.s-promise .videobox .caption{
+  position:absolute;left:0;bottom:0;right:0;z-index:2;padding:1.4rem;
+  font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.85);
+}
+
+/* =====================
+   03 · Direction (asymmetric)
+===================== */
+.s-direction{padding:12rem 0;background:var(--bg-0)}
+.s-direction .wrap{max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-direction .head{display:grid;grid-template-columns:1fr 2fr;gap:6vw;margin-bottom:6rem}
+.s-direction .head .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent)}
+.s-direction .head h2{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;line-height:1.15;letter-spacing:-0.02em;margin:0;color:#fff}
+.s-direction .head h2 .accent{color:var(--accent)}
+.s-direction .head p{font-size:1.05rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:42rem}
+.s-direction .head p strong{color:#fff}
+.s-direction .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1.2rem;align-items:stretch}
+.s-direction .col{
+  position:relative;background:var(--bg-2);
+  border:1px solid var(--line);
+  padding:2.4rem 2rem;display:flex;flex-direction:column;gap:1rem;
+}
+.s-direction .col.spotlight{
+  background:linear-gradient(180deg,rgba(59,130,246,0.13),rgba(5,7,10,0.4));
+  border-color:rgba(59,130,246,0.4);
+  padding:3rem 2.4rem;
+}
+.s-direction .col.dim{opacity:0.6}
+.s-direction .col .tag{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.s-direction .col.dim .tag{color:var(--light)}
+.s-direction .col .name{font-size:1.4rem;font-weight:800;line-height:1.3;letter-spacing:-0.01em;margin:0;color:#fff}
+.s-direction .col.spotlight .name{font-size:1.8rem}
+.s-direction .col ul{margin:0;padding-left:1.1rem;font-size:0.95rem;line-height:1.6;color:var(--muted)}
+.s-direction .col ul li + li{margin-top:0.25rem}
+
+/* =====================
+   04 · 6 Tasks (stripe rows full-bleed)
+===================== */
+.s-tasks{padding:12rem 0 10rem;background:var(--bg-0);position:relative;overflow:hidden}
+.s-tasks .head{max-width:1400px;margin:0 auto 5rem;padding:0 5vw;display:grid;grid-template-columns:1fr 2fr;gap:6vw}
+.s-tasks .head .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent)}
+.s-tasks .head h2{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;line-height:1.15;margin:0;color:#fff;letter-spacing:-0.02em}
+.s-tasks .head p{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:42rem}
+.s-tasks .rows{max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-tasks .row{
+  display:grid;grid-template-columns:0.6fr 1fr 1.2fr 1.2fr 0.4fr;
+  gap:2rem;align-items:start;
+  padding:2rem 0;border-top:1px solid var(--line);
+  transition:background 220ms;
+}
+.s-tasks .row:last-child{border-bottom:1px solid var(--line)}
+.s-tasks .row:hover{background:rgba(59,130,246,0.04)}
+.s-tasks .row .num{font-size:0.7rem;letter-spacing:0.25em;color:var(--light)}
+.s-tasks .row .area{font-size:1.3rem;font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.01em}
+.s-tasks .row .desc{font-size:0.92rem;color:var(--muted);line-height:1.55}
+.s-tasks .row .next{font-size:0.92rem;color:rgba(255,255,255,0.85);line-height:1.55}
+.s-tasks .row .next strong{color:var(--accent);font-weight:700}
+.s-tasks .row .pri{text-align:right}
+.s-tasks .row .pri span{
+  display:inline-block;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+  padding:0.3rem 0.7rem;border-radius:3px;background:var(--accent);color:#fff;
+}
+.s-tasks .row .pri span.s2{background:rgba(255,255,255,0.18)}
+.s-tasks .row .pri span.s0{background:rgba(32,201,151,0.55);font-size:0.62rem;letter-spacing:0.16em}
+.s-tasks .foot{max-width:1400px;margin:4rem auto 0;padding:0 5vw;font-size:0.85rem;color:var(--light)}
+
+/* =====================
+   05 · Roadmap (horizontal timeline + video)
+===================== */
+.s-roadmap{height:100vh;min-height:760px;display:flex;align-items:center;overflow:hidden;color:#fff}
+.s-roadmap .inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-roadmap .head{margin-bottom:5rem;max-width:60rem}
+.s-roadmap .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+.s-roadmap h2{font-size:clamp(2rem,4vw,4rem);font-weight:900;line-height:1.1;margin:0;letter-spacing:-0.025em}
+.s-roadmap h2 .accent{color:var(--accent)}
+.s-roadmap p.lead{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:48rem}
+.s-roadmap p.lead strong{color:#fff}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.timeline::before{
+  content:"";position:absolute;top:18px;left:12.5%;right:12.5%;height:1px;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 33.33%,rgba(255,255,255,0.3) 33.33%,rgba(255,255,255,0.3) 100%);
+  z-index:0;
+}
+.stop{position:relative;z-index:1;display:flex;flex-direction:column;gap:0.8rem;padding-top:48px}
+.stop::before{
+  content:"";position:absolute;left:50%;transform:translateX(-50%);top:6px;width:24px;height:24px;border-radius:50%;
+  border:2px solid var(--accent);background:var(--bg-0);
+}
+.stop.dim::before{border-color:rgba(255,255,255,0.4)}
+.stop .tag{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.stop.dim .tag{color:rgba(255,255,255,0.55)}
+.stop h3{font-size:1.15rem;font-weight:800;line-height:1.3;margin:0;letter-spacing:-0.01em}
+.stop ul{margin:0;padding-left:1rem;font-size:0.85rem;line-height:1.55;color:rgba(255,255,255,0.78)}
+.stop ul li + li{margin-top:0.2rem}
+
+/* =====================
+   06 · Pricing — big number hero + table reveal
+===================== */
+.s-pricing{padding:12rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-pricing .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;position:relative;z-index:2}
+.s-pricing .head{display:grid;grid-template-columns:1fr 1.2fr;gap:6vw;margin-bottom:5rem;align-items:end}
+.s-pricing .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.s-pricing h2{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;line-height:1.1;margin:0;color:#fff;letter-spacing:-0.025em}
+.s-pricing h2 .accent{color:var(--accent)}
+.s-pricing p.lead{font-size:1rem;color:var(--muted);margin:0;line-height:1.7}
+.s-pricing p.lead strong{color:#fff}
+
+.price-hero{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:6rem}
+.price-hero .col{padding:3rem 2.5rem;background:var(--bg-3);border:1px solid var(--line)}
+.price-hero .col.market{opacity:0.75}
+.price-hero .col.wisgraph{background:linear-gradient(180deg,rgba(59,130,246,0.14),rgba(11,16,32,0.6));border-color:rgba(59,130,246,0.4)}
+.price-hero .label{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--light);margin-bottom:1rem}
+.price-hero .col.wisgraph .label{color:var(--accent)}
+.price-hero .amount{font-size:clamp(2rem,4.5vw,4.5rem);font-weight:900;line-height:1.1;letter-spacing:-0.03em;color:#fff;font-variant-numeric:tabular-nums}
+.price-hero .col.market .amount{color:var(--light)}
+.price-hero .col.wisgraph .amount{color:var(--accent)}
+.price-hero .desc{font-size:0.95rem;color:var(--muted);margin-top:1.5rem;line-height:1.6}
+
+.price-table{width:100%;border-collapse:collapse;font-size:0.92rem}
+.price-table thead th{
+  font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);
+  padding:1rem 1.2rem;text-align:left;border-bottom:2px solid var(--line-2);font-weight:700;
+}
+.price-table th.num{text-align:right}
+.price-table td{padding:1rem 1.2rem;border-bottom:1px solid var(--line);color:rgba(255,255,255,0.88);vertical-align:middle;line-height:1.4}
+.price-table td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+.price-table tr.em td{background:rgba(59,130,246,0.07);color:#fff;font-weight:600}
+.price-table tr.em td.num{color:var(--accent)}
+.price-table tr.dim td{color:var(--light)}
+.phase-tag{display:inline-block;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);padding:0.15rem 0.55rem;border:1px solid var(--line-2);border-radius:3px;font-weight:700}
+.price-table tr.em .phase-tag{color:var(--accent);border-color:var(--accent)}
+.entry-note{display:block;font-size:0.72rem;color:var(--muted);margin-top:0.2rem;font-weight:400}
+.s-pricing .foot{font-size:0.85rem;color:var(--light);margin-top:3rem;text-align:center}
+
+/* =====================
+   07 · Market Position (vertical tier ladder)
+===================== */
+.s-market{padding:12rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-market .wrap{max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-market .head{margin-bottom:6rem}
+.s-market .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.s-market h2{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;line-height:1.1;margin:0;color:#fff;max-width:30ch;letter-spacing:-0.025em}
+.s-market h2 .accent{color:var(--accent)}
+.s-market p.lead{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:48rem}
+.tier-ladder{display:grid;gap:1.2rem;margin-bottom:6rem}
+.tier{
+  display:grid;grid-template-columns:80px 1fr 1.4fr 1fr;gap:2rem;align-items:center;
+  padding:1.6rem 2rem;background:var(--bg-2);border:1px solid var(--line);
+  position:relative;
+}
+.tier.wisgraph{
+  background:linear-gradient(90deg,rgba(59,130,246,0.16),rgba(11,16,32,0.5));
+  border-color:rgba(59,130,246,0.45);
+}
+.tier .rank{font-size:2.4rem;font-weight:900;color:var(--light);line-height:1;font-variant-numeric:tabular-nums}
+.tier.wisgraph .rank{color:var(--accent)}
+.tier .name{font-size:1.15rem;font-weight:800;color:#fff;line-height:1.3;letter-spacing:-0.01em}
+.tier .cases{font-size:0.85rem;color:var(--muted);line-height:1.5}
+.tier .price{font-size:1.4rem;font-weight:800;color:#fff;text-align:right;font-variant-numeric:tabular-nums;letter-spacing:-0.01em}
+.tier.wisgraph .price{color:var(--accent)}
+
+.gov-split{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:5rem}
+.gov-split h3{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 1.5rem;font-weight:700}
+.gov-row{display:grid;grid-template-columns:1.6fr 0.6fr 0.6fr;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--line);font-size:0.92rem;color:rgba(255,255,255,0.85)}
+.gov-row .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.gov-row.em{background:rgba(59,130,246,0.06);padding-left:1rem;padding-right:1rem;border-color:var(--accent)}
+.gov-row.em .num{color:var(--accent)}
+.gov-note{font-size:0.85rem;color:var(--muted);margin-top:1.5rem;line-height:1.6}
+.gov-note strong{color:#fff}
+
+.track-record{padding:3rem 0;border-top:1px solid var(--line)}
+.track-record h3{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 2rem;font-weight:700}
+.brand-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.brand{padding:1.5rem 0;border-top:2px solid var(--accent)}
+.brand .nm{font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.brand .ev{font-size:0.85rem;color:var(--muted);line-height:1.5}
+.brand .ev strong{color:#fff;font-weight:700}
+
+.wisgraph-pos{margin-top:5rem;padding:2.5rem 3rem;background:linear-gradient(90deg,rgba(59,130,246,0.12),rgba(11,16,32,0.4));border-left:4px solid var(--accent)}
+.wisgraph-pos .ll{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:700}
+.wisgraph-pos .quote{font-size:1.3rem;font-weight:600;line-height:1.5;color:#fff;letter-spacing:-0.01em}
+.wisgraph-pos .quote strong{color:var(--accent)}
+.wisgraph-pos ul{margin:1.5rem 0 0;padding-left:1.2rem;font-size:0.92rem;color:var(--muted);line-height:1.7}
+
+/* =====================
+   08 · Voucher — huge stat
+===================== */
+.s-voucher{padding:14rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-voucher .wrap,.s-voucher .head,.s-voucher .stat-grid,.s-voucher .voucher-table{position:relative;z-index:2}
+.s-voucher::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(800px 600px at 25% 30%,rgba(59,130,246,0.12),transparent 60%);
+  pointer-events:none;
+}
+.s-voucher .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;position:relative;z-index:1}
+.stat-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:6vw;align-items:center;margin-bottom:8rem}
+.stat-grid .stat-num{
+  font-size:clamp(5rem,14vw,14rem);font-weight:900;line-height:0.95;letter-spacing:-0.04em;color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.stat-grid .stat-num small{font-size:0.45em;color:var(--muted)}
+.stat-grid .stat-label{font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:700}
+.stat-grid .stat-narrative h2{font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:900;line-height:1.2;letter-spacing:-0.02em;margin:0;color:#fff;max-width:24ch}
+.stat-grid .stat-narrative h2 .accent{color:var(--accent)}
+.stat-grid .stat-narrative p{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.75;max-width:38rem}
+.stat-grid .stat-narrative p strong{color:#fff}
+
+.voucher-table{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2rem}
+.voucher-table h3{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 2rem;font-weight:700}
+.v-row{display:grid;grid-template-columns:1.5fr 0.5fr 0.5fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:0.95rem;color:rgba(255,255,255,0.85)}
+.v-row .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.v-row.em{background:rgba(59,130,246,0.07);padding-left:1rem;padding-right:1rem;border-color:var(--accent)}
+.v-row.em .num{color:var(--accent)}
+.v-row.em strong{color:#fff;font-weight:800}
+.deadline-card{margin-top:2rem;padding:1.5rem 1.8rem;background:rgba(255,255,255,0.04);border-left:3px solid var(--light)}
+.deadline-card p{margin:0;font-size:0.88rem;color:var(--muted);line-height:1.6}
+.deadline-card strong{color:#fff}
+
+/* =====================
+   09 · Phase 0 Detail (sticky title side)
+===================== */
+.s-detail{padding:12rem 0;position:relative}
+.s-detail.bg-2{background:var(--bg-2)}
+.s-detail.bg-3{background:var(--bg-3)}
+.s-detail .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;display:grid;grid-template-columns:0.85fr 1.4fr;gap:5vw;align-items:start}
+.s-detail .sticky-side{position:sticky;top:8rem;align-self:start}
+.s-detail .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.s-detail h2{font-size:clamp(1.8rem,2.8vw,2.8rem);font-weight:900;line-height:1.15;margin:0 0 2rem;color:#fff;letter-spacing:-0.025em}
+.s-detail .pricing-tag{display:flex;flex-direction:column;gap:0.6rem;margin-top:2rem;padding:1.5rem 1.8rem;border-left:3px solid var(--accent);background:rgba(59,130,246,0.06)}
+.s-detail .pricing-tag .l{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+.s-detail .pricing-tag .market{font-size:0.95rem;color:var(--light);text-decoration:line-through;text-decoration-color:rgba(255,255,255,0.3)}
+.s-detail .pricing-tag .wisgraph{font-size:1.8rem;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+.s-detail .meta{font-size:0.88rem;color:var(--muted);margin-top:1.5rem;line-height:1.6}
+.s-detail .meta strong{color:#fff}
+
+.detail-flow{display:flex;flex-direction:column;gap:1.2rem}
+.dwork{padding:1.4rem 1.8rem;background:rgba(255,255,255,0.03);border-left:2px solid var(--line-2);transition:border-color 200ms,background 200ms}
+.dwork:hover{border-left-color:var(--accent);background:rgba(59,130,246,0.05)}
+.dwork .head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:0.5rem}
+.dwork .name{font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-0.01em}
+.dwork .span{font-size:0.78rem;color:var(--accent);font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.dwork .desc{font-size:0.85rem;color:var(--muted);line-height:1.55}
+.dwork.section-h{background:transparent;border-left-color:transparent;padding:1.2rem 0 0.4rem}
+.dwork.section-h .name{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:800}
+.dwork.total{background:rgba(59,130,246,0.08);border-left-color:var(--accent)}
+.dwork.total .name{font-size:1rem;font-weight:800;color:#fff}
+.dwork.total .span{font-size:1rem;color:#fff}
+.size-compare{margin-top:3rem;padding:2rem 2.2rem;background:rgba(255,255,255,0.04);border:1px solid var(--line)}
+.size-compare h4{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 1.5rem;font-weight:700}
+.size-row{display:grid;grid-template-columns:1fr 1fr 1fr 0.6fr;gap:1rem;padding:0.7rem 0;border-bottom:1px solid var(--line);font-size:0.9rem;color:rgba(255,255,255,0.85)}
+.size-row .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.size-row strong{color:var(--accent)}
+
+/* =====================
+   12 · Why Meeting 2 (editorial)
+===================== */
+.s-why{padding:14rem 0;background:var(--bg-1);position:relative;overflow:hidden}
+.s-why .wrap{max-width:1100px;margin:0 auto;padding:0 5vw}
+.s-why .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;text-align:center}
+.s-why h2{font-size:clamp(2.2rem,4vw,4.2rem);font-weight:900;line-height:1.15;margin:0 0 5rem;color:#fff;text-align:center;letter-spacing:-0.025em;max-width:24ch;margin-left:auto;margin-right:auto}
+.s-why h2 .accent{color:var(--accent)}
+.reasons{display:grid;gap:2.5rem;margin-bottom:6rem}
+.reason{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2.5rem 0;border-top:1px solid var(--line)}
+.reason:last-child{border-bottom:1px solid var(--line)}
+.reason .num{font-size:2.4rem;font-weight:900;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.reason h3{font-size:1.6rem;font-weight:800;margin:0 0 0.8rem;color:#fff;letter-spacing:-0.01em}
+.reason p{font-size:1.05rem;color:var(--muted);margin:0;line-height:1.7;max-width:46rem}
+.s-why .blockquote{
+  text-align:center;padding:4rem 2rem;border:1px solid var(--accent);background:rgba(59,130,246,0.06);
+}
+.s-why .blockquote .q{font-size:clamp(1.5rem,2.2vw,2.2rem);font-weight:800;line-height:1.4;color:#fff;margin:0;letter-spacing:-0.01em}
+.s-why .blockquote .q .accent{color:var(--accent)}
+.s-why .blockquote .qf{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:50rem;margin-left:auto;margin-right:auto}
+.s-why .blockquote .qf strong{color:#fff}
+
+/* =====================
+   13 · Checklist (compact icon grid)
+===================== */
+.s-check{padding:10rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-check .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;position:relative;z-index:2}
+.s-check .head{margin-bottom:5rem;display:grid;grid-template-columns:1fr 2fr;gap:6vw}
+.s-check .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent)}
+.s-check h2{font-size:clamp(1.8rem,3vw,3rem);font-weight:900;line-height:1.15;margin:0;color:#fff;letter-spacing:-0.025em}
+.s-check .head p{font-size:1rem;color:var(--muted);margin:1.5rem 0 0;line-height:1.7;max-width:42rem}
+.check-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.check-col{padding:2rem 1.8rem;background:var(--bg-2);border:1px solid var(--line)}
+.check-col .glyph{font-size:1.4rem;font-weight:900;color:var(--accent);margin-bottom:1rem;font-variant-numeric:tabular-nums;line-height:1}
+.check-col h3{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin:0 0 1rem;font-weight:700}
+.check-col .label{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:1.5rem;letter-spacing:-0.01em}
+.check-col ul{margin:0;padding:0;list-style:none;font-size:0.92rem;color:var(--muted);line-height:1.65}
+.check-col ul li{padding-left:1.2rem;position:relative;margin-bottom:0.6rem}
+.check-col ul li::before{content:"";position:absolute;left:0;top:0.55rem;width:6px;height:1px;background:var(--accent)}
+.s-check .foot{font-size:0.88rem;color:var(--light);margin-top:4rem;text-align:center;line-height:1.6}
+.s-check .foot strong{color:#fff}
+
+/* =====================
+   14 · Roles (big names + video bg)
+===================== */
+.s-roles{height:100vh;min-height:780px;display:flex;align-items:center;color:#fff;overflow:hidden}
+.s-roles .inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-roles .head{margin-bottom:5rem;max-width:60rem}
+.s-roles .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.s-roles h2{font-size:clamp(2rem,3.2vw,3.2rem);font-weight:900;line-height:1.2;margin:0;letter-spacing:-0.02em}
+.roles-split{display:grid;grid-template-columns:1.2fr 1fr;gap:5vw}
+.roles-side{padding:2rem 2.5rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:rgba(5,9,22,0.55);border:1px solid rgba(255,255,255,0.1)}
+.roles-side .col-head{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:#fff;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.3);margin-bottom:1.5rem;font-weight:700}
+.roles-side.us .col-head{color:var(--accent);border-bottom-color:var(--accent)}
+.roles-side ul{margin:0;padding:0;list-style:none}
+.roles-side ul li{padding:0.85rem 0;border-bottom:1px dashed rgba(255,255,255,0.18);font-size:1.05rem;color:rgba(255,255,255,0.88);line-height:1.5}
+.roles-side ul li strong{color:#fff;font-weight:800}
+.roles-side ul li:last-child{border-bottom:none}
+.roles-side .high{padding-top:1.5rem;font-weight:700;color:#fff;font-size:0.95rem;line-height:1.6}
+.s-roles .foot{position:absolute;left:5vw;right:5vw;bottom:2.5rem;font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6;max-width:60rem;z-index:2}
+
+/* =====================
+   15 · Close (CTA hero)
+===================== */
+.s-close{min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;padding:10vh 0}
+.s-close .inner{position:relative;z-index:2;width:100%;max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-close .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:6vw;align-items:center}
+.s-close .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:2rem}
+.s-close h2{font-size:clamp(2.5rem,5.5vw,5.5rem);font-weight:900;line-height:1.1;margin:0;letter-spacing:-0.03em}
+.s-close h2 .accent{color:var(--accent)}
+.s-close .lead{font-size:1.15rem;color:var(--muted);margin-top:2rem;line-height:1.7;max-width:42rem}
+.s-close .lead strong{color:#fff}
+.cta-list{padding:2.5rem;background:rgba(5,9,22,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line-2)}
+.cta-list .l{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;font-weight:700}
+.cta-list ol{margin:0;padding-left:1.5rem;color:rgba(255,255,255,0.9);font-size:1.05rem;line-height:1.8}
+.cta-list ol li + li{margin-top:0.5rem}
+.cta-action{margin-top:2rem;padding-top:1.5rem;border-top:1px dashed rgba(255,255,255,0.2);font-size:0.95rem;color:rgba(255,255,255,0.85);line-height:1.7}
+.cta-action strong{color:var(--accent);font-weight:700}
+
+/* =====================
+   Footer
+===================== */
+.bottom-foot{padding:4rem 5vw 3rem;background:#000;font-size:0.75rem;color:var(--light);letter-spacing:0.18em;text-transform:uppercase;text-align:center;border-top:1px solid var(--line)}
+
+/* =====================
+   Custom Cursor
+===================== */
+.has-cursor #cursor{
+  position:fixed;top:0;left:0;width:14px;height:14px;
+  background:#fff;border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  mix-blend-mode:difference;
+  transition:width 0.4s cubic-bezier(0.2,0.8,0.2,1),height 0.4s cubic-bezier(0.2,0.8,0.2,1),background 0.4s;
+  display:none;
+}
+@media (hover:hover) and (pointer:fine){
+  .has-cursor{cursor:none}
+  .has-cursor #cursor{display:block}
+  .has-cursor.hover-state #cursor{width:72px;height:72px;background:var(--accent)}
+  .has-cursor *{cursor:none !important}
+}
+
+/* =====================
+   Loader
+===================== */
+#loader{
+  position:fixed;inset:0;background:var(--bg-0);z-index:10000;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+}
+#loader .l-text{font-size:clamp(2rem,5vw,4rem);font-weight:900;overflow:hidden;letter-spacing:-0.025em;color:#fff}
+#loader .l-text span{display:inline-block;transform:translateY(110%)}
+#loader .l-text .accent{color:var(--accent)}
+#loader .l-sub{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-top:1.5rem;opacity:0}
+
+/* =====================
+   01 Hero — Clean full-bleed
+===================== */
+.s-hero{position:relative}
+
+/* =====================
+   02 Promise — Editorial: heading + quote + 4 needs + footer
+===================== */
+.s-promise{padding:10rem 0;background:var(--bg-0);position:relative;overflow:hidden;display:block !important;min-height:auto !important;align-items:initial !important}
+.s-promise .grid{display:block !important;grid-template-columns:none !important;gap:0 !important;max-width:1400px;margin:0 auto;padding:0 5vw;width:100%;align-items:initial !important;position:relative;z-index:2}
+.s-promise .videobox{display:none}
+.s-promise .need-card{backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.s-promise .kicker{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem !important;text-align:left}
+.s-promise .pr-headline{font-size:clamp(2rem,3.4vw,3.4rem);font-weight:900;letter-spacing:-0.025em;line-height:1.15;color:#fff;margin:0 0 5rem;max-width:22ch}
+.s-promise blockquote{
+  font-size:clamp(1.8rem,3vw,3.2rem) !important;
+  padding:2.5rem 0 2.5rem 2.5rem !important;
+  border-left:3px solid var(--accent) !important;
+  max-width:38ch;
+  font-weight:700;
+  line-height:1.35 !important;
+  letter-spacing:-0.02em !important;
+  color:#fff;
+  margin:0 0 5rem !important;
+}
+.s-promise blockquote .accent{color:var(--accent);font-style:normal}
+.s-promise .needs{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-bottom:4rem}
+.s-promise .need-card{
+  background:rgba(5,7,16,0.55);border:1px solid var(--line);
+  padding:2rem 2rem 2.2rem;
+  display:flex;flex-direction:column;gap:0.9rem;
+}
+.s-promise .need-card .nc-kicker{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.s-promise .need-card .nc-title{font-size:1.35rem;font-weight:800;color:#fff;letter-spacing:-0.01em;line-height:1.3}
+.s-promise .need-card .nc-body{font-size:1rem;color:var(--muted);line-height:1.65}
+.s-promise .source{
+  padding:1.4rem 0 0 !important;margin-top:0 !important;
+  font-size:0.95rem;letter-spacing:0;text-transform:none;color:var(--light);
+  border-top:1px solid var(--line);max-width:none;
+  font-weight:500;
+}
+.s-promise .source strong{color:#fff}
+
+/* =====================
+   04 Tasks — Hover-fill rows
+===================== */
+.s-tasks .row{
+  position:relative;cursor:default;
+  transition:padding-left 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+.s-tasks .row::after{
+  content:'';position:absolute;inset:0;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.55s cubic-bezier(0.2,0.8,0.2,1);
+  z-index:-1;
+}
+.s-tasks .row > *{position:relative;z-index:1;transition:color 0.3s}
+.s-tasks .row:hover::after{transform:scaleX(1)}
+.s-tasks .row:hover{padding-left:1.5rem;background:transparent !important}
+.s-tasks .row:hover .num,.s-tasks .row:hover .area,.s-tasks .row:hover .desc,.s-tasks .row:hover .next,.s-tasks .row:hover .next strong{color:#000 !important}
+.s-tasks .row:hover .pri span{background:#000 !important;color:var(--accent) !important}
+.s-tasks .row:hover .pri span.s2{background:rgba(0,0,0,0.6) !important;color:#fff !important}
+.s-tasks .row:hover .pri span.s0{background:rgba(0,0,0,0.55) !important;color:#fff !important}
+
+/* =====================
+   07 Tier ladder — Hover-fill
+===================== */
+.tier{
+  cursor:default;transition:padding-left 0.4s cubic-bezier(0.2,0.8,0.2,1),background 0.4s;
+  overflow:hidden;
+}
+.tier::after{
+  content:'';position:absolute;inset:0;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.55s cubic-bezier(0.2,0.8,0.2,1);
+  z-index:0;
+}
+.tier > *{position:relative;z-index:1;transition:color 0.3s}
+.tier:not(.wisgraph):hover::after{transform:scaleX(1)}
+.tier:not(.wisgraph):hover{padding-left:2.5rem;background:transparent}
+.tier:not(.wisgraph):hover .rank,.tier:not(.wisgraph):hover .name,.tier:not(.wisgraph):hover .cases,.tier:not(.wisgraph):hover .price{color:#000 !important}
+
+/* =====================
+   05 Roadmap — SVG path canvas
+===================== */
+.s-roadmap{overflow:visible}
+.svg-canvas{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;
+}
+.svg-canvas path{
+  fill:none;stroke:rgba(255,255,255,0.18);stroke-width:2;
+}
+#road-line{
+  stroke:var(--accent);stroke-width:3;
+  filter:drop-shadow(0 0 12px rgba(59,130,246,0.6));
+}
+.s-roadmap .inner{position:relative;z-index:2}
+.s-roadmap .reveal-fill{
+  font-size:clamp(2rem,3vw,3rem);font-weight:900;line-height:1.15;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,0.15);
+  background:linear-gradient(90deg,#fff 50%,transparent 50%);
+  background-size:200% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;
+  will-change:background-position;
+}
+
+/* =====================
+   08 Voucher — Stat counter container
+===================== */
+.s-voucher .stat-num{display:inline-block}
+
+/* =====================
+   15 Close — Outro epilogue
+===================== */
+.s-close{position:relative}
+.epilogue{
+  position:absolute;left:5vw;right:5vw;bottom:3rem;text-align:center;z-index:2;
+}
+.epilogue .e-label{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);font-weight:600;opacity:0}
+.epilogue .e-text{font-size:clamp(1.5rem,3vw,2.4rem);font-weight:900;color:#fff;margin-top:1rem;opacity:0;letter-spacing:-0.02em}
+.epilogue .e-text em{color:var(--accent);font-style:italic}
+
+/* =====================
+   Reduced motion
+===================== */
+@media (prefers-reduced-motion: reduce){
+  .r{opacity:1;transform:none;transition:none}
+  .bg-video video{transform:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .scroll-cue::after{animation:none}
+  .s-hero .bg-video{transform:none !important}
+  .s-roadmap .reveal-fill{color:#fff !important;-webkit-text-stroke:0;background:none}
+  #loader{display:none !important}
+  .has-cursor #cursor{display:none}
+  .has-cursor *{cursor:auto !important}
+  .epilogue .e-label,.epilogue .e-text{opacity:1 !important}
+}
+
+/* =====================
+   Mobile
+===================== */
+@media (max-width:900px){
+  section .wrap,.s-hero .inner,.s-roadmap .inner,.s-roles .inner,.s-close .inner{padding:0 1.5rem !important}
+  .top-nav{padding:1rem 1.5rem}
+  .s-promise{padding:6rem 0}
+  .s-direction,.s-tasks,.s-pricing,.s-market,.s-voucher,.s-detail,.s-why,.s-check{padding:6rem 0}
+  .s-promise .grid,.s-direction .head,.s-direction .cols,.s-tasks .head,.s-pricing .head,.s-check .head,.s-detail .wrap,.s-close .grid,.roles-split,.gov-split,.voucher-table,.brand-strip,.check-grid,.stat-grid,.price-hero,.tier,.s-promise .needs{grid-template-columns:1fr !important;gap:2rem !important}
+  .timeline{grid-template-columns:1fr !important}
+  .timeline::before{display:none}
+  .stop{padding-top:24px}
+  .s-tasks .row{grid-template-columns:1fr !important;gap:0.5rem;padding:1.5rem 0}
+  .s-tasks .row .pri{text-align:left}
+  .bg-video video{transform:none !important;height:100%}
+  .s-detail .sticky-side{position:relative;top:0}
+  .tier{padding:1.2rem 1.5rem}
+  .tier .rank{font-size:1.6rem}
+  .tier .price{text-align:left;font-size:1.2rem}
+  .s-why .blockquote{padding:2.5rem 1.5rem}
+  .reason{grid-template-columns:1fr;gap:0.8rem;padding:2rem 0}
+  .reason .num{font-size:1.6rem}
+  .s-hero,.s-roadmap,.s-roles,.s-close{display:block;height:auto;min-height:auto;overflow:visible}
+  .s-roles,.s-close{padding:6rem 0 4rem}
+  .s-roles .head{margin-bottom:2.5rem}
+  .s-roles .head h2 br{display:none}
+  .roles-side{padding:1.5rem 1.5rem}
+  .s-roles .foot{position:static;left:auto;right:auto;bottom:auto;margin:3rem 1.5rem 0;padding:0;max-width:none}
+  .epilogue{position:static;left:auto;right:auto;bottom:auto;margin-top:3rem;padding:0 1.5rem}
+  .cta-list{padding:1.75rem 1.5rem}
+  .cta-list ol{font-size:1rem}
+  .bottom-foot{padding:3rem 1.5rem 2.5rem;line-height:1.6}
+}
+</style>
+</head>
+<body class="has-cursor">
+
+<div id="loader">
+  <div class="l-text"><span>Wisgraph <em style="font-style:italic;" class="accent">·</em> Briefing</span></div>
+  <div class="l-sub">수도직업전문학교 · 2026.05.29</div>
+</div>
+
+<div id="cursor"></div>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<header class="top-nav">
+  <div class="brand">WIS<span class="dot">·</span>GRAPH</div>
+  <div class="meta">수도직업전문학교 · 2026.05.29</div>
+</header>
+
+<!-- 01 Hero -->
+<section class="s-hero" data-scene id="s01">
+  <div class="bg-video">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/cover-network.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/cover-network.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim"></div>
+  </div>
+  <div class="inner">
+    <div class="r kicker">Wisgraph · Execution Roadmap</div>
+    <h1 class="r d1">수도직업전문학교<br><span class="accent">실행 로드맵</span></h1>
+    <p class="r d2 lead">
+      5월 22일 첫 미팅으로 방향은 충분히 확인되었습니다.<br>
+      다음 단계는 <strong>실제 운영 시스템과 데이터 구조</strong>를 함께 확인하고,<br>
+      보다 현실적인 1차 범위와 실행 순서를 정리하는 2차 미팅입니다.
+    </p>
+  </div>
+  <div class="hero-side r d3">
+    <div class="strip">상담 DB 자동화</div>
+    <div class="strip">문제은행</div>
+    <div class="strip">현행 시스템 확인 선행</div>
+  </div>
+  <div class="scroll-cue r d4">Scroll</div>
+</section>
+
+<!-- 02 Promise -->
+<section class="s-promise" data-scene id="s02">
+  <div class="bg-video" style="opacity:0.7">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/needs-writing.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/needs-writing.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.45),rgba(5,7,10,0.65))"></div>
+  </div>
+  <div class="grid">
+    <div class="r kicker">02 · 지난 미팅 이후 정리된 방향</div>
+    <blockquote class="r d1">사람이 바뀌어도<br>상담 · 학습 · 운영 <span class="accent">품질</span>이<br>흔들리지 않는 학원</blockquote>
+    <div class="needs">
+      <div class="need-card r d1">
+        <div class="nc-kicker">Operating Need 01</div>
+        <div class="nc-title">AI를 실제 업무 효율로</div>
+        <div class="nc-body">단발성 체험이 아니라, 한정된 인력 환경에서도 운영이 돌아가는 자동화가 필요합니다.</div>
+      </div>
+      <div class="need-card r d2">
+        <div class="nc-kicker">Operating Need 02</div>
+        <div class="nc-title">개인 노하우의 조직 자산화</div>
+        <div class="nc-body">AI 활용 노하우와 상담 노하우가 퇴사와 함께 사라지지 않고, 조직 안에 구조로 남아야 합니다.</div>
+      </div>
+      <div class="need-card r d2">
+        <div class="nc-kicker">Adoption Signal 01</div>
+        <div class="nc-title">크게보다 작게 시작</div>
+        <div class="nc-body">전체 바운더리를 먼저 정하고, 쉽게 시작할 수 있는 것부터 단계적으로 도입합니다.</div>
+      </div>
+      <div class="need-card r d3">
+        <div class="nc-kicker">Adoption Signal 02</div>
+        <div class="nc-title">초기에는 관리자 승인형</div>
+        <div class="nc-body">자동 생성·발송은 가능하되, 이 단계에서는 검수 가능한 운영 방식이 필요합니다.</div>
+      </div>
+    </div>
+    <div class="r d3 source">핵심은 <strong>"AI를 잘 쓰는 개인"이 아니라 "AI가 정착된 조직"</strong></div>
+  </div>
+</section>
+
+<!-- 03 Direction -->
+<section class="s-direction" data-scene id="s03">
+  <div class="wrap">
+    <div class="head">
+      <div class="r kicker">Priority Stack</div>
+      <div>
+        <h2 class="r d1">우선순위는 견적 항목보다<br><span class="accent">실행 순서</span> 기준으로 다시 정리합니다</h2>
+        <p class="r d2">5월 22일 미팅에서 대표·이사·실무팀장이 직접 언급한 우선순위 신호 — <strong>모집 자동화 + 문제은행을 1차로, 취업·문서를 2차로, 시간표·과정개발을 후순위로</strong> — 에 맞춰 실행 순서 기준으로 재배열한 안입니다.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col spotlight r d2">
+        <div class="tag">Phase 1 · First Move</div>
+        <h3 class="name">상담 DB 기반 모집 자동화<br>문제은행 · 모의고사</h3>
+        <ul>
+          <li>전화 문의 후 후속 관리 부재 해결</li>
+          <li>등록 전환과 상담 품질 표준화</li>
+          <li>학생별 오답·취약영역 누적 관리</li>
+          <li>강사 피드백과 반복 학습 구조화</li>
+        </ul>
+      </div>
+      <div class="col r d3">
+        <div class="tag">Phase 2 · Expansion</div>
+        <h3 class="name">취업 매칭 보조<br>문서 자동화</h3>
+        <ul>
+          <li>훈련생 조건별 취업 연계 효율화</li>
+          <li>회의록·상담일지·보고서 부담 감소</li>
+          <li>성과 관리와 운영 리포팅 고도화</li>
+          <li>마케팅 자동화 연결</li>
+        </ul>
+      </div>
+      <div class="col dim r d4">
+        <div class="tag">Phase 3 · Complex Zone</div>
+        <h3 class="name">시간표 자동화<br>과정 개발 보조</h3>
+        <ul>
+          <li>강사·강의실·장비 제약 복합적</li>
+          <li>내부 판단과 기획 비중이 큼</li>
+          <li>1차 범위에서는 제외 안전</li>
+          <li>장기 통합 운영 영역</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Tasks -->
+<section class="s-tasks" data-scene id="s04">
+  <div class="bg-video" style="opacity:0.6">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/problems-paper.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/problems-paper.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
+  </div>
+  <div style="position:relative;z-index:2">
+    <div class="head">
+      <div class="r kicker">현재 운영 과제 · 함께 살펴볼 방향</div>
+      <div>
+        <h2 class="r d1">주요 운영 과제와<br>함께 살펴볼 방향</h2>
+        <p class="r d2">5월 22일 미팅에서 확인된 6개 운영 과제와 함께 검토 가능한 방향을 정리한 예비안입니다. 실제 운영 구조와 데이터 확인 결과에 따라 세부 범위와 순서는 함께 조정될 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="rows">
+      <div class="row r d2">
+        <div class="num">01</div>
+        <div class="area">상담 후속 관리 부담</div>
+        <div class="desc">문의 이력 관리 / 재안내 흐름 / 재접촉 누락</div>
+        <div class="next">상담 이력 정리 / 발송 자료 정의 / <strong>리마인드 자동화</strong></div>
+        <div class="pri"><span>1차</span></div>
+      </div>
+      <div class="row r d2">
+        <div class="num">02</div>
+        <div class="area">개별 담당자 영향 의존</div>
+        <div class="desc">상담·평가 의존 / 노하우 개인화 / 인수인계 리스크</div>
+        <div class="next">표준 절차 정리 / 운영 기준 정리 / <strong>흐름 자동화</strong></div>
+        <div class="pri"><span>1차</span></div>
+      </div>
+      <div class="row r d3">
+        <div class="num">03</div>
+        <div class="area">학생별 학습 관리 부재</div>
+        <div class="desc">오답·점수 기록 / 학습 효과 / 강의 데이터 정리</div>
+        <div class="next">문제은행 운영 / 자동 채점 / <strong>강사 확인 흐름</strong></div>
+        <div class="pri"><span>1차</span></div>
+      </div>
+      <div class="row r d3">
+        <div class="num">04</div>
+        <div class="area">취업 연계 과정 수기 비용</div>
+        <div class="desc">학생 조건별 분류 / 취업 안내·수기적 / 연락 기준 정의</div>
+        <div class="next">학생 조건표 정리 / 취업 안내 보조 구조 / 후속 안내 체계화</div>
+        <div class="pri"><span class="s2">2차</span></div>
+      </div>
+      <div class="row r d4">
+        <div class="num">05</div>
+        <div class="area">반복 문서 작성 부담</div>
+        <div class="desc">회의록 반복 작성 / 상담일지 작성 / 보고서 검수 시간</div>
+        <div class="next">문서 초안 자동화 / 검수자 확인 흐름 / 반복 양식 표준화</div>
+        <div class="pri"><span class="s2">2차</span></div>
+      </div>
+      <div class="row r d4">
+        <div class="num">06</div>
+        <div class="area">시스템과 데이터 정선 가능성</div>
+        <div class="desc">LMS·엑셀별 운영 / 데이터 위치 정선 가능성 / 운영 흐름 확인 필요</div>
+        <div class="next">현행 시스템 확인 / 기존 데이터 흐름 정리 / <strong>운영 구조 재정의</strong></div>
+        <div class="pri"><span class="s0">사전 확인</span></div>
+      </div>
+    </div>
+    <p class="foot r d5">주요 방향은 확인되었으며, 다음 단계에서는 실제 운영 구조를 함께 살펴보는 작업이 필요합니다</p>
+  </div>
+</section>
+
+<!-- 05 Roadmap -->
+<section class="s-roadmap" data-scene id="s05">
+  <div class="bg-video">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/roadmap-road.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/roadmap-road.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim"></div>
+  </div>
+  <svg class="svg-canvas" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M 50 600 C 350 600, 450 200, 700 250 S 1050 500, 1150 200" />
+    <path id="road-line" d="M 50 600 C 350 600, 450 200, 700 250 S 1050 500, 1150 200" />
+  </svg>
+  <div class="inner">
+    <div class="head">
+      <div class="r kicker">Execution Roadmap</div>
+      <h2 class="r d1">이번 단계에서는 <span class="accent">Phase 0</span>를<br>먼저 두는 접근이 적절합니다</h2>
+      <p class="r d2 lead">5월 22일 미팅에서 확인된 1차/2차/3차 우선순위 흐름 위에, <strong>현행 시스템·데이터 확인 단계 (Phase 0)</strong>를 선행으로 추가합니다. 처장님이 직접 짚어주신 적응 이슈와 "바운더리 먼저" 신호에 맞춘 구조입니다.</p>
+    </div>
+    <div class="timeline">
+      <div class="stop r d2">
+        <div class="tag">Phase 0</div>
+        <h3>현행 시스템·데이터 확인</h3>
+        <ul>
+          <li>실제 사용 시스템 목록 파악</li>
+          <li>상담·수강생·평가 데이터 위치</li>
+          <li>LMS/ERP/엑셀 추출 가능 여부</li>
+          <li>중복 입력 구간과 병목</li>
+        </ul>
+      </div>
+      <div class="stop r d3">
+        <div class="tag">Phase 1</div>
+        <h3>작게 시작하는 실행</h3>
+        <ul>
+          <li>상담 DB 기반 모집 자동화</li>
+          <li>문제은행·모의고사 최소 구조</li>
+          <li>관리자 승인형 운영</li>
+          <li>초기 적응 지원·매뉴얼</li>
+        </ul>
+      </div>
+      <div class="stop dim r d4">
+        <div class="tag">Phase 2</div>
+        <h3>확장 자동화</h3>
+        <ul>
+          <li>취업 매칭 보조</li>
+          <li>문서 자동화</li>
+          <li>자격증 현황 대시보드</li>
+          <li>마케팅 자동화 연계</li>
+        </ul>
+      </div>
+      <div class="stop dim r d5">
+        <div class="tag">Phase 3</div>
+        <h3>통합 운영 고도화</h3>
+        <ul>
+          <li>시간표 등 복합 제약</li>
+          <li>과정 개발 보조</li>
+          <li>통합 운영 체계 고도화</li>
+          <li>장기 데이터 자산화</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Pricing -->
+<section class="s-pricing" data-scene id="s06">
+  <div class="bg-video" style="opacity:0.45">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/pricing-value.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/pricing-value.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.6),rgba(5,7,10,0.8))"></div>
+  </div>
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="r kicker">차수별 가격대 · 예비 안</div>
+        <h2 class="r d1">시장 표준과 함께 살펴본<br>가격대 <span class="accent">예비 안</span></h2>
+      </div>
+      <p class="r d2 lead">공급가 기준 · VAT 별도 · <strong>현행 시스템·데이터 확인 전 예비 안</strong>. 시장 표준은 한국 AI 부티크 Tier-2 시장가를 참고했으며, Wisgraph 가격대는 시장 표준의 70~85% 수준에서 정리하였습니다. 최종 견적은 디스커버리 결과에 따라 함께 정밀화됩니다.</p>
+    </div>
+    <div class="price-hero">
+      <div class="col market r d2">
+        <div class="label">시장 표준 (Tier-2 AI 부티크 풀패키지)</div>
+        <div class="amount">1.7억~2.7억</div>
+        <div class="desc">한국 AI 자동화 부티크 6개월 풀패키지 시장가</div>
+      </div>
+      <div class="col wisgraph r d3">
+        <div class="label">Wisgraph 공급가</div>
+        <div class="amount">70~85<small>%</small></div>
+        <div class="desc">노코드 + AI 하이브리드 + 핵심 분담 효율 적용</div>
+      </div>
+    </div>
+    <table class="price-table r d3">
+      <thead><tr><th>차수</th><th>미니 프로젝트</th><th class="num">시장 표준</th><th class="num">Wisgraph 공급가</th></tr></thead>
+      <tbody>
+        <tr class="em"><td><span class="phase-tag">사전</span></td><td>Phase 0 진단</td><td class="num">1,000~2,000만</td><td class="num">800~1,500만</td></tr>
+        <tr class="em"><td><span class="phase-tag">1차</span></td><td>모집 자동화<span class="entry-note">Entry 단독 = 1,500~2,500만</span></td><td class="num">3,000~5,000만</td><td class="num">2,500~4,000만</td></tr>
+        <tr class="em"><td><span class="phase-tag">1차</span></td><td><strong>문제은행 (RAG)</strong></td><td class="num">4,000~7,000만</td><td class="num">3,500~5,500만</td></tr>
+        <tr><td><span class="phase-tag">2차</span></td><td>취업 매칭</td><td class="num">2,000~4,000만</td><td class="num">1,500~3,000만</td></tr>
+        <tr><td><span class="phase-tag">2차</span></td><td>문서 자동화</td><td class="num">2,500~5,000만</td><td class="num">2,000~3,500만</td></tr>
+        <tr class="dim"><td><span class="phase-tag">3차</span></td><td>시간표 자동화</td><td class="num">2,500~5,000만</td><td class="num">2,000~4,000만</td></tr>
+        <tr class="dim"><td><span class="phase-tag">3차</span></td><td>과정 개발 보조</td><td class="num">2,500~5,000만</td><td class="num">2,000~3,500만</td></tr>
+        <tr class="dim"><td><span class="phase-tag">3차</span></td><td>통합 운영</td><td class="num">5,000~8,000만</td><td class="num">초기 4,000~6,500만 + 월 400~600만</td></tr>
+      </tbody>
+    </table>
+    <p class="foot r d4">예비 안 · 각 프로젝트는 독립 결재 가능 · 정부 바우처 매칭 가능 시 학원 부담 20~25% 수준으로 정리될 수 있습니다</p>
+  </div>
+</section>
+
+<!-- 07 Market Position -->
+<section class="s-market" data-scene id="s07">
+  <div class="wrap">
+    <div class="head">
+      <div class="r kicker">Market Position</div>
+      <h2 class="r d1">시장 표준 4-Tier 안에서<br>Wisgraph는 <span class="accent">Tier-2 상단</span></h2>
+      <p class="r d2 lead">한국 AI 자동화 시장 표준과 정부 발주 단가를 함께 살펴본 참고 자료입니다. 최종 견적은 실제 운영 구조 확인 후 함께 정리됩니다.</p>
+    </div>
+    <div class="tier-ladder">
+      <div class="tier r d2">
+        <div class="rank">01</div>
+        <div class="name">대기업 SI</div>
+        <div class="cases">LG CNS · 삼성SDS · 솔트룩스</div>
+        <div class="price">5,000만~1.5억</div>
+      </div>
+      <div class="tier wisgraph r d2">
+        <div class="rank">02</div>
+        <div class="name">AI 부티크 · Wisgraph 위치</div>
+        <div class="cases">럿지 · 원더스랩 · 한국딥러닝</div>
+        <div class="price">3,000~5,000만</div>
+      </div>
+      <div class="tier r d3">
+        <div class="rank">03</div>
+        <div class="name">자동화 에이전시</div>
+        <div class="cases">n8n / Make 전문</div>
+        <div class="price">500~2,000만</div>
+      </div>
+      <div class="tier r d3">
+        <div class="rank">04</div>
+        <div class="name">Freelance + AI</div>
+        <div class="cases">1인 컨설턴트</div>
+        <div class="price">300~1,500만</div>
+      </div>
+    </div>
+    <div class="gov-split">
+      <div class="r d2">
+        <h3>정부 발주 단일과제 단가</h3>
+        <div class="gov-row"><div>삼성SDS 정부 AI 플랫폼 1차</div><div class="num">90억</div><div class="num" style="font-size:0.78rem;color:var(--light)">규모 격차</div></div>
+        <div class="gov-row"><div>NIA AI·애자일 혁신 컨소</div><div class="num">3.78억</div><div class="num">26%</div></div>
+        <div class="gov-row"><div>중기부 Multi AI Agent PoC</div><div class="num">3억</div><div class="num">33%</div></div>
+        <div class="gov-row"><div>NIPA AI 바우처 일반</div><div class="num">2억</div><div class="num">50%</div></div>
+        <div class="gov-row em"><div><strong>Wisgraph 수도 1차 견적</strong></div><div class="num">~1억</div><div class="num">—</div></div>
+        <p class="gov-note">→ 정부 단일과제의 <strong>26~33% 수준 = 소형 합리적 중간대</strong></p>
+      </div>
+      <div class="track-record r d3" style="padding:0;border:none">
+        <h3>Tier-2 부티크 카테고리 트랙레코드</h3>
+        <div class="brand-strip" style="grid-template-columns:1fr">
+          <div class="brand">
+            <div class="nm">올거나이즈 (Allganize)</div>
+            <div class="ev">미쓰비시·노무라 등 <strong>300+ 엔터프라이즈 도입</strong> · GS 인증 1등급</div>
+          </div>
+          <div class="brand">
+            <div class="nm">디피니트 (DARVIS · DAVIS)</div>
+            <div class="ev">백석문화대 도입 (재학 지속성 예측 정확도 <strong>93%</strong>) · 시드 + TIPS 선정</div>
+          </div>
+          <div class="brand">
+            <div class="nm">한국딥러닝</div>
+            <div class="ev">Vision-LLM Doc AI · NIPA 바우처 다수 활용 (수기 운송장·의약품 검출)</div>
+          </div>
+          <div class="brand">
+            <div class="nm">럿지 · 원더스랩 · 모두싸인 · 사이냅소프트 · 엘리스</div>
+            <div class="ev">2026 NIPA · AX 원스톱 공급기업 풀</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wisgraph-pos r d4">
+      <div class="ll">Wisgraph 포지션 근거</div>
+      <div class="quote"><strong>SI 대비 1/4~1/5</strong> · 자동화 에이전시 대비 <strong>통합 책임</strong> · Freelance 대비 <strong>분야별 전문가</strong></div>
+      <ul>
+        <li>6+1인 분야별 전문가팀 (Freelance ↑)</li>
+        <li>n8n + Cursor · Claude 하이브리드 (자동화 에이전시 ↑)</li>
+        <li>도메인 신뢰 자본 (동두천 GEG · 동양대 등 외부 네트워크)</li>
+        <li>프로젝트별 핵심 2~4명 분담 + retainer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 Voucher -->
+<section class="s-voucher" data-scene id="s08">
+  <div class="bg-video" style="opacity:0.5">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/voucher-support.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/voucher-support.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
+  </div>
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat-num r"><span>0.07</span><small>~0.12%</small></div>
+      <div class="stat-narrative">
+        <div class="r d1 stat-label">1차 본구축 학원 부담</div>
+        <h2 class="r d1">정부지원금 매칭 시<br>연 매출의 <span class="accent">0.07~0.12%</span></h2>
+        <p class="r d2">NIPA 클라우드 바우처 (자부담 20%) 매칭 가능 시. <strong>학원 매출 20억 가정 · 1차 본구축 (Phase 0 + 모집 + 문제은행) = 1,360~2,300만</strong>. 자격은 디스커버리 이후 확인 가능한 부분입니다.</p>
+      </div>
+    </div>
+    <div class="voucher-table">
+      <div class="r d2">
+        <h3>활용 가능 정부 바우처</h3>
+        <div class="v-row em"><div><strong>NIPA 클라우드 바우처</strong></div><div class="num">6,910만</div><div class="num"><strong>자부담 20%</strong></div></div>
+        <div class="v-row"><div>NIPA AI 바우처 일반</div><div class="num">2억</div><div class="num">25%</div></div>
+        <div class="v-row"><div>AX 원스톱 (Phase 2~3)</div><div class="num">13억/2년</div><div class="num">협상</div></div>
+        <div class="v-row"><div>소상공인 AI 활용 (강사 확장)</div><div class="num">인당 718만</div><div class="num">—</div></div>
+        <div class="deadline-card">
+          <p><strong>신청 마감</strong> · NIPA AI 바우처 2026년 3월 / 클라우드 바우처 2026년 4월. 자격 검토 후 안내드립니다.</p>
+        </div>
+      </div>
+      <div class="r d3">
+        <h3>학원 부담 시뮬레이션</h3>
+        <div class="v-row"><div>Phase 0 + Entry Pilot</div><div class="num">2,300~4,000만</div><div class="num">460~800만</div></div>
+        <div class="v-row"><div>Phase 0 + 모집 자동화</div><div class="num">3,300~5,500만</div><div class="num">660~1,100만</div></div>
+        <div class="v-row em"><div><strong>1차 본구축 (모집 + 문제은행)</strong></div><div class="num">6,800만~1.15억</div><div class="num"><strong>1,360~2,300만</strong></div></div>
+        <div class="v-row"><div>1차 + 2차 누적</div><div class="num">1.03~1.8억</div><div class="num">2,060~3,600만</div></div>
+        <div class="v-row"><div>6개월 풀패키지</div><div class="num">1.7~2.7억</div><div class="num">3,400~5,400만</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Phase 0 Detail -->
+<section class="s-detail bg-2" data-scene id="s09">
+  <div class="wrap">
+    <div class="sticky-side">
+      <div class="r kicker">Phase 0 진단</div>
+      <h2 class="r d1">현행 시스템·데이터를<br>함께 살펴보는 단계</h2>
+      <div class="pricing-tag r d2">
+        <div class="l">시장 표준 → Wisgraph</div>
+        <div class="market">1,000~2,000만</div>
+        <div class="wisgraph">800~1,500만</div>
+      </div>
+      <p class="meta r d2">캘린더 약 <strong>1~2주</strong> · 핵심 PM 1 + 아키텍트 1 분담. 결과물 = SOW + 1차 범위 후보 + 정밀 견적 입력값.</p>
+    </div>
+    <div class="detail-flow">
+      <div class="dwork section-h r d2"><div class="name">작업 단위</div></div>
+      <div class="dwork r d2"><div class="head"><span class="name">대표 · 이사 · 실무팀장 인터뷰</span><span class="span">1~2일</span></div><div class="desc">운영 흐름 · 페인 파악</div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">사용 시스템 목록 파악</span><span class="span">1~2일</span></div><div class="desc">LMS · ERP · 엑셀 추출 여부</div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">데이터 샘플 확인</span><span class="span">1~2일</span></div><div class="desc">상담 · 수강생 · 평가 위치 · 구조</div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">진단 보고서 · SOW 작성</span><span class="span">2~4일</span></div><div class="desc">1차 범위 후보 · 우선순위</div></div>
+      <div class="dwork total r d4"><div class="head"><span class="name">합계 (캘린더)</span><span class="span">약 1~2주</span></div></div>
+      <div class="size-compare r d5">
+        <h4>정부 바우처 매칭 시 학원 부담</h4>
+        <div class="size-row"><div>Phase 0 진단</div><div></div><div></div><div class="num"><strong>200~375만</strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 Recruit Detail -->
+<section class="s-detail bg-3" data-scene id="s10">
+  <div class="wrap">
+    <div class="sticky-side">
+      <div class="r kicker">모집 자동화</div>
+      <h2 class="r d1">상담 DB 기반<br>모집 후속 자동화</h2>
+      <div class="pricing-tag r d2">
+        <div class="l">시장 표준 → Wisgraph</div>
+        <div class="market">3,000~5,000만</div>
+        <div class="wisgraph">2,500~4,000만</div>
+      </div>
+      <p class="meta r d2">캘린더 약 <strong>2~3주</strong> · 핵심 구현 2 + PM 1 + QA 1 분담. <strong>Entry Pilot 단독 진입 옵션 (1,500~2,500만)</strong>도 함께 검토 가능합니다.</p>
+    </div>
+    <div class="detail-flow">
+      <div class="dwork section-h r d2"><div class="name">Entry Pilot 핵심 흐름</div></div>
+      <div class="dwork r d2"><div class="head"><span class="name">킥오프 · 상담 흐름 / DB 필드 설계</span><span class="span">운영 구조</span></div></div>
+      <div class="dwork r d2"><div class="head"><span class="name">입력 폼 / 메시지 / AI 초안 / 승인 발송</span><span class="span">1식</span></div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">7일 리마인드 · 미등록 / 기본 대시보드</span><span class="span">1식</span></div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">테스트 · 수정 / 교육 · 매뉴얼</span><span class="span">정착 지원</span></div></div>
+      <div class="dwork total r d3"><div class="head"><span class="name">Entry Pilot 1식 (캘린더)</span><span class="span">약 2~3주</span></div></div>
+      <div class="dwork section-h r d4"><div class="name">확장 (Entry + 옵션)</div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">상담 CRM 확장 (상태 · 태그 · 필터)</span><span class="span">1식</span></div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">모집 대시보드 (채널 · 전환 · 기간)</span><span class="span">1식</span></div></div>
+      <div class="dwork r d5"><div class="head"><span class="name">콘텐츠 자동화 (Claude 초안 · 승인)</span><span class="span">1식</span></div></div>
+      <div class="dwork r d5"><div class="head"><span class="name">확장분 테스트 · 수정</span><span class="span">정착 지원</span></div></div>
+      <div class="dwork total r d5"><div class="head"><span class="name">확장 포함 합 (캘린더)</span><span class="span">약 3~4주</span></div></div>
+      <div class="size-compare r d5">
+        <h4>가격 · Retainer · 바우처 매칭</h4>
+        <div class="size-row"><div>Entry Pilot 단독</div><div class="num">1,500~2,500만</div><div class="num">retainer 월 300만</div><div class="num">바우처 시 375~625만</div></div>
+        <div class="size-row"><div><strong>모집 전체</strong></div><div class="num">2,500~4,000만</div><div class="num">retainer 월 300~400만</div><div class="num">바우처 시 625~1,000만</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 Question Bank Detail -->
+<section class="s-detail bg-2" data-scene id="s11">
+  <div class="wrap">
+    <div class="sticky-side">
+      <div class="r kicker">문제은행 (RAG)</div>
+      <h2 class="r d1">UI 4종 + RAG 기반<br>AI 튜터 흐름</h2>
+      <div class="pricing-tag r d2">
+        <div class="l">시장 표준 → Wisgraph</div>
+        <div class="market">4,000~7,000만</div>
+        <div class="wisgraph">3,500~5,500만</div>
+      </div>
+      <p class="meta r d2">캘린더 약 <strong>5~7주</strong> · 핵심 구현 2~3 + 아키텍트 1 + QA 1 + 외주. UI 모듈 4종 (학생 · 강사 · 자동 채점 · 오답 누적)과 문제 데이터 정리 · 이관, RAG 기반 AI 튜터까지 포함. 모집 자동화 대비 약 <strong>1.4배</strong> 사이즈.</p>
+    </div>
+    <div class="detail-flow">
+      <div class="dwork section-h r d2"><div class="name">작업 단위</div></div>
+      <div class="dwork r d2"><div class="head"><span class="name">킥오프 · 현황 파악 / DB 스키마 설계</span><span class="span">운영 구조</span></div></div>
+      <div class="dwork r d2"><div class="head"><span class="name">문제 데이터 정리 · 이관</span><span class="span">외주 가능</span></div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">학생 모바일 풀이 화면</span><span class="span">UI 1식</span></div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">자동 채점 흐름</span><span class="span">1식</span></div></div>
+      <div class="dwork r d3"><div class="head"><span class="name">오답 누적 · 취약 영역 분석</span><span class="span">1식</span></div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">강사 화면 (진도 · 오답 · 피드백)</span><span class="span">UI 1식</span></div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">모의고사 운영</span><span class="span">1식</span></div></div>
+      <div class="dwork r d4"><div class="head"><span class="name">시스템 보안 · 권한 / ERP · LMS 연동</span><span class="span">보안 · 연동</span></div></div>
+      <div class="dwork r d5"><div class="head"><span class="name">RAG 기반 AI 튜터 흐름</span><span class="span">LLM + 벡터DB</span></div></div>
+      <div class="dwork r d5"><div class="head"><span class="name">테스트 · QA / 교육 · 매뉴얼</span><span class="span">정착 지원</span></div></div>
+      <div class="dwork total r d5"><div class="head"><span class="name">합계 (캘린더)</span><span class="span">약 5~7주</span></div></div>
+      <div class="size-compare r d5">
+        <h4>사이즈 비교 (vs 모집 자동화)</h4>
+        <div class="size-row"><div>시장 표준</div><div class="num">3,000~5,000만</div><div class="num">4,000~7,000만</div><div class="num"><strong>1.4×</strong></div></div>
+        <div class="size-row"><div>Wisgraph 공급가</div><div class="num">2,500~4,000만</div><div class="num">3,500~5,500만</div><div class="num"><strong>1.4×</strong></div></div>
+        <div class="size-row"><div>Retainer · 바우처</div><div></div><div class="num">월 400~500만</div><div class="num">바우처 875~1,375만</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 Why Meeting 2 -->
+<section class="s-why" data-scene id="s12">
+  <div class="wrap">
+    <div class="r kicker">다음 미팅이 필요한 이유</div>
+    <h2 class="r d1">왜 2차 미팅이<br><span class="accent">먼저</span> 필요한지</h2>
+    <div class="reasons">
+      <div class="reason r d2">
+        <div class="num">01</div>
+        <div>
+          <h3>범위 산정의 정확도 확보</h3>
+          <p>실제 데이터 구조와 운영 방식에 맞춰 기능 범위를 정리해야 과도하거나 불필요한 설계를 줄일 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="reason r d3">
+        <div class="num">02</div>
+        <div>
+          <h3>필요 작업의 누락 방지</h3>
+          <p>연동 · 이관 · 정제 · 권한 처리 등 실제 필요한 작업을 확인해야 현실적인 일정과 비용 기준을 잡을 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="reason r d4">
+        <div class="num">03</div>
+        <div>
+          <h3>기존 운영과의 정합성</h3>
+          <p>현재 사용 중인 LMS · ERP · 엑셀 운영 방식과 새 구조가 자연스럽게 연결되도록 사전 확인합니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="blockquote r d5">
+      <p class="q">1차 미팅으로 <span class="accent">필요 방향</span>은 충분히 확인했습니다.<br>다음으로는 <span class="accent">실제 운영 시스템과 데이터 구조</span>를 함께 확인하는 작업이 필요합니다.</p>
+      <p class="qf">따라서 다음 단계의 핵심은 견적을 먼저 확정하는 것보다, 현행 시스템 · 데이터 흐름을 함께 확인하는 2차 미팅을 통해 1차 범위와 실행 순서를 현실적으로 정리하는 데 있습니다. <strong>이렇게 진행하면 과도한 범위 · 비용 부담을 사전에 줄이고, 현장 운영에 맞는 우선순위로 1차 도입 가치를 명확하게 확보할 수 있습니다.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 Checklist -->
+<section class="s-check" data-scene id="s13">
+  <div class="bg-video" style="opacity:0.55">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/checklist-prep.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/checklist-prep.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
+  </div>
+  <div class="wrap">
+    <div class="head">
+      <div class="r kicker">What To Inspect In Meeting 2</div>
+      <h2 class="r d1">2차 미팅에서<br>함께 살펴볼 항목</h2>
+    </div>
+    <div class="check-grid">
+      <div class="check-col r d2">
+        <div class="glyph">01</div>
+        <h3>System</h3>
+        <div class="label">현재 시스템</div>
+        <ul>
+          <li>LMS · 학원 관리 시스템 종류</li>
+          <li>상담 기록 관리 방식</li>
+          <li>취업 관리 방식</li>
+          <li>문서 작성 · 승인 흐름</li>
+        </ul>
+      </div>
+      <div class="check-col r d2">
+        <div class="glyph">02</div>
+        <h3>Data</h3>
+        <div class="label">실제 데이터</div>
+        <ul>
+          <li>수강생 데이터 위치 · 항목</li>
+          <li>상담 DB 필드 구조</li>
+          <li>문제 데이터 보관 형태</li>
+          <li>엑셀 · CSV 추출 가능 여부</li>
+        </ul>
+      </div>
+      <div class="check-col r d3">
+        <div class="glyph">03</div>
+        <h3>Operation</h3>
+        <div class="label">운영 흐름</div>
+        <ul>
+          <li>누가 어떤 데이터를 입력하는지</li>
+          <li>중복 입력이 발생하는 지점</li>
+          <li>반복되는 보고 · 문서 작업</li>
+          <li>관리자 승인 · 검수 필요 구간</li>
+        </ul>
+      </div>
+      <div class="check-col r d3">
+        <div class="glyph">04</div>
+        <h3>Constraint</h3>
+        <div class="label">제약 조건</div>
+        <ul>
+          <li>외부 시스템 접근 제약</li>
+          <li>개인정보 · 권한 이슈</li>
+          <li>기존 솔루션 유지 필요성</li>
+          <li>데이터 정리 상태 · 품질</li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot r d4">설명 중심을 넘어 실제 화면과 데이터를 함께 확인하는 단계입니다 · <strong>사전 자료 준비는 별도로 필요하지 않으며, 미팅 자리에서 함께 확인합니다</strong></p>
+  </div>
+</section>
+
+<!-- 14 Roles -->
+<section class="s-roles" data-scene id="s14">
+  <div class="bg-video">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/roles-meeting.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/roles-meeting.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim"></div>
+  </div>
+  <div class="inner">
+    <div class="head">
+      <div class="r kicker">Who Should Be In The Room</div>
+      <h2 class="r d1">2차 미팅에는 실제 운영 구조와 데이터를<br>함께 확인할 수 있는 담당자의 참여가 필요합니다</h2>
+    </div>
+    <div class="roles-split">
+      <div class="roles-side us r d2">
+        <div class="col-head">Wisgraph</div>
+        <ul>
+          <li><strong>강동민</strong> · 아키텍처 · 진단 총괄</li>
+          <li><strong>문찬원</strong> · 시스템 · 자동화 · 온톨로지</li>
+          <li><strong>권용석</strong> · 고객 문제 · 사업 방향</li>
+          <li><strong>김혜련</strong> · 자동화 구축 (Make / n8n / Dify)</li>
+        </ul>
+        <div class="high">데이터 · 아키텍처 관점에서 현행 구조를 함께 살펴볼 담당자 중심으로 참여합니다</div>
+      </div>
+      <div class="roles-side r d3">
+        <div class="col-head">수도직업전문학교</div>
+        <ul>
+          <li>실제 시스템을 사용하시는 행정 · 교무 실무 담당자</li>
+          <li>상담 · 모집 DB를 운영하시는 담당자</li>
+          <li>문제 데이터 · 평가 운영을 파악하고 계신 담당자</li>
+        </ul>
+        <div class="high">가능하시면 범위 판단이 가능한 의사결정권자</div>
+      </div>
+    </div>
+  </div>
+  <p class="foot r d4">이번 미팅은 방향 설명보다 실제 운영 구조를 함께 살펴보는 성격이며 · 결재권자 참석 시 1차 범위 · 예산 방향까지 같은 자리에서 정리될 수 있습니다</p>
+</section>
+
+<!-- 15 Close -->
+<section class="s-close" data-scene id="s15">
+  <div class="bg-video">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/close-sunrise.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/close-sunrise.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim"></div>
+  </div>
+  <div class="inner">
+    <div class="grid">
+      <div>
+        <div class="r kicker">다음 단계 · Closing</div>
+        <h2 class="r d1">다음 미팅은<br><span class="accent">실제 운영 구조</span>를 함께 살펴보고<br>1차 범위를 함께 정리하는 자리입니다</h2>
+        <p class="r d2 lead">5월 22일 미팅으로 방향은 충분히 확인되었습니다. 실제 운영 시스템과 데이터 구조를 함께 살펴봄으로써, <strong>양측이 함께 합의 가능한 1차 범위와 실행 순서를 정리할 수 있습니다.</strong></p>
+      </div>
+      <div class="cta-list r d2">
+        <div class="l">다음 미팅을 통해 함께 정리</div>
+        <ol>
+          <li>실제 운영 구조 · 데이터 현황 확인</li>
+          <li>1차 실행 범위의 현실적 경계 설정</li>
+          <li>작게 시작할 수 있는 우선 구현 대상 확정</li>
+          <li>그 결과를 바탕으로 한 1차 재안 및 견적 기준 정리</li>
+        </ol>
+        <div class="cta-action">
+          <strong>다음 액션</strong> · 2차 미팅 가능 일정 후보를 별도로 전달드리며, 미팅 결과를 받아 1주 이내 1차 재안으로 회신드립니다.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="epilogue">
+    <p class="e-label" id="ep-label">Wisgraph · Beyond This Briefing</p>
+    <p class="e-text" id="ep-text">함께 살펴보고, <em>함께 정리합니다.</em></p>
+  </div>
+</section>
+
+<footer class="bottom-foot">Wisgraph · 2026.05.29 · Execution Roadmap for 수도직업전문학교</footer>
+
+<script>
+(function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ========== Custom Cursor ========== */
+  if (hasFinePointer && !prefersReduced) {
+    const cursor = document.getElementById('cursor');
+    let mx=0,my=0,cx=0,cy=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function loop(){
+      cx += (mx-cx)*0.18;
+      cy += (my-cy)*0.18;
+      if (cursor) cursor.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button,.row,.tier,.brand,.glass,.dwork,.check-col,.giant-card,h1,h2,h3,.amount,.stat-num').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hover-state'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hover-state'));
+    });
+  } else {
+    document.body.classList.remove('has-cursor');
+  }
+
+  /* ========== Scroll progress ========== */
+  const sp = document.getElementById('scrollProgress');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    if (sp) sp.style.width = (h.scrollTop / Math.max(1,total) * 100) + '%';
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ========== Reveal on scroll ========== */
+  const scenes = document.querySelectorAll('[data-scene]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+  scenes.forEach(s => io.observe(s));
+
+  /* ========== Video autoplay ========== */
+  const force = (v) => {
+    if (!v) return;
+    try {
+      v.muted = true; v.defaultMuted = true;
+      v.setAttribute('muted',''); v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(()=>{});
+    } catch(e){}
+  };
+  const vids = document.querySelectorAll('video[data-autoplay-video]');
+  vids.forEach(v => {
+    v.addEventListener('loadedmetadata', ()=>force(v));
+    v.addEventListener('canplay', ()=>force(v));
+    force(v);
+  });
+  const vio = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target.querySelector('video[data-autoplay-video]');
+      if (!v) return;
+      if (e.isIntersecting) force(v);
+      // Don't pause on leave: pause-frame freezes during scrub fade-out
+    });
+  }, {threshold:0});
+  scenes.forEach(s => vio.observe(s));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) vids.forEach(force);
+  });
+  window.addEventListener('pointerdown', () => vids.forEach(force), {once:true});
+
+  /* ========== Loader + Lenis + GSAP ========== */
+  if (prefersReduced) {
+    const ld = document.getElementById('loader');
+    if (ld) ld.style.display = 'none';
+    return;
+  }
+
+  // Lenis — vanilla defaults (proven feel)
+  let lenis;
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: 0.07 });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    if (window.gsap && window.ScrollTrigger) {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+  }
+
+  // Loader animation (CSS keyframes via GSAP if available, else simple fade)
+  if (window.gsap) {
+    gsap.set('#loader .l-text span', { y:'110%' });
+    gsap.to('#loader .l-text span', { y:0, duration:1.0, ease:'power4.out', delay:0.15 });
+    gsap.to('#loader .l-sub', { opacity:0.9, duration:0.6, ease:'power2.out', delay:0.7 });
+    gsap.to('#loader', { yPercent:-100, duration:1.2, ease:'expo.inOut', delay:1.6, onComplete: initScrollAnim });
+  } else {
+    const ld = document.getElementById('loader');
+    if (ld) setTimeout(()=>{ ld.style.transition='opacity 0.8s'; ld.style.opacity='0'; setTimeout(()=>ld.remove(),900); }, 800);
+    initScrollAnim();
+  }
+
+  function initScrollAnim(){
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ===== Hero subtle parallax on bg video =====
+    gsap.to('.s-hero .bg-video', {
+      yPercent: 12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#s01',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      }
+    });
+
+    // ===== bg-video scrub fade in/out per section =====
+    // Use fromTo + immediateRender:false on fade-out to prevent
+    // GSAP from caching the wrong initial value when both tweens
+    // target the same property.
+    document.querySelectorAll('section[data-scene]').forEach(section => {
+      const bg = section.querySelector('.bg-video');
+      if (!bg) return;
+      const inlineOp = bg.style.opacity;
+      const target = inlineOp ? parseFloat(inlineOp) : 1;
+      const isHero = section.id === 's01';
+      if (!isHero) {
+        gsap.fromTo(bg,
+          { opacity: 0 },
+          {
+            opacity: target,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'top 50%',
+              scrub: 1.5,
+            }
+          }
+        );
+      }
+      gsap.fromTo(bg,
+        { opacity: target },
+        {
+          opacity: 0,
+          ease: 'none',
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: section,
+            start: 'bottom 50%',
+            end: 'bottom top',
+            scrub: 1.5,
+          }
+        }
+      );
+    });
+
+    // ===== Roadmap SVG path draw =====
+    const path = document.getElementById('road-line');
+    if (path) {
+      const len = path.getTotalLength();
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#s05',
+          start: 'top 70%',
+          end: 'bottom 30%',
+          scrub: 1,
+        }
+      });
+    }
+
+    // NOTE: stop / row / tier / stat-num / price-col / reason / blockquote reveals
+    // are handled by the IntersectionObserver + .r/.in CSS system.
+    // Adding gsap.from here would inline opacity:0 and fight that system,
+    // causing intermittent invisible content when ScrollTrigger thresholds
+    // don't match. Keep only non-.r animations below.
+
+    // ===== Close epilogue fade =====
+    gsap.to(['#ep-label','#ep-text'], {
+      opacity: 1,
+      y: -10,
+      duration: 1.6,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#s15',
+        start: 'top 30%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
