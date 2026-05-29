@@ -224,8 +224,8 @@ section{position:relative}
 /* =====================
    06 · Pricing — big number hero + table reveal
 ===================== */
-.s-pricing{padding:12rem 0;background:var(--bg-2);position:relative;overflow:hidden}
-.s-pricing .wrap{max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-pricing{padding:12rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-pricing .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;position:relative;z-index:2}
 .s-pricing .head{display:grid;grid-template-columns:1fr 1.2fr;gap:6vw;margin-bottom:5rem;align-items:end}
 .s-pricing .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
 .s-pricing h2{font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;line-height:1.1;margin:0;color:#fff;letter-spacing:-0.025em}
@@ -313,7 +313,8 @@ section{position:relative}
 /* =====================
    08 · Voucher — huge stat
 ===================== */
-.s-voucher{padding:14rem 0;background:var(--bg-1);position:relative;overflow:hidden}
+.s-voucher{padding:14rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-voucher .wrap,.s-voucher .head,.s-voucher .stat-grid,.s-voucher .voucher-table{position:relative;z-index:2}
 .s-voucher::before{
   content:"";position:absolute;inset:0;
   background:radial-gradient(800px 600px at 25% 30%,rgba(59,130,246,0.12),transparent 60%);
@@ -403,8 +404,8 @@ section{position:relative}
 /* =====================
    13 · Checklist (compact icon grid)
 ===================== */
-.s-check{padding:10rem 0;background:var(--bg-0)}
-.s-check .wrap{max-width:1400px;margin:0 auto;padding:0 5vw}
+.s-check{padding:10rem 0;background:var(--bg-0);position:relative;overflow:hidden}
+.s-check .wrap{max-width:1400px;margin:0 auto;padding:0 5vw;position:relative;z-index:2}
 .s-check .head{margin-bottom:5rem;display:grid;grid-template-columns:1fr 2fr;gap:6vw}
 .s-check .kicker{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent)}
 .s-check h2{font-size:clamp(1.8rem,3vw,3rem);font-weight:900;line-height:1.15;margin:0;color:#fff;letter-spacing:-0.025em}
@@ -685,7 +686,7 @@ section{position:relative}
 <!-- 01 Hero -->
 <section class="s-hero" data-scene id="s01">
   <div class="bg-video">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/cover-network.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/cover-network.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/cover-network.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim"></div>
@@ -710,7 +711,7 @@ section{position:relative}
 <!-- 02 Promise -->
 <section class="s-promise" data-scene id="s02">
   <div class="bg-video" style="opacity:0.7">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/needs-writing.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/needs-writing.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/needs-writing.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.45),rgba(5,7,10,0.65))"></div>
@@ -792,7 +793,7 @@ section{position:relative}
 <!-- 04 Tasks -->
 <section class="s-tasks" data-scene id="s04">
   <div class="bg-video" style="opacity:0.6">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/problems-paper.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/problems-paper.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/problems-paper.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
@@ -856,7 +857,7 @@ section{position:relative}
 <!-- 05 Roadmap -->
 <section class="s-roadmap" data-scene id="s05">
   <div class="bg-video">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/roadmap-road.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/roadmap-road.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/roadmap-road.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim"></div>
@@ -918,6 +919,12 @@ section{position:relative}
 
 <!-- 06 Pricing -->
 <section class="s-pricing" data-scene id="s06">
+  <div class="bg-video" style="opacity:0.45">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/pricing-value.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/pricing-value.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.6),rgba(5,7,10,0.8))"></div>
+  </div>
   <div class="wrap">
     <div class="head">
       <div>
@@ -1036,6 +1043,12 @@ section{position:relative}
 
 <!-- 08 Voucher -->
 <section class="s-voucher" data-scene id="s08">
+  <div class="bg-video" style="opacity:0.5">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/voucher-support.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/voucher-support.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
+  </div>
   <div class="wrap">
     <div class="stat-grid">
       <div class="stat-num r"><span>0.07</span><small>~0.12%</small></div>
@@ -1204,6 +1217,12 @@ section{position:relative}
 
 <!-- 13 Checklist -->
 <section class="s-check" data-scene id="s13">
+  <div class="bg-video" style="opacity:0.55">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/checklist-prep.jpg" aria-hidden="true">
+      <source src="/slides/sudo-roadmap-0529/assets/videos/checklist-prep.mp4" type="video/mp4">
+    </video>
+    <div class="bg-scrim" style="background:linear-gradient(180deg,rgba(5,7,10,0.55),rgba(5,7,10,0.75))"></div>
+  </div>
   <div class="wrap">
     <div class="head">
       <div class="r kicker">What To Inspect In Meeting 2</div>
@@ -1262,7 +1281,7 @@ section{position:relative}
 <!-- 14 Roles -->
 <section class="s-roles" data-scene id="s14">
   <div class="bg-video">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/roles-meeting.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/roles-meeting.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/roles-meeting.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim"></div>
@@ -1300,7 +1319,7 @@ section{position:relative}
 <!-- 15 Close -->
 <section class="s-close" data-scene id="s15">
   <div class="bg-video">
-    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="./assets/videos/close-sunrise.jpg" aria-hidden="true">
+    <video data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/slides/sudo-roadmap-0529/assets/videos/close-sunrise.jpg" aria-hidden="true">
       <source src="/slides/sudo-roadmap-0529/assets/videos/close-sunrise.mp4" type="video/mp4">
     </video>
     <div class="bg-scrim"></div>
