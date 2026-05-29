@@ -583,13 +583,16 @@ section{position:relative}
 .s-roadmap{overflow:visible}
 .svg-canvas{
   position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;
+  opacity:0.55;
+  mask-image:linear-gradient(180deg,#000 0%,#000 30%,transparent 75%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 30%,transparent 75%);
 }
 .svg-canvas path{
-  fill:none;stroke:rgba(255,255,255,0.18);stroke-width:2;
+  fill:none;stroke:rgba(255,255,255,0.15);stroke-width:1.5;
 }
 #road-line{
-  stroke:var(--accent);stroke-width:3;
-  filter:drop-shadow(0 0 12px rgba(59,130,246,0.6));
+  stroke:var(--accent);stroke-width:2;
+  filter:drop-shadow(0 0 8px rgba(59,130,246,0.35));
 }
 .s-roadmap .inner{position:relative;z-index:2}
 .s-roadmap .reveal-fill{
@@ -658,6 +661,7 @@ section{position:relative}
   .s-hero,.s-roadmap,.s-roles,.s-close{display:block;height:auto;min-height:auto;overflow:visible}
   .s-hero{min-height:100svh;padding:0;display:flex;flex-direction:column;justify-content:flex-end}
   .s-hero .inner{padding:7rem 1.5rem 4rem !important}
+  .svg-canvas{display:none}
   .s-roles,.s-close{padding:6rem 0 4rem}
   .s-roles .head{margin-bottom:2.5rem}
   .s-roles .head h2 br{display:none}
