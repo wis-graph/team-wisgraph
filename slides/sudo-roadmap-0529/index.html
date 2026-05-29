@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="referrer" content="no-referrer" />
-  <title>수도직업전문학교 실행 로드맵 — Wisgraph 시네마틱 브리핑</title>
+  <title>수도직업전문학교 실행 로드맵 — Wisgraph 시네마틱 브리핑 v7</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Paperlogy:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -97,7 +97,8 @@
     }
 
     .cinematic .section-label { color: var(--accent); }
-    .cinematic .slide-tag { color: rgba(255,255,255,0.55); }
+    .cinematic .slide-tag,
+    .cinematic .slide-num { color: rgba(255,255,255,0.55); }
     .cinematic .subheadline,
     .cinematic .body-text { color: rgba(255,255,255,0.82); }
     .cinematic .line { background: var(--accent); }
@@ -162,13 +163,28 @@
 
     .slide-tag {
       position: absolute;
-      top: 4rem;
-      right: 5rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      top: 1.6rem;
+      right: 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
       color: var(--light);
-      font-weight: 500;
-      z-index: 5;
+      font-weight: 600;
+      z-index: 20;
+      padding: 0.25rem 0.55rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 3px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .cinematic .slide-tag {
+      color: rgba(255,255,255,0.9);
+      background: rgba(5, 9, 22, 0.55);
+      top: -2.4rem;
+      right: -3rem;
+    }
+
+    .slide-num {
+      display: none;
     }
 
     .headline-xxl { font-size: 5rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; margin: 0; }
@@ -501,6 +517,221 @@
       line-height: 1.5;
     }
 
+    /* ====== Pricing Ladder Table (06) ====== */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-top: 1.25rem;
+      table-layout: auto;
+    }
+    .pricing-table th {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.4rem 0.8rem;
+      text-align: left;
+      border-bottom: 2px solid var(--ink);
+    }
+    .pricing-table th.price {
+      text-align: right;
+    }
+    .pricing-table td {
+      padding: 0.42rem 0.8rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+      color: var(--ink-2);
+      line-height: 1.3;
+    }
+    .pricing-table td.price {
+      text-align: right;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    .pricing-table .phase-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+    }
+    .pricing-table .entry-note {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+    .pricing-table tr.emphasis {
+      background: var(--accent-soft);
+    }
+    .pricing-table tr.emphasis td {
+      font-weight: 600;
+      color: var(--ink);
+      border-left: 3px solid var(--accent);
+    }
+    .pricing-table tr.emphasis td:not(:first-child) {
+      border-left: none;
+    }
+    .pricing-table tr.emphasis .phase-tag {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .pricing-table tr.emphasis td.price {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .pricing-table tr.muted td {
+      color: var(--light);
+      background: var(--bg-gray);
+    }
+    .pricing-table tr.muted .phase-tag {
+      color: var(--light);
+    }
+    .pricing-table tr.muted td.price {
+      color: var(--light);
+    }
+
+    /* ====== Breakdown Tables (07·08·09·10) ====== */
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      flex: 1;
+      margin-top: 1rem;
+    }
+    .breakdown-grid.single { grid-template-columns: 1fr; }
+
+    .breakdown-block h3 {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.5rem;
+    }
+
+    .breakdown-block .note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      line-height: 1.45;
+    }
+
+    .breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      table-layout: auto;
+    }
+    .breakdown-table th {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.35rem 0.55rem;
+      text-align: left;
+      border-bottom: 1.5px solid var(--ink);
+      white-space: nowrap;
+    }
+    .breakdown-table th.num,
+    .breakdown-table td.num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .breakdown-table td {
+      padding: 0.35rem 0.55rem;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-2);
+      line-height: 1.35;
+    }
+    .breakdown-table tr.total td {
+      font-weight: 800;
+      background: var(--bg-gray);
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .breakdown-table tr.final td {
+      font-weight: 800;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .breakdown-table tr.section-head td {
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--bg-gray);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .price-headline {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0;
+    }
+    .price-headline .amount {
+      color: var(--accent);
+    }
+    .price-headline .label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0;
+      margin-right: 0.6rem;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1.5rem;
+      flex: 1;
+      margin-top: 1rem;
+    }
+
+    .method-step {
+      border-left: 3px solid var(--accent);
+      padding: 0.5rem 0.9rem 0.6rem;
+      background: var(--bg-gray);
+      margin-bottom: 0.6rem;
+    }
+    .method-step .step-no {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .method-step .step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0.1rem 0;
+    }
+    .method-step .step-body {
+      font-size: 0.78rem;
+      line-height: 1.4;
+      color: var(--muted);
+      margin: 0;
+    }
+    .method-step .step-formula {
+      font-size: 0.72rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+
     /* Animation */
     .a-rise {
       animation: rise 620ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -573,7 +804,7 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">01 / 09</div>
+          <div class="slide-tag a-rise">01 / 15</div>
           <div class="hero">
             <div class="section-label a-rise">Wisgraph · Execution Roadmap</div>
             <h1 class="headline-xxl a-rise d1" style="margin-top: 1.5rem;">
@@ -582,7 +813,7 @@
             </h1>
             <div class="line a-rise d2"></div>
             <p class="subheadline a-rise d2">
-              5월 22일 첫 미팅으로 니즈와 방향은 충분히 확인되었습니다.<br>
+              5월 22일 첫 미팅으로 방향은 충분히 확인되었습니다.<br>
               다음 단계는 <span style="color:#fff;font-weight:600;">실제 운영 시스템과 데이터 구조</span>를 함께 확인하고,<br>
               보다 현실적인 1차 범위와 실행 순서를 정리하는 2차 미팅입니다.
             </p>
@@ -593,6 +824,7 @@
               <span class="meta-pill">현행 시스템 확인 선행</span>
             </div>
           </div>
+          <div class="slide-num">COVER</div>
         </div>
       </div>
     </section>
@@ -606,10 +838,10 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">02 / 09</div>
+          <div class="slide-tag a-rise">02 / 15</div>
           <div class="section-label a-rise">What We Already Confirmed</div>
           <div class="head-row" style="margin-top: 1rem;">
-            <h2 class="headline-lg a-rise d1" style="color:#fff;">지난 미팅 이후 정리된 핵심 니즈</h2>
+            <h2 class="headline-lg a-rise d1" style="color:#fff;">지난 미팅 이후 정리된 방향</h2>
             <div class="line a-rise d2"></div>
           </div>
           <div class="quote-block">
@@ -620,7 +852,6 @@
                 상담·학습·운영 품질이<br>
                 흔들리지 않는 학원
               </div>
-              <div class="quote-cite a-rise d2" style="color: rgba(255,255,255,0.6);">— 5월 22일 미팅 핵심 니즈 요약</div>
             </div>
             <div class="grid grid-2">
               <div class="glass-panel a-rise d2">
@@ -645,6 +876,8 @@
               </div>
             </div>
           </div>
+          <div class="footer-note">핵심은 "AI를 잘 쓰는 개인"이 아니라 "AI가 정착된 조직"</div>
+          <div class="slide-num">NEED SUMMARY</div>
         </div>
       </div>
     </section>
@@ -652,7 +885,7 @@
     <!-- 03 Priorities · STATIC -->
     <section data-screen-label="03 Priorities">
       <div class="slide">
-        <div class="slide-tag a-rise">03 / 09</div>
+        <div class="slide-tag a-rise">03 / 15</div>
         <div class="section-label a-rise">Priority Stack</div>
         <div class="head-row" style="margin-top: 1.2rem;">
           <h2 class="headline-lg a-rise d1">우선순위는 견적 항목보다<br>실행 순서 기준으로 다시 정리합니다</h2>
@@ -693,6 +926,8 @@
             </ul>
           </div>
         </div>
+        <div class="footer-note">핵심은 1차 범위를 작고 선명하게 두는 것</div>
+        <div class="slide-num">PRIORITY VIEW</div>
       </div>
     </section>
 
@@ -705,50 +940,66 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">04 / 09</div>
-          <div class="section-label a-rise">Problem · Solution Fit</div>
-          <div class="head-row" style="margin-top: 1rem;">
-            <h2 class="headline-lg a-rise d1" style="color:#fff;">주요 과제와 해결 방향은 확인되었습니다<br>다음 단계는 실제 운영 구조와 연결하는 작업입니다</h2>
+          <div class="slide-tag a-rise">04 / 15</div>
+          <div class="section-label a-rise">현재 운영 과제 · 함께 살펴볼 방향</div>
+          <div class="head-row" style="margin-top: 0.8rem;">
+            <h2 class="headline-lg a-rise d1" style="color:#fff; font-size: 2.2rem;">주요 운영 과제와 함께 살펴볼 방향</h2>
             <div class="line a-rise d2"></div>
+            <p class="body-text a-rise d2" style="color: rgba(255,255,255,0.82); font-size: 0.92rem; max-width: 70rem; margin-top: 0.2rem;">
+              5월 22일 미팅에서 확인된 6개 운영 과제와 함께 검토 가능한 방향을 정리한 예비안입니다. 실제 운영 구조와 데이터 확인 결과에 따라 세부 범위와 순서는 함께 조정될 수 있습니다.
+            </p>
           </div>
-          <div class="grid grid-3" style="flex:1; align-items: stretch;">
-            <div class="glass-panel a-rise d2">
-              <div class="card-kicker">Problem</div>
-              <h3 class="card-title">현재 문제</h3>
-              <ul>
-                <li>전화 문의 후 재접촉 구조 부재</li>
-                <li>개인 노하우·상담 감각 의존</li>
-                <li>학생별 오답·취약영역 관리 미흡</li>
-                <li>취업 연계·문서 작성 수작업 부담</li>
-                <li>LMS·엑셀·외부 시스템 분산</li>
-              </ul>
-              <div style="margin-top: 0.5rem; padding-top: 0.6rem; border-top: 1px dashed rgba(255,255,255,0.2); font-size: 0.82rem; color: rgba(255,255,255,0.78); line-height: 1.45;">
-                담당자 1명이 교체될 때마다 상담 흐름·후속 관리가 끊기고, 등록 전환과 운영 노하우가 함께 흩어집니다.
-              </div>
-            </div>
-            <div class="glass-panel a-rise d3" style="border-left-color: var(--accent); background: rgba(59,130,246,0.18);">
-              <div class="card-kicker">Proposed Direction</div>
-              <h3 class="card-title">제안 솔루션 방향</h3>
-              <ul>
-                <li>상담 DB · 자료 발송 · 리마인드</li>
-                <li>템플릿·시나리오 조직 자산화</li>
-                <li>문제은행 · 자동 채점 · 오답 누적</li>
-                <li>취업 매칭 보조 · 문서 초안</li>
-                <li>현행 시스템 확인 후 통합 데이터 구조 설계</li>
-              </ul>
-            </div>
-            <div class="glass-panel a-rise d4">
-              <div class="card-kicker">Priority</div>
-              <h3 class="card-title">실행 우선순위</h3>
-              <ul>
-                <li>1차 · 모집 자동화</li>
-                <li>1차 · 문제은행</li>
-                <li>2차 · 취업 매칭</li>
-                <li>2차 · 문서 자동화</li>
-                <li>선행 · 시스템·데이터 확인</li>
-              </ul>
-            </div>
+          <div class="glass-panel a-rise d3" style="flex:1; padding: 0.9rem 1.2rem; overflow: hidden;">
+            <table style="width:100%; border-collapse: collapse; font-size: 0.72rem; color: rgba(255,255,255,0.92);">
+              <thead>
+                <tr style="border-bottom: 1.5px solid rgba(255,255,255,0.4);">
+                  <th style="text-align:left; padding: 0.4rem 0.5rem; font-size:0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 700;">현재 운영 과제</th>
+                  <th style="text-align:left; padding: 0.4rem 0.5rem; font-size:0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 700;">디스커버리에서 확인된 내용</th>
+                  <th style="text-align:left; padding: 0.4rem 0.5rem; font-size:0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 700;">함께 검토 가능한 방향</th>
+                  <th style="text-align:center; padding: 0.4rem 0.5rem; font-size:0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 700;">우선</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.12);">
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">상담 후속 관리 부담</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">문의 이력 관리 / 재안내 흐름 / 재접촉 누락</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">상담 이력 정리 / 발송 자료 정의 / 리마인드 자동화</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: var(--accent); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.68rem; font-weight: 700;">1차</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.12);">
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">개별 담당자 영향 의존</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">상담·평가 의존 / 노하우 개인화 / 인수인계 리스크</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">표준 절차 정리 / 운영 기준 정리 / 흐름 자동화</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: var(--accent); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.68rem; font-weight: 700;">1차</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.12);">
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">학생별 학습 관리 부재</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">오답·점수 기록 / 학습 효과 / 강의 데이터 정리</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">문제은행 운영 / 자동 채점 / 강사 확인 흐름</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: var(--accent); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.68rem; font-weight: 700;">1차</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.12);">
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">취업 연계 과정의 수기적 비용</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">학생 조건별 분류 / 취업 안내·수기적 / 연락 기준 정의</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">학생 조건표 정리 / 취업 안내 보조 구조 / 후속 안내 체계화</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: rgba(255,255,255,0.2); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.68rem; font-weight: 700;">2차</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.12);">
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">반복 문서 작성 부담</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">회의록 반복 작성 / 상담일지 작성 / 보고서 검수 시간</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">문서 초안 자동화 / 검수자 확인 흐름 / 반복 양식 표준화</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: rgba(255,255,255,0.2); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.68rem; font-weight: 700;">2차</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; font-weight: 600;">시스템과 데이터 정선 가능성</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">LMS·엑셀별 운영 / 데이터 위치 정선 가능성 / 운영 흐름 확인 필요</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; color: rgba(255,255,255,0.78);">현행 시스템 확인 / 기존 데이터 흐름 정리 / 운영 구조 재정의</td>
+                  <td style="padding: 0.5rem 0.5rem; vertical-align: top; text-align: center;"><span style="background: rgba(32,201,151,0.6); color:#fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size:0.65rem; font-weight: 700;">사전 확인</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <div class="footer-note">주요 방향은 확인되었으며, 다음 단계에서는 실제 운영 구조를 함께 살펴보는 작업이 필요합니다</div>
         </div>
       </div>
     </section>
@@ -762,7 +1013,7 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">05 / 09</div>
+          <div class="slide-tag a-rise">05 / 15</div>
           <div class="section-label a-rise">Execution Roadmap</div>
           <div class="head-row" style="margin-top: 1rem;">
             <h2 class="headline-lg a-rise d1" style="color:#fff;">이번 단계에서는 <span class="accent">Phase 0</span>를 먼저 두는 접근이 적절합니다</h2>
@@ -818,17 +1069,661 @@
               <div class="phase-foot">장기 검토 영역. 1차 범위에서 제외</div>
             </div>
           </div>
+          <div class="footer-note">Phase 0를 포함하는 순간, 1차 범위와 견적의 현실성이 올라갑니다</div>
+          <div class="slide-num">ROADMAP</div>
         </div>
       </div>
     </section>
 
-    <!-- 06 Why Meeting 2 · STATIC -->
-    <section data-screen-label="06 Why Meeting 2">
+    <!-- 06 Pricing Ladder · STATIC (Layer 1·2 병행) -->
+    <section data-screen-label="06 Pricing Ladder">
       <div class="slide">
-        <div class="slide-tag a-rise">06 / 09</div>
-        <div class="section-label a-rise">Why Meeting 2 Matters</div>
+        <div class="slide-tag a-rise">06 / 15</div>
+        <div class="section-label a-rise">차수별 가격대 (예비 안)</div>
+        <div class="head-row" style="margin-top: 0.6rem; margin-bottom: 0.6rem;">
+          <h2 class="headline-lg a-rise d1" style="font-size: 2.2rem;">차수별 가격대 예비 안</h2>
+          <div class="line a-rise d2" style="margin: 0.6rem 0;"></div>
+          <p class="body-text a-rise d2" style="max-width: 76rem; margin-top: 0; font-size: 0.85rem; line-height: 1.45;">
+            공급가 기준 · VAT 별도 · <strong>현행 시스템·데이터 확인 전 예비 안</strong>. 시장 표준 = 한국 AI 부티크 Tier-2 참고. 최종 견적은 디스커버리 결과에 따라 함께 정밀화됩니다.
+          </p>
+        </div>
+        <table class="pricing-table a-rise d3" style="font-size: 0.85rem; margin-top: 0.4rem;">
+          <thead>
+            <tr>
+              <th>차수</th>
+              <th>미니 프로젝트</th>
+              <th class="price">시장 표준</th>
+              <th class="price">Wisgraph 공급가</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="emphasis">
+              <td><span class="phase-tag">사전</span></td>
+              <td>Phase 0 진단</td>
+              <td class="price" style="opacity:0.6">1,000~2,000만</td>
+              <td class="price">800~1,500만</td>
+            </tr>
+            <tr class="emphasis">
+              <td><span class="phase-tag">1차</span></td>
+              <td>모집 자동화<span class="entry-note">Entry 단독 = 1,500~2,500만</span></td>
+              <td class="price" style="opacity:0.6">3,000~5,000만</td>
+              <td class="price">2,500~4,000만</td>
+            </tr>
+            <tr class="emphasis">
+              <td><span class="phase-tag">1차</span></td>
+              <td><strong>문제은행 (RAG)</strong></td>
+              <td class="price" style="opacity:0.6">4,000~7,000만</td>
+              <td class="price">3,500~5,500만</td>
+            </tr>
+            <tr>
+              <td><span class="phase-tag">2차</span></td>
+              <td>취업 매칭</td>
+              <td class="price" style="opacity:0.6">2,000~4,000만</td>
+              <td class="price">1,500~3,000만</td>
+            </tr>
+            <tr>
+              <td><span class="phase-tag">2차</span></td>
+              <td>문서 자동화</td>
+              <td class="price" style="opacity:0.6">2,500~5,000만</td>
+              <td class="price">2,000~3,500만</td>
+            </tr>
+            <tr class="muted">
+              <td><span class="phase-tag">3차</span></td>
+              <td>시간표 자동화</td>
+              <td class="price" style="opacity:0.6">2,500~5,000만</td>
+              <td class="price">2,000~4,000만</td>
+            </tr>
+            <tr class="muted">
+              <td><span class="phase-tag">3차</span></td>
+              <td>과정 개발 보조</td>
+              <td class="price" style="opacity:0.6">2,500~5,000만</td>
+              <td class="price">2,000~3,500만</td>
+            </tr>
+            <tr class="muted">
+              <td><span class="phase-tag">3차</span></td>
+              <td>통합 운영</td>
+              <td class="price" style="opacity:0.6">5,000~8,000만</td>
+              <td class="price">초기 4,000~6,500만<br><span style="font-size:0.8em;font-weight:400">+ 월 400~600만</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="footer-note" style="font-size: 0.72rem;">예비 안 · 각 프로젝트 독립 결재 가능 · 정부 바우처 매칭 시 학원 부담 20~25% 수준</div>
+        <div class="slide-num">PRICING</div>
+      </div>
+    </section>
+
+    <!-- 07 Market Position · STATIC (Anchoring + Authority + Social Proof) -->
+    <section data-screen-label="07 Market Position">
+      <div class="slide">
+        <div class="slide-tag a-rise">07 / 15</div>
+        <div class="section-label a-rise">시장 표준 · 가격대 참고</div>
+        <div class="head-row" style="margin-top: 1rem;">
+          <h2 class="headline-lg a-rise d1">시장 표준과 함께 살펴본 <span class="accent">가격대 위치</span></h2>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 70rem; margin-top: 0.2rem; font-size: 0.95rem;">
+            한국 AI 자동화 시장 표준과 정부 발주 단가를 함께 살펴본 참고 자료입니다. 최종 견적은 실제 운영 구조 확인 후 함께 정리됩니다.
+          </p>
+        </div>
+        <div class="method-grid a-rise d3" style="grid-template-columns: 1fr 1fr;">
+          <div>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem;">민간 시장 Tier (모집 자동화 급)</h3>
+            <table class="breakdown-table" style="font-size: 0.74rem;">
+              <thead>
+                <tr>
+                  <th>Tier</th>
+                  <th>사례</th>
+                  <th class="num">견적</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1 대기업 SI</strong></td>
+                  <td>LG CNS · 삼성SDS · 솔트룩스</td>
+                  <td class="num">5,000만~1.5억</td>
+                </tr>
+                <tr class="final">
+                  <td><strong>2 AI 부티크</strong></td>
+                  <td>럿지 · 원더스랩 · 한국딥러닝</td>
+                  <td class="num">3,000~5,000만</td>
+                </tr>
+                <tr>
+                  <td>3 자동화 에이전시</td>
+                  <td>n8n/Make 전문</td>
+                  <td class="num">500~2,000만</td>
+                </tr>
+                <tr>
+                  <td>4 Freelance + AI</td>
+                  <td>1인 컨설턴트</td>
+                  <td class="num">300~1,500만</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0.8rem 0 0.5rem;">정부 발주 단일과제 단가</h3>
+            <table class="breakdown-table" style="font-size: 0.74rem;">
+              <thead>
+                <tr>
+                  <th>사업</th>
+                  <th class="num">단가</th>
+                  <th class="num">우리 위치</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>삼성SDS 정부 AI 플랫폼 1차</td>
+                  <td class="num">90억</td>
+                  <td class="num" style="font-size:0.65rem">규모 격차</td>
+                </tr>
+                <tr>
+                  <td>NIA AI·애자일 혁신 컨소</td>
+                  <td class="num">3.78억</td>
+                  <td class="num">26%</td>
+                </tr>
+                <tr>
+                  <td>중기부 Multi AI Agent PoC</td>
+                  <td class="num">3억</td>
+                  <td class="num">33%</td>
+                </tr>
+                <tr>
+                  <td>NIPA AI 바우처 일반</td>
+                  <td class="num">2억</td>
+                  <td class="num">50%</td>
+                </tr>
+                <tr class="final">
+                  <td><strong>Wisgraph 수도 1차 견적</strong></td>
+                  <td class="num">~1억</td>
+                  <td class="num">—</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note" style="margin-top: 0.5rem; font-size: 0.72rem;">→ 정부 단일과제의 <strong>26~33% 수준 = 소형 합리적 중간대</strong></p>
+          </div>
+          <div>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem;">Tier-2 부티크 카테고리 트랙레코드</h3>
+            <div class="method-step" style="padding: 0.4rem 0.8rem; margin-bottom: 0.4rem;">
+              <div class="step-no" style="font-size:0.6rem">올거나이즈 (Allganize)</div>
+              <p class="step-body" style="font-size:0.74rem">미쓰비시·노무라 등 <strong>300+ 엔터프라이즈 도입</strong> · GS 인증 1등급</p>
+            </div>
+            <div class="method-step" style="padding: 0.4rem 0.8rem; margin-bottom: 0.4rem;">
+              <div class="step-no" style="font-size:0.6rem">디피니트 (DARVIS·DAVIS)</div>
+              <p class="step-body" style="font-size:0.74rem">백석문화대 도입 (재학 지속성 예측 정확도 <strong>93%</strong>) · 시드 + TIPS 선정</p>
+            </div>
+            <div class="method-step" style="padding: 0.4rem 0.8rem; margin-bottom: 0.4rem;">
+              <div class="step-no" style="font-size:0.6rem">한국딥러닝</div>
+              <p class="step-body" style="font-size:0.74rem">Vision-LLM Doc AI · NIPA 바우처 다수 활용 (수기 운송장·의약품 검출)</p>
+            </div>
+            <div class="method-step" style="padding: 0.4rem 0.8rem; margin-bottom: 0.4rem;">
+              <div class="step-no" style="font-size:0.6rem">럿지 · 원더스랩 · 모두싸인 · 사이냅소프트 · 엘리스</div>
+              <p class="step-body" style="font-size:0.74rem">2026 NIPA·AX 원스톱 공급기업 풀</p>
+            </div>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0.6rem 0 0.4rem;">Wisgraph 포지션 근거</h3>
+            <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.78rem; color: var(--ink-2); line-height: 1.45;">
+              <li>6+1인 분야별 전문가팀 (Freelance ↑)</li>
+              <li>n8n + Cursor·Claude 하이브리드 (자동화 에이전시 ↑)</li>
+              <li>도메인 신뢰 자본 (동두천 GEG · 동양대 등 외부 네트워크)</li>
+              <li>프로젝트별 핵심 2~4명 분담 + retainer</li>
+            </ul>
+            <div style="margin-top: 0.7rem; padding: 0.7rem 0.9rem; background: var(--accent-soft); border-left: 3px solid var(--accent);">
+              <p style="font-size: 0.78rem; color: var(--ink-2); margin: 0; line-height: 1.5;">
+                <strong style="color: var(--accent);">SI 대비 1/4~1/5</strong> · 자동화 에이전시 대비 <strong>통합 책임</strong> · Freelance 대비 <strong>분야별 전문가</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">시장 표준 단가 = KOSA-AI 2026 SW기술자 평균임금 기준 · Tier-2 부티크 동일 카테고리</div>
+        <div class="slide-num">POSITION</div>
+      </div>
+    </section>
+
+    <!-- 08 Government Voucher · STATIC (Reciprocity + Scarcity) -->
+    <section data-screen-label="08 Government Voucher">
+      <div class="slide">
+        <div class="slide-tag a-rise">08 / 15</div>
+        <div class="section-label a-rise">정부 바우처 매칭 검토 가능성</div>
+        <div class="head-row" style="margin-top: 1rem;">
+          <h2 class="headline-lg a-rise d1">정부지원금 활용 시 학원 부담을 <span class="accent">크게 낮출 수 있는</span> 구조</h2>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 70rem; margin-top: 0.2rem; font-size: 0.95rem;">
+            NIPA 클라우드 바우처 · NIPA AI 바우처 등 정부 지원사업 매칭 가능 시, 정가의 <strong>20~25%</strong> 수준으로 학원 부담을 정리할 수 있습니다. 자격 검토 후 별도로 안내드릴 수 있는 부분입니다.
+          </p>
+        </div>
+        <div class="method-grid a-rise d3" style="grid-template-columns: 1fr 1fr;">
+          <div>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem;">활용 가능 정부 바우처</h3>
+            <table class="breakdown-table" style="font-size: 0.74rem;">
+              <thead>
+                <tr>
+                  <th>바우처</th>
+                  <th class="num">한도</th>
+                  <th class="num">자부담</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="final">
+                  <td><strong>NIPA 클라우드 바우처</strong></td>
+                  <td class="num">6,910만</td>
+                  <td class="num"><strong>20%</strong></td>
+                </tr>
+                <tr>
+                  <td>NIPA AI 바우처 일반</td>
+                  <td class="num">2억</td>
+                  <td class="num">25%</td>
+                </tr>
+                <tr>
+                  <td>AX 원스톱 (Phase 2~3)</td>
+                  <td class="num">13억/2년</td>
+                  <td class="num">협상</td>
+                </tr>
+                <tr>
+                  <td>소상공인 AI 활용 (강사 확장)</td>
+                  <td class="num">인당 718만</td>
+                  <td class="num">—</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note" style="margin-top: 0.5rem; font-size: 0.72rem;">→ <strong>NIPA 클라우드 바우처</strong> = 정부 70~75% + 공급 5~10% 부담</p>
+            <div style="margin-top: 0.8rem; padding: 0.7rem 0.9rem; background: var(--bg-gray); border-left: 3px solid var(--light);">
+              <p style="font-size: 0.72rem; color: var(--ink-2); margin: 0; line-height: 1.5;">
+                <strong>신청 마감</strong>: NIPA AI 바우처 2026년 3월 / 클라우드 바우처 2026년 4월. 자격 검토 후 안내드립니다.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.5rem;">학원 부담 시뮬레이션</h3>
+            <table class="breakdown-table" style="font-size: 0.72rem;">
+              <thead>
+                <tr>
+                  <th>시나리오</th>
+                  <th class="num">정가</th>
+                  <th class="num">바우처 시 부담</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Phase 0 + Entry Pilot</td>
+                  <td class="num">2,300~4,000만</td>
+                  <td class="num">460~800만</td>
+                </tr>
+                <tr>
+                  <td>Phase 0 + 모집 자동화</td>
+                  <td class="num">3,300~5,500만</td>
+                  <td class="num">660~1,100만</td>
+                </tr>
+                <tr class="final">
+                  <td><strong>Phase 0 + 1차 본구축</strong><br><span style="font-size:0.65rem;font-weight:400">모집 + 문제은행</span></td>
+                  <td class="num">6,800만~1.15억</td>
+                  <td class="num">1,360~2,300만</td>
+                </tr>
+                <tr>
+                  <td>1차 + 2차 누적</td>
+                  <td class="num">1.03~1.8억</td>
+                  <td class="num">2,060~3,600만</td>
+                </tr>
+                <tr>
+                  <td>6개월 풀패키지</td>
+                  <td class="num">1.7~2.7억</td>
+                  <td class="num">3,400~5,400만</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: var(--accent-soft); border-left: 3px solid var(--accent);">
+              <p style="font-size: 0.8rem; color: var(--ink-2); margin: 0; line-height: 1.55;">
+                <strong style="color: var(--accent);">1차 본구축 학원 부담 ≈ 연 매출의 0.07~0.12%</strong>
+              </p>
+              <p style="font-size: 0.7rem; color: var(--muted); margin: 0.3rem 0 0; line-height: 1.45;">
+                NIPA 클라우드 바우처 (자부담 20%) 매칭 시 · 매출 20억 가정
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">정부 바우처 활용 가능 시 결재 부담 정리 · 자격은 디스커버리 이후 확인 가능한 부분입니다</div>
+        <div class="slide-num">VOUCHER</div>
+      </div>
+    </section>
+
+    <!-- 09 Phase 0 Detail · STATIC -->
+    <section data-screen-label="09 Phase 0 Detail">
+      <div class="slide">
+        <div class="slide-tag a-rise">09 / 15</div>
+        <div class="section-label a-rise">Phase 0 진단 · 함께 살펴볼 항목</div>
         <div class="head-row" style="margin-top: 1.2rem;">
-          <h2 class="headline-lg a-rise d1">왜 2차 확인 미팅이 먼저 필요한가</h2>
+          <h1 class="price-headline a-rise d1"><span class="label">Phase 0 진단</span>시장 표준 <span style="color:var(--muted)">1,000~2,000만</span> · Wisgraph <span class="amount">800~1,500만</span></h1>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 68rem; margin-top: 0.3rem; font-size: 0.95rem;">
+            현행 시스템·데이터를 함께 살펴보는 단계입니다. 캘린더 약 <strong>1~2주</strong>. 결과물은 SOW와 1차 범위 후보, 다음 단계 견적의 기준 자료입니다.
+          </p>
+        </div>
+        <div class="breakdown-grid a-rise d3">
+          <div class="breakdown-block">
+            <h3>작업 단위 (deliverable 기준)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>작업</th>
+                  <th>포함</th>
+                  <th class="num">기간</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>대표·이사·실무팀장 인터뷰</td>
+                  <td>운영 흐름·페인 파악</td>
+                  <td class="num">1~2일</td>
+                </tr>
+                <tr>
+                  <td>사용 시스템 목록 파악</td>
+                  <td>LMS·ERP·엑셀 추출 여부</td>
+                  <td class="num">1~2일</td>
+                </tr>
+                <tr>
+                  <td>데이터 샘플 확인</td>
+                  <td>상담·수강생·평가 위치·구조</td>
+                  <td class="num">1~2일</td>
+                </tr>
+                <tr>
+                  <td>진단 보고서·SOW 작성</td>
+                  <td>1차 범위 후보·우선순위</td>
+                  <td class="num">2~4일</td>
+                </tr>
+                <tr class="total">
+                  <td colspan="2">합계 (캘린더)</td>
+                  <td class="num">약 1~2주</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">→ 핵심 PM 1 + 아키텍트 1 분담</p>
+          </div>
+          <div class="breakdown-block">
+            <h3>가격 비교 (시장 표준 + Wisgraph 공급가)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th class="num">금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>시장 표준 (Tier-2 AI 부티크 진단)</td>
+                  <td class="num">1,000~2,000만</td>
+                </tr>
+                <tr class="final">
+                  <td>Wisgraph 공급가</td>
+                  <td class="num">800~1,500만</td>
+                </tr>
+                <tr>
+                  <td>차액 효과</td>
+                  <td class="num" style="font-size:0.7rem; font-weight:400; color:var(--muted)">노코드 + 핵심 분담 효율</td>
+                </tr>
+                <tr>
+                  <td>정부 바우처 매칭 시 학원 부담 (옵션)</td>
+                  <td class="num">200~375만</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: var(--accent-soft); border-left: 3px solid var(--accent);">
+              <p style="font-size: 0.78rem; color: var(--ink-2); margin: 0; line-height: 1.5;">
+                <strong style="color: var(--accent);">결과물 가치</strong>: SOW + 1차 범위 후보 + 정밀 견적 입력값. 이 데이터 위에 1차 본구축 견적의 정확도가 결정됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Phase 0의 결과물이 1차 본구축 견적의 입력값입니다</div>
+        <div class="slide-num">PHASE 0</div>
+      </div>
+    </section>
+
+    <!-- 09 Recruit Automation Detail · STATIC -->
+    <section data-screen-label="10 Recruit Detail">
+      <div class="slide">
+        <div class="slide-tag a-rise">10 / 15</div>
+        <div class="section-label a-rise">모집 자동화 · 작업 내역 (예비)</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h1 class="price-headline a-rise d1"><span class="label">모집 자동화</span>시장 표준 <span style="color:var(--muted)">3,000~5,000만</span> · Wisgraph <span class="amount">2,500~4,000만</span></h1>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 68rem; margin-top: 0.3rem; font-size: 0.92rem;">
+            상담 DB · 메시지 · 리마인드 · 대시보드 · 콘텐츠 자동화 영역입니다. <strong>Entry Pilot 단독으로 진입하는 옵션 (1,500~2,500만)</strong>도 함께 검토할 수 있습니다.
+          </p>
+        </div>
+        <div class="breakdown-grid a-rise d3">
+          <div class="breakdown-block">
+            <h3>작업 단위 (deliverable 기준)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>작업</th>
+                  <th class="num">비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="section-head"><td colspan="2">Entry Pilot 핵심 흐름</td></tr>
+                <tr>
+                  <td>킥오프·상담 흐름 / DB 필드 설계</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">운영 구조 정의</td>
+                </tr>
+                <tr>
+                  <td>입력 폼 / 메시지 / AI 초안 / 승인 발송</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>7일 리마인드·미등록 / 기본 대시보드</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>테스트·수정 / 교육·매뉴얼</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">정착 지원</td>
+                </tr>
+                <tr class="total">
+                  <td>Entry Pilot 1식 (캘린더)</td>
+                  <td class="num">약 2~3주</td>
+                </tr>
+                <tr class="section-head"><td colspan="2">확장 (Entry + 옵션)</td></tr>
+                <tr>
+                  <td>상담 CRM 확장 (상태·태그·필터)</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>모집 대시보드 (채널·전환·기간)</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>콘텐츠 자동화 (Claude 초안·승인)</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>확장분 테스트·수정</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">정착 지원</td>
+                </tr>
+                <tr class="total">
+                  <td>확장 포함 합 (캘린더)</td>
+                  <td class="num">약 3~4주</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">→ 핵심 구현 2 + PM 1 + QA 1 분담</p>
+          </div>
+          <div class="breakdown-block">
+            <h3>가격 비교 (시장 표준 + Wisgraph 공급가)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th class="num">Entry Pilot 단독</th>
+                  <th class="num">모집 전체</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>시장 표준 (Tier-2 AI 부티크)</td>
+                  <td class="num">2,000~3,500만</td>
+                  <td class="num">3,000~5,000만</td>
+                </tr>
+                <tr class="final">
+                  <td>Wisgraph 공급가</td>
+                  <td class="num">1,500~2,500만</td>
+                  <td class="num">2,500~4,000만</td>
+                </tr>
+                <tr>
+                  <td>Retainer (선택)</td>
+                  <td class="num">월 300만</td>
+                  <td class="num">월 300~400만</td>
+                </tr>
+                <tr>
+                  <td>정부 바우처 매칭 시 학원 부담</td>
+                  <td class="num">375~625만</td>
+                  <td class="num">625~1,000만</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="margin-top: 1rem; padding: 0.8rem 1rem; background: var(--accent-soft); border-left: 3px solid var(--accent);">
+              <p style="font-size: 0.78rem; color: var(--ink-2); margin: 0; line-height: 1.5;">
+                <strong style="color: var(--accent);">차액 효과</strong>: 노코드 + AI 하이브리드 (SI 대비 30~50% 효율) + 핵심 분담 + 정착 retainer 연계
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">Entry Pilot부터 분할 진입 가능 · 확장은 1차 안정화 이후 결정</div>
+        <div class="slide-num">RECRUIT</div>
+      </div>
+    </section>
+
+    <!-- 10 Question Bank Detail · STATIC -->
+    <section data-screen-label="11 Question Bank Detail">
+      <div class="slide">
+        <div class="slide-tag a-rise">11 / 15</div>
+        <div class="section-label a-rise">문제은행 · 작업 내역 (예비)</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h1 class="price-headline a-rise d1"><span class="label">문제은행 (RAG)</span>시장 표준 <span style="color:var(--muted)">4,000~7,000만</span> · Wisgraph <span class="amount">3,500~5,500만</span></h1>
+          <div class="line a-rise d2"></div>
+          <p class="body-text a-rise d2" style="max-width: 68rem; margin-top: 0.3rem; font-size: 0.92rem;">
+            UI 모듈 4종 (학생·강사·자동 채점·오답 누적)과 문제 데이터 정리·이관, RAG 기반 AI 튜터까지 포함됩니다. 모집 자동화 대비 약 <strong>1.4배</strong> 사이즈입니다.
+          </p>
+        </div>
+        <div class="breakdown-grid a-rise d3">
+          <div class="breakdown-block">
+            <h3>작업 단위 (deliverable 기준)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>작업</th>
+                  <th class="num">비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>킥오프·현황 파악 / DB 스키마 설계</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">운영 구조</td>
+                </tr>
+                <tr>
+                  <td>문제 데이터 정리·이관</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">외주 가능</td>
+                </tr>
+                <tr>
+                  <td>학생 모바일 풀이 화면</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">UI 1식</td>
+                </tr>
+                <tr>
+                  <td>자동 채점 흐름</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>오답 누적·취약 영역 분석</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>강사 화면 (진도·오답·피드백)</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">UI 1식</td>
+                </tr>
+                <tr>
+                  <td>모의고사 운영</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">1식</td>
+                </tr>
+                <tr>
+                  <td>시스템 보안·권한 / ERP·LMS 연동</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">보안·연동</td>
+                </tr>
+                <tr>
+                  <td>RAG 기반 AI 튜터 흐름</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">LLM+벡터DB</td>
+                </tr>
+                <tr>
+                  <td>테스트·QA / 교육·매뉴얼</td>
+                  <td class="num" style="font-size:0.7rem;font-weight:400">정착 지원</td>
+                </tr>
+                <tr class="total">
+                  <td>합계 (캘린더)</td>
+                  <td class="num">약 5~7주</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="note">→ 핵심 구현 2~3 + 아키텍트 1 + QA 1 + 외주</p>
+          </div>
+          <div class="breakdown-block">
+            <h3>가격 비교 (시장 표준 + Wisgraph 공급가)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>구분</th>
+                  <th class="num">금액</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>시장 표준 (Tier-2 RAG MVP)</td>
+                  <td class="num">4,000~7,000만</td>
+                </tr>
+                <tr class="final">
+                  <td>Wisgraph 공급가</td>
+                  <td class="num">3,500~5,500만</td>
+                </tr>
+                <tr>
+                  <td>Retainer (선택)</td>
+                  <td class="num">월 400~500만</td>
+                </tr>
+                <tr>
+                  <td>정부 바우처 매칭 시 학원 부담</td>
+                  <td class="num">875~1,375만</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 style="margin-top: 1rem;">사이즈 비교 (vs 모집 자동화)</h3>
+            <table class="breakdown-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th class="num">모집</th>
+                  <th class="num">문제은행</th>
+                  <th class="num">비율</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>시장 표준</td>
+                  <td class="num">3,000~5,000만</td>
+                  <td class="num">4,000~7,000만</td>
+                  <td class="num">1.4×</td>
+                </tr>
+                <tr>
+                  <td>Wisgraph 공급가</td>
+                  <td class="num">2,500~4,000만</td>
+                  <td class="num">3,500~5,500만</td>
+                  <td class="num">1.4×</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="footer-note">사이즈가 큰 이유 = UI 모듈 4종 (학생·강사·채점·오답) + RAG 기반 AI 튜터 + 데이터 이관</div>
+        <div class="slide-num">QUESTION BANK</div>
+      </div>
+    </section>
+
+    <!-- 11 Why Meeting 2 · STATIC -->
+    <section data-screen-label="12 Why Meeting 2">
+      <div class="slide">
+        <div class="slide-tag a-rise">12 / 15</div>
+        <div class="section-label a-rise">다음 미팅이 필요한 이유</div>
+        <div class="head-row" style="margin-top: 1.2rem;">
+          <h2 class="headline-lg a-rise d1">왜 2차 미팅이 먼저 필요한지</h2>
           <div class="line a-rise d2"></div>
         </div>
         <div class="quote-block" style="grid-template-columns: 0.95fr 1.05fr; align-items: stretch;">
@@ -858,17 +1753,19 @@
               따라서 다음 단계의 핵심은 견적을 먼저 확정하는 것보다, 현행 시스템·데이터 흐름을 함께 확인하는 2차 미팅을 통해 1차 범위와 실행 순서를 현실적으로 정리하는 데 있습니다.
             </p>
             <p class="statement-foot" style="font-weight: 700; color: var(--ink);">
-              학원 입장에선 과도한 범위·비용 부담을 사전에 줄이고, 현장 운영에 맞는 우선순위로 1차 도입 가치를 명확하게 확보할 수 있습니다.
+              이렇게 진행하면 과도한 범위·비용 부담을 사전에 줄이고, 현장 운영에 맞는 우선순위로 1차 도입 가치를 명확하게 확보할 수 있습니다.
             </p>
           </div>
         </div>
+        <div class="footer-note">정확한 제안과 범위 산정을 위해 현행 구조 확인이 필요한 단계입니다</div>
+        <div class="slide-num">MEETING RATIONALE</div>
       </div>
     </section>
 
-    <!-- 07 Checklist · STATIC (gray) -->
-    <section data-screen-label="07 Checklist">
+    <!-- 12 Checklist · STATIC (gray) -->
+    <section data-screen-label="13 Checklist">
       <div class="slide slide-gray">
-        <div class="slide-tag a-rise">07 / 09</div>
+        <div class="slide-tag a-rise">13 / 15</div>
         <div class="section-label a-rise">What To Inspect In Meeting 2</div>
         <div class="head-row" style="margin-top: 1.2rem;">
           <h2 class="headline-lg a-rise d1">2차 미팅에서 직접 확인해야 할 항목</h2>
@@ -916,11 +1813,13 @@
             </ul>
           </div>
         </div>
+        <div class="footer-note">설명 중심을 넘어 실제 화면과 데이터를 함께 확인하는 단계 · 사전 자료 준비는 별도로 필요하지 않으며, 미팅 자리에서 함께 확인합니다</div>
+        <div class="slide-num">INSPECTION SCOPE</div>
       </div>
     </section>
 
-    <!-- 08 Roles · CINEMATIC · roles-meeting -->
-    <section data-screen-label="08 Roles">
+    <!-- 13 Roles · CINEMATIC · roles-meeting -->
+    <section data-screen-label="14 Roles">
       <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
              poster="./assets/videos/roles-meeting.jpg">
         <source src="./assets/videos/roles-meeting.mp4" type="video/mp4">
@@ -928,7 +1827,7 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">08 / 09</div>
+          <div class="slide-tag a-rise">14 / 15</div>
           <div class="section-label a-rise">Who Should Be In The Room</div>
           <div class="head-row" style="margin-top: 1rem;">
             <h2 class="headline-lg a-rise d1" style="color:#fff;">2차 미팅에는 실제 운영 구조와 데이터를<br>함께 확인할 수 있는 담당자의 참여가 필요합니다</h2>
@@ -936,33 +1835,33 @@
           </div>
           <div class="roles-cinematic">
             <div class="roles-panel a-rise d2">
-              <div class="col-header accent">Wisgraph Side</div>
+              <div class="col-header accent">Wisgraph</div>
               <ul class="col-list">
-                <li><strong style="color:#fff;">권용석</strong> · 고객 문제·사업 방향</li>
+                <li><strong style="color:#fff;">강동민</strong> · 아키텍처·진단 총괄</li>
                 <li><strong style="color:#fff;">문찬원</strong> · 시스템·자동화·온톨로지</li>
-                <li><strong style="color:#fff;">김모세</strong> · 교육·자격증·국비지원</li>
-                <li class="highlight-li">데이터·아키텍처 관점에서 확인 가능한 담당자의 현장 참여를 우선합니다</li>
+                <li><strong style="color:#fff;">권용석</strong> · 고객 문제·사업 방향</li>
+                <li><strong style="color:#fff;">김혜련</strong> · 자동화 구축 (Make / n8n / Dify)</li>
+                <li class="highlight-li">데이터·아키텍처 관점에서 현행 구조를 함께 살펴볼 담당자 중심으로 참여합니다</li>
               </ul>
-              <div style="margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px dashed rgba(255,255,255,0.18); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
-                박은경 교수님 동석
-              </div>
             </div>
             <div class="roles-panel a-rise d3">
-              <div class="col-header">Client Side</div>
+              <div class="col-header">수도직업전문학교</div>
               <ul class="col-list">
                 <li>실제 시스템을 사용하시는 행정·교무 실무 담당자</li>
                 <li>상담·모집 DB를 운영하시는 담당자</li>
                 <li>문제 데이터·평가 운영을 파악하고 계신 담당자</li>
-                <li class="highlight-li">가능하면 범위 판단이 가능한 의사결정권자</li>
+                <li class="highlight-li">가능하시면 범위 판단이 가능한 의사결정권자</li>
               </ul>
             </div>
           </div>
+          <div class="footer-note">이번 미팅은 방향 설명보다 실제 운영 구조를 함께 살펴보는 성격이며 · 결재권자 참석 시 1차 범위·예산 방향까지 같은 자리에서 정리될 수 있습니다</div>
+          <div class="slide-num">MEETING ROLES</div>
         </div>
       </div>
     </section>
 
-    <!-- 09 Close · CINEMATIC · close-sunrise -->
-    <section data-screen-label="09 Close">
+    <!-- 14 Close · CINEMATIC · close-sunrise -->
+    <section data-screen-label="15 Close">
       <video class="hero-video" data-autoplay-video autoplay muted loop playsinline webkit-playsinline preload="auto"
              poster="./assets/videos/close-sunrise.jpg">
         <source src="./assets/videos/close-sunrise.mp4" type="video/mp4">
@@ -970,35 +1869,35 @@
       <div class="hero-scrim"></div>
       <div class="cinematic">
         <div class="cinematic-inner">
-          <div class="slide-tag a-rise">09 / 09</div>
-          <div class="section-label a-rise">Closing Ask</div>
+          <div class="slide-tag a-rise">15 / 15</div>
+          <div class="section-label a-rise">다음 단계 · Closing</div>
           <div class="cta-grid">
             <div>
               <h1 class="headline-xl a-rise d1" style="margin-top: 1.5rem;">
-                2차 미팅의 목표는<br>
-                <span class="accent">실제 운영 구조 확인</span>과<br>
-                현실적인 1차 범위 확정입니다
+                다음 미팅은<br>
+                <span class="accent">실제 운영 구조</span>를 함께 살펴보고<br>
+                1차 범위를 함께 정리하는 자리입니다
               </h1>
               <div class="line a-rise d2"></div>
               <p class="subheadline a-rise d2" style="max-width: 38rem;">
-                5월 22일 미팅으로 니즈와 방향은 충분히 확인되었습니다.<br>
-                이제는 실제 운영 시스템과 데이터 구조를 함께 확인하는 2차 미팅을 통해, 양측이 합의 가능한 1차 범위와 실행 순서를 협의하는 단계가 필요합니다.
+                5월 22일 미팅으로 방향은 충분히 확인되었습니다.<br>
+                실제 운영 시스템과 데이터 구조를 함께 살펴봄으로써, 양측이 함께 합의 가능한 1차 범위와 실행 순서를 정리할 수 있습니다.
               </p>
             </div>
             <div class="cta-list a-rise d3">
-              <div class="label">Meeting 2 Should Deliver</div>
+              <div class="label">다음 미팅을 통해 함께 정리</div>
               <ol>
                 <li>실제 운영 구조·데이터 현황 확인</li>
                 <li>1차 실행 범위의 현실적 경계 설정</li>
                 <li>작게 시작할 수 있는 우선 구현 대상 확정</li>
-                <li>다음 제안 및 견적 기준 정리</li>
+                <li>그 결과를 바탕으로 한 1차 재안 및 견적 기준 정리</li>
               </ol>
               <div class="cta-action">
-                <strong style="color: var(--accent);">다음 액션</strong> · 박은경 교수님을 통해 2차 미팅 가능 일정 후보 3안을 별도로 전달드리며, 미팅 결과를 받아 <strong style="color:#fff;">1주 이내 단일 견적</strong>으로 회신드립니다.
+                <strong style="color: var(--accent);">다음 액션</strong> · 2차 미팅 가능 일정 후보를 별도로 전달드리며, 미팅 결과를 받아 <strong style="color:#fff;">1주 이내 1차 재안</strong>으로 회신드립니다.
               </div>
             </div>
           </div>
-          <div class="footer-note">Wisgraph</div>
+          <div class="slide-num">END</div>
         </div>
       </div>
     </section>
